@@ -106,7 +106,7 @@
 
     .brand-logo {
       width: 200px;
-      max-height: 90px;
+      max-height: 110px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -445,7 +445,6 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 10px;
-      pointer-events: none;
     }
 
     .hero-slider-btn {
@@ -459,7 +458,6 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      pointer-events: auto;
       font-size: 14px;
       transition: var(--transition-fast);
     }
@@ -1152,6 +1150,7 @@
       margin-right: 12px;
     }
 
+    /* TABLET / ORTA EKRAN */
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: minmax(0, 1fr);
@@ -1174,7 +1173,7 @@
       }
 
       .brand-logo {
-        width: 170px;
+        width: 180px;
       }
 
       .hero h1 {
@@ -1186,12 +1185,17 @@
       }
     }
 
+    /* MOBİL */
     @media (max-width: 720px) {
+      header {
+        border-bottom-width: 0;
+      }
+
       .header-inner {
-        padding: 10px 14px;
+        padding: 12px 14px 10px;
         flex-direction: column;
         align-items: flex-start;
-        gap: 6px;
+        gap: 4px;
       }
 
       .brand {
@@ -1201,7 +1205,7 @@
       }
 
       .brand-logo {
-        width: 150px;
+        width: 190px;
       }
 
       .brand-text-sub {
@@ -1230,7 +1234,7 @@
       }
 
       .container {
-        padding: 20px 14px 30px;
+        padding: 22px 14px 30px;
       }
 
       body.page {
@@ -1238,8 +1242,8 @@
       }
 
       .hero {
-        padding-top: 20px;
-        gap: 20px;
+        padding-top: 18px;
+        gap: 18px;
       }
 
       .hero h1 {
@@ -1259,6 +1263,10 @@
       .cta {
         padding: 9px 18px;
         font-size: 12px;
+      }
+
+      .hero-slider-main img {
+        max-height: 260px;
       }
 
       .section-inner {
@@ -1354,6 +1362,7 @@
         font-size: 11px;
       }
 
+      /* Sosyal bar altta yatay */
       .social-bar {
         top: auto;
         bottom: 18px;
@@ -1385,9 +1394,11 @@
         transform: translate(-50%, -110%);
       }
 
+      /* ALT İLETİŞİM BLOĞU DAHA KÜÇÜK */
       .bottom-contact-inner {
-        padding: 18px 14px 18px;
+        padding: 16px 12px 16px;
         border-radius: 22px;
+        gap: 12px;
       }
 
       .bottom-contact-title {
@@ -1401,31 +1412,30 @@
       .bottom-contact-grid {
         flex-direction: column;
         align-items: stretch;
-        gap: 10px;
+        gap: 8px;
       }
 
-      /* Alt iletişim kutuları daha küçük */
       .bottom-contact-row {
         max-width: 100%;
-        padding: 7px 10px;
-        border-radius: 14px;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        padding: 6px 8px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
         gap: 8px;
       }
 
       .bottom-contact-icon {
-        width: 26px;
-        height: 26px;
-        font-size: 13px;
+        width: 22px;
+        height: 22px;
+        font-size: 12px;
       }
 
       .bottom-contact-label {
-        font-size: 10px;
+        font-size: 9px;
         letter-spacing: 0.14em;
       }
 
       .bottom-contact-value {
-        font-size: 13px;
+        font-size: 12px;
       }
 
       footer {
@@ -1535,7 +1545,7 @@
         </div>
       </nav>
 
-      <!-- Mobil için: logo altına gelen dil seçici -->
+      <!-- Mobil için: logo altına dil seçici -->
       <div class="lang-switch lang-switch-mobile">
         <button type="button" class="lang-btn active" data-lang="tr">TR</button>
         <button type="button" class="lang-btn" data-lang="en">EN</button>
@@ -1613,7 +1623,7 @@
               </div>
             </div>
             <div class="hero-slider-dots" id="heroSliderDots" aria-label="Slider navigation">
-              <button type="button" class="hero-slider-dot active" data-index="0"></button>
+              <!-- JS ile doldurulacak -->
             </div>
           </div>
         </div>
@@ -1997,7 +2007,8 @@
         collection_sub: "التركيز الرئيسي: بنطلونات السيدات. القدرة الإضافية: بليزرات، أطقم، تنانير وغيرها من ملابس السيدات.",
         slider_label: "صور من المجموعة",
         about_title: "من نحن",
-        about_sub: "منذ 2012، إنتاج ملابس سيدات مع تركيز على البنطلونات في لاليلي.",
+        about_sub: "منذ 2012، إنتاج ملابس سيدات مع تركيز على البنطلونات في لال
+        eli.",
         about_text: "STAWA هي مُنتِج بوتيك لملابس السيدات تمتلك مصنعاً خاصاً في لاليلي – إسطنبول. تخصصنا الرئيسي هو بنطلونات السيدات، ومع ذلك، وبحسب مواسم المجموعة وطلبات العملاء، نقوم أيضاً بإنتاج البليزرات، الأطقم، التنانير ومنتجات أخرى لملابس السيدات. يتيح لنا هذا الهيكل سرعة في التسليم، مرونة في الكميات وتوازناً ممتازاً بين السعر والجودة.",
         fact1_title: "أكثر من 12 سنة خبرة",
         fact1_sub: "خبرة مستمرة في الإنتاج والتصدير منذ عام 2012.",
@@ -2063,15 +2074,30 @@
     }
 
     function initSlider() {
-      const images = ["c.JPG"];
+      // Buraya ek fotoğraflarının dosya adlarını gir (c.JPG yanındaki diğerleri)
+      const images = ["c.JPG", "c2.JPG", "c3.JPG"];
+
       let currentIndex = 0;
 
       const imgEl = document.getElementById("heroSliderImage");
       const dotsContainer = document.getElementById("heroSliderDots");
-      const dots = dotsContainer ? dotsContainer.querySelectorAll(".hero-slider-dot") : [];
       const prevBtn = document.getElementById("prevSlide");
       const nextBtn = document.getElementById("nextSlide");
       const main = document.getElementById("heroSliderMain");
+
+      // Dotları dinamik oluştur
+      if (dotsContainer) {
+        dotsContainer.innerHTML = "";
+        images.forEach((_, index) => {
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.className = "hero-slider-dot" + (index === 0 ? " active" : "");
+          dot.setAttribute("data-index", index);
+          dotsContainer.appendChild(dot);
+        });
+      }
+
+      const dots = dotsContainer ? dotsContainer.querySelectorAll(".hero-slider-dot") : [];
 
       function showSlide(index) {
         if (!imgEl) return;
@@ -2083,34 +2109,34 @@
         });
       }
 
-      if (images.length <= 1) {
-        if (prevBtn) prevBtn.style.display = "none";
-        if (nextBtn) nextBtn.style.display = "none";
-      } else {
-        if (prevBtn) {
-          prevBtn.addEventListener("click", () => {
-            showSlide(currentIndex - 1);
-          });
-        }
-
-        if (nextBtn) {
-          nextBtn.addEventListener("click", () => {
-            showSlide(currentIndex + 1);
-          });
-        }
-
-        dots.forEach(dot => {
-          dot.addEventListener("click", () => {
-            const idx = parseInt(dot.getAttribute("data-index"), 10);
-            showSlide(idx);
-          });
+      if (prevBtn) {
+        prevBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          showSlide(currentIndex - 1);
         });
-
-        setInterval(() => {
-          showSlide(currentIndex + 1);
-        }, 6000);
       }
 
+      if (nextBtn) {
+        nextBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          showSlide(currentIndex + 1);
+        });
+      }
+
+      dots.forEach(dot => {
+        dot.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const idx = parseInt(dot.getAttribute("data-index"), 10);
+          showSlide(idx);
+        });
+      });
+
+      // Otomatik geçiş
+      setInterval(() => {
+        showSlide(currentIndex + 1);
+      }, 6000);
+
+      // Lightbox
       const lightbox = document.getElementById("lightbox");
       const lightboxImage = document.getElementById("lightboxImage");
       const lightboxClose = document.getElementById("lightboxClose");
