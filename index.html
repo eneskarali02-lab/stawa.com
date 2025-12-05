@@ -2,13 +2,13 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8" />
-  <!-- Mobilde zoom kapalı, ölçüler sabit -->
+  <!-- Mobilde zoom kapalı -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>STAWA — Women’s Trousers & Womenswear Manufacturing</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome ikonlar için -->
+  <!-- Font Awesome ikonlar -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <style>
@@ -91,7 +91,7 @@
     .header-inner {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 18px 22px;
+      padding: 12px 22px; /* biraz daraltıldı */
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -101,12 +101,12 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .brand-logo {
-      width: 180px;
-      max-height: 90px;
+      width: 160px;     /* 180'den daraltıldı */
+      max-height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -152,31 +152,86 @@
       background: rgba(20,22,40,0.95);
     }
 
+    /* DİL SEÇİCİ – TEK TUŞ + AÇILAN MENÜ */
     .lang-switch {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      margin-left: 6px;
+      position: relative;
+      margin-left: 8px;
     }
 
-    .lang-btn {
+    .lang-toggle {
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.28);
       background: rgba(8,8,12,0.85);
       color: var(--accent-soft);
       font-size: 11px;
-      padding: 4px 9px;
+      padding: 6px 14px;
       cursor: pointer;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       transition: var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lang-toggle::after {
+      content: "▾";
+      font-size: 10px;
+      opacity: 0.85;
+    }
+
+    .lang-toggle:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    .lang-menu {
+      position: absolute;
+      top: 110%;
+      right: 0;
+      min-width: 120px;
+      padding: 6px;
+      border-radius: 16px;
+      background: rgba(5,5,10,0.96);
+      border: 1px solid rgba(255,255,255,0.25);
+      box-shadow: 0 14px 38px rgba(0,0,0,0.9);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(4px);
+      transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+      z-index: 30;
+    }
+
+    .lang-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .lang-btn {
+      width: 100%;
+      border-radius: 12px;
+      border: none;
+      background: transparent;
+      color: var(--accent-soft);
+      font-size: 12px;
+      padding: 6px 10px;
+      text-align: left;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin: 2px 0;
+      transition: background 0.16s ease-out, color 0.16s ease-out;
     }
 
     .lang-btn.active {
       background: #f5f5f5;
       color: #111;
-      border-color: #f5f5f5;
-      box-shadow: 0 10px 26px rgba(0,0,0,0.9);
+    }
+
+    .lang-btn:hover {
+      background: rgba(255,255,255,0.09);
+      color: #fff;
     }
 
     .container {
@@ -287,7 +342,6 @@
       border: 1px solid rgba(255,255,255,0.45);
       color: var(--accent-soft);
       background: transparent;
-      transition: var(--transition-med);
     }
 
     .cta-ghost:hover {
@@ -671,7 +725,7 @@
       line-height: 1.7;
     }
 
-    /* Vizyon / Misyon – kart */
+    /* VİZYON/MİSYON KARTI */
     .about-side-card {
       position: relative;
       border-radius: var(--radius-lg);
@@ -716,7 +770,7 @@
       line-height: 1.8;
     }
 
-    /* CONTACT LAYOUT & CARDS */
+    /* CONTACT LAYOUT */
 
     .contact-layout {
       position: relative;
@@ -1085,18 +1139,12 @@
 
     .social-link.whatsapp { color: #32d951; }
     .social-link.whatsapp:hover { color: #111317; }
-
     .social-link.instagram { color: #f56040; }
     .social-link.facebook { color: #1877f2; }
     .social-link.telegram { color: #2aabee; }
     .social-link.mail { color: #ffb347; }
-
-    .social-link.tiktok {
-      color: #ffffff;
-    }
-    .social-link.tiktok:hover {
-      color: #111317;
-    }
+    .social-link.tiktok { color: #ffffff; }
+    .social-link.tiktok:hover { color: #111317; }
 
     .social-bar.collapsed {
       padding: 6px;
@@ -1128,7 +1176,7 @@
       transform: translateY(0);
     }
 
-    /* RTL destek - Arapça için hafif ayar */
+    /* RTL */
     html[dir="rtl"] body.page {
       text-align: right;
     }
@@ -1141,11 +1189,6 @@
 
     html[dir="rtl"] nav {
       flex-direction: row-reverse;
-    }
-
-    html[dir="rtl"] .lang-switch {
-      margin-left: 0;
-      margin-right: 12px;
     }
 
     @media (max-width: 900px) {
@@ -1162,7 +1205,6 @@
       .social-bar {
         left: 10px;
       }
-
       html[dir="rtl"] .social-bar {
         left: auto;
         right: 10px;
@@ -1170,9 +1212,9 @@
     }
 
     @media (max-width: 720px) {
-      /* HEADER mobil düzen */
+      /* HEADER mobil */
       .header-inner {
-        padding: 14px 14px;
+        padding: 10px 14px;
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
@@ -1185,12 +1227,12 @@
       }
 
       .brand-logo {
-        width: 150px;
+        width: 140px;   /* mobilde biraz daha dar */
         max-height: 70px;
       }
 
       .brand-text-sub {
-        display: none; /* İstediğin gibi bu satırı mobilde tamamen kaldırıyoruz */
+        display: none;  /* mobilde gizli, sen istemiştin */
       }
 
       nav {
@@ -1209,7 +1251,6 @@
         margin-left: auto;
       }
 
-      /* HERO mobil: büyük başlığı kaldır, kutucuklar ve butonlar kalsın */
       .container {
         padding: 24px 16px 34px;
       }
@@ -1219,6 +1260,7 @@
         gap: 22px;
       }
 
+      /* Büyük başlık mobilde gizli kalsın */
       .hero h1 {
         display: none;
       }
@@ -1239,7 +1281,7 @@
         border-radius: 22px;
       }
 
-      /* Sosyal bar altta yatay hale gelsin */
+      /* Sosyal bar altta yatay */
       .social-bar {
         top: auto;
         bottom: 18px;
@@ -1284,27 +1326,22 @@
         align-items: stretch;
       }
 
-      /* ALT İLETİŞİM KUTUCUKLARINI MOBİLDE KÜÇÜLT */
+      /* ALT İLETİŞİM – KUTULARI KÜÇÜLT, YAZI BOYUTLARINA DOKUNMA */
       .bottom-contact-row {
         max-width: 100%;
-        padding: 8px 10px;
+        padding: 8px 10px;       /* dikdörtgen küçüldü */
         border-radius: 16px;
         box-shadow: 0 8px 20px rgba(0,0,0,0.08);
       }
 
       .bottom-contact-icon {
-        width: 28px;
-        height: 28px;
+        width: 30px;
+        height: 30px;
         font-size: 14px;
       }
 
-      .bottom-contact-label {
-        font-size: 11px;
-      }
-
-      .bottom-contact-value {
-        font-size: 14px;
-      }
+      /* label ve value font-size burada OVERRIDE edilmiyor,
+         yukarıdaki 12px / 15px aynen korunuyor */
     }
   </style>
 </head>
@@ -1401,11 +1438,17 @@
         <a href="#about" data-i18n="nav_about">Hakkımızda</a>
         <a href="#contact" data-i18n="nav_contact">İletişim</a>
 
+        <!-- DİL TEK TUŞ + MENÜ -->
         <div class="lang-switch">
-          <button type="button" class="lang-btn active" data-lang="tr">TR</button>
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
-          <button type="button" class="lang-btn" data-lang="ru">RU</button>
-          <button type="button" class="lang-btn" data-lang="ar">AR</button>
+          <button type="button" class="lang-toggle" id="langToggle">
+            TR
+          </button>
+          <div class="lang-menu" id="langMenu">
+            <button type="button" class="lang-btn active" data-lang="tr">TR</button>
+            <button type="button" class="lang-btn" data-lang="en">EN</button>
+            <button type="button" class="lang-btn" data-lang="ru">RU</button>
+            <button type="button" class="lang-btn" data-lang="ar">AR</button>
+          </div>
         </div>
       </nav>
     </div>
@@ -1548,7 +1591,7 @@
       </div>
     </section>
 
-    <!-- İLETİŞİM (başlıksız blok) -->
+    <!-- İLETİŞİM BLOĞU -->
     <section id="contact" class="section">
       <div class="contact-layout reveal">
         <div>
@@ -1923,16 +1966,21 @@
         }
       });
 
-      document.querySelectorAll(".lang-btn").forEach(btn => {
+      const langButtons = document.querySelectorAll(".lang-btn");
+      langButtons.forEach(btn => {
         btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
       });
+
+      const toggle = document.getElementById("langToggle");
+      if (toggle) {
+        toggle.textContent = lang.toUpperCase();
+      }
 
       document.documentElement.lang = lang;
       document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
     }
 
     function initSlider() {
-      // Dosya adları: a.jpg, b.jpg, c.JPG, d.jpg
       const images = ["a.jpg", "b.jpg", "c.JPG", "d.jpg"];
       let currentIndex = 0;
 
@@ -1975,7 +2023,6 @@
         });
       });
 
-      // Lightbox açma
       const lightbox = document.getElementById("lightbox");
       const lightboxImage = document.getElementById("lightboxImage");
       const lightboxClose = document.getElementById("lightboxClose");
@@ -2005,7 +2052,6 @@
         });
       }
 
-      // Otomatik geçiş (6 sn)
       setInterval(() => {
         showSlide(currentIndex + 1);
       }, 6000);
@@ -2016,14 +2062,32 @@
     document.addEventListener("DOMContentLoaded", () => {
       setLanguage("tr");
 
+      const langMenu = document.getElementById("langMenu");
+      const langToggle = document.getElementById("langToggle");
+
+      if (langToggle && langMenu) {
+        langToggle.addEventListener("click", (e) => {
+          e.stopPropagation();
+          langMenu.classList.toggle("open");
+        });
+
+        document.addEventListener("click", () => {
+          langMenu.classList.remove("open");
+        });
+
+        langMenu.addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
+      }
+
       document.querySelectorAll(".lang-btn").forEach(btn => {
         btn.addEventListener("click", () => {
           const lang = btn.getAttribute("data-lang");
           setLanguage(lang);
+          if (langMenu) langMenu.classList.remove("open");
         });
       });
 
-      // Sosyal bar küçült / aç
       const socialBar = document.getElementById("socialBar");
       const socialClose = document.getElementById("socialClose");
 
@@ -2033,7 +2097,6 @@
         });
       }
 
-      // Scroll reveal
       const revealElements = document.querySelectorAll('.reveal');
 
       const observer = new IntersectionObserver((entries) => {
@@ -2049,7 +2112,6 @@
 
       revealElements.forEach(el => observer.observe(el));
 
-      // Slider
       initSlider();
     });
   </script>
