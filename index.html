@@ -2,7 +2,8 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Mobilde zoom kapalı, ölçüler sabit -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>STAWA — Women’s Trousers & Womenswear Manufacturing</title>
 
   <!-- Google Font -->
@@ -90,35 +91,32 @@
     .header-inner {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 14px 22px;
+      padding: 18px 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 14px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
-      min-width: 0;
+      gap: 12px;
     }
 
     .brand-logo {
       width: 180px;
-      max-height: 80px;
+      max-height: 90px;
       display: flex;
       align-items: center;
       justify-content: center;
       filter: drop-shadow(0 10px 26px rgba(0,0,0,0.75));
-      flex-shrink: 0;
     }
 
     .brand-logo img {
       width: 100%;
       height: auto;
       display: block;
-      object-fit: contain;
     }
 
     .brand-text-sub {
@@ -133,7 +131,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      flex-shrink: 0;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -147,7 +145,6 @@
       background: rgba(10,11,20,0.72);
       backdrop-filter: blur(14px);
       transition: var(--transition-fast);
-      white-space: nowrap;
     }
 
     nav a:hover {
@@ -155,89 +152,31 @@
       background: rgba(20,22,40,0.95);
     }
 
-    /* DİL MENÜSÜ - HEADER İÇİ */
-
-    .lang-dropdown {
-      position: relative;
-      margin-left: 4px;
-    }
-
-    .lang-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 12px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(255,255,255,0.28);
-      background: rgba(8,8,12,0.9);
-      color: var(--accent-soft);
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: var(--transition-fast);
-    }
-
-    .lang-toggle i {
-      font-size: 10px;
-    }
-
-    .lang-toggle:hover {
-      border-color: rgba(255,255,255,0.65);
-      background: rgba(20,22,40,0.95);
-      color: #ffffff;
-    }
-
-    .lang-menu {
-      position: absolute;
-      right: 0;
-      top: calc(100% + 6px);
-      min-width: 130px;
-      border-radius: 14px;
-      padding: 6px;
-      background: rgba(5,5,10,0.96);
-      border: 1px solid rgba(255,255,255,0.22);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.9);
-      display: none;
-      z-index: 30;
-    }
-
-    .lang-dropdown.open .lang-menu {
+    .lang-switch {
       display: flex;
-      flex-direction: column;
+      align-items: center;
       gap: 4px;
+      margin-left: 6px;
     }
 
-    .lang-option {
-      width: 100%;
-      border: none;
-      background: transparent;
+    .lang-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(8,8,12,0.85);
       color: var(--accent-soft);
-      font-size: 12px;
-      padding: 6px 8px;
-      text-align: left;
-      border-radius: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
+      font-size: 11px;
+      padding: 4px 9px;
       cursor: pointer;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       transition: var(--transition-fast);
     }
 
-    .lang-option:hover {
-      background: rgba(255,255,255,0.08);
-      color: #ffffff;
-    }
-
-    .lang-option.active {
+    .lang-btn.active {
       background: #f5f5f5;
-      color: #111317;
-      font-weight: 600;
-    }
-
-    /* Mobilde kullanılacak ayrı dil bloğu (başta gizli) */
-    .mobile-lang {
-      display: none;
-      width: 100%;
+      color: #111;
+      border-color: #f5f5f5;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.9);
     }
 
     .container {
@@ -1204,9 +1143,9 @@
       flex-direction: row-reverse;
     }
 
-    html[dir="rtl"] .social-bar {
-      left: auto;
-      right: 18px;
+    html[dir="rtl"] .lang-switch {
+      margin-left: 0;
+      margin-right: 12px;
     }
 
     @media (max-width: 900px) {
@@ -1231,67 +1170,68 @@
     }
 
     @media (max-width: 720px) {
+      /* HEADER mobil düzen */
       .header-inner {
-        padding: 12px 16px;
+        padding: 14px 14px;
         flex-direction: column;
         align-items: flex-start;
-        gap: 6px;
+        gap: 8px;
       }
 
       .brand {
-        gap: 6px;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 10px;
       }
 
       .brand-logo {
-        display: flex !important;
         width: 150px;
-        max-height: 64px;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .brand-logo img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
+        max-height: 70px;
       }
 
       .brand-text-sub {
-        font-size: 11px;
-        line-height: 1.3;
+        display: none; /* İstediğin gibi bu satırı mobilde tamamen kaldırıyoruz */
       }
 
       nav {
-        display: none;
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
       }
 
-      .mobile-lang {
-        display: flex;
-        margin-top: 2px;
+      nav a {
+        font-size: 13px;
+        padding: 6px 12px;
       }
 
-      .mobile-lang .lang-dropdown {
-        margin-left: 0;
+      .lang-switch {
+        margin-left: auto;
       }
 
+      /* HERO mobil: büyük başlığı kaldır, kutucuklar ve butonlar kalsın */
       .container {
         padding: 24px 16px 34px;
       }
 
       .hero {
         padding-top: 24px;
-        gap: 26px;
+        gap: 22px;
       }
 
       .hero h1 {
-        font-size: 22px;
-        line-height: 1.3;
-        text-align: left;
+        display: none;
       }
 
       .hero-lead {
-        font-size: 14px;
+        font-size: 13px;
         line-height: 1.7;
+        margin-bottom: 18px;
+      }
+
+      .pill-tag {
+        font-size: 11px;
+        padding: 6px 12px;
       }
 
       .section-inner {
@@ -1299,6 +1239,7 @@
         border-radius: 22px;
       }
 
+      /* Sosyal bar altta yatay hale gelsin */
       .social-bar {
         top: auto;
         bottom: 18px;
@@ -1331,7 +1272,7 @@
       }
 
       .bottom-contact-inner {
-        padding: 18px 16px 18px;
+        padding: 20px 18px 20px;
       }
 
       .bottom-contact-title {
@@ -1343,21 +1284,22 @@
         align-items: stretch;
       }
 
+      /* ALT İLETİŞİM KUTUCUKLARINI MOBİLDE KÜÇÜLT */
       .bottom-contact-row {
         max-width: 100%;
-        padding: 8px 10px;      /* KUTUCUK KÜÇÜLTÜLDÜ */
+        padding: 8px 10px;
         border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
       }
 
       .bottom-contact-icon {
-        width: 30px;
-        height: 30px;
+        width: 28px;
+        height: 28px;
         font-size: 14px;
       }
 
       .bottom-contact-label {
         font-size: 11px;
-        letter-spacing: 0.14em;
       }
 
       .bottom-contact-value {
@@ -1454,41 +1396,18 @@
         </div>
       </div>
 
-      <!-- DESKTOP NAV + DİL MENÜSÜ -->
       <nav>
         <a href="#home" data-i18n="nav_home">Ana Sayfa</a>
         <a href="#about" data-i18n="nav_about">Hakkımızda</a>
         <a href="#contact" data-i18n="nav_contact">İletişim</a>
 
-        <div class="lang-dropdown">
-          <button type="button" class="lang-toggle" aria-haspopup="true" aria-expanded="false">
-            <span data-current-lang-label>TR</span>
-            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-          </button>
-          <div class="lang-menu" aria-label="Dil seçimi">
-            <button type="button" class="lang-option active" data-lang="tr">TR</button>
-            <button type="button" class="lang-option" data-lang="en">EN</button>
-            <button type="button" class="lang-option" data-lang="ru">RU</button>
-            <button type="button" class="lang-option" data-lang="ar">AR</button>
-          </div>
+        <div class="lang-switch">
+          <button type="button" class="lang-btn active" data-lang="tr">TR</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="ru">RU</button>
+          <button type="button" class="lang-btn" data-lang="ar">AR</button>
         </div>
       </nav>
-
-      <!-- MOBİL İÇİN AYRI DİL MENÜSÜ (nav gizlenince devreye girer) -->
-      <div class="mobile-lang">
-        <div class="lang-dropdown">
-          <button type="button" class="lang-toggle" aria-haspopup="true" aria-expanded="false">
-            <span data-current-lang-label>TR</span>
-            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-          </button>
-          <div class="lang-menu" aria-label="Dil seçimi">
-            <button type="button" class="lang-option active" data-lang="tr">TR</button>
-            <button type="button" class="lang-option" data-lang="en">EN</button>
-            <button type="button" class="lang-option" data-lang="ru">RU</button>
-            <button type="button" class="lang-option" data-lang="ar">AR</button>
-          </div>
-        </div>
-      </div>
     </div>
   </header>
 
@@ -2004,64 +1923,17 @@
         }
       });
 
-      document.querySelectorAll(".lang-option").forEach(btn => {
-        const isActive = btn.getAttribute("data-lang") === lang;
-        btn.classList.toggle("active", isActive);
-      });
-
-      document.querySelectorAll("[data-current-lang-label]").forEach(el => {
-        el.textContent = (lang || "tr").toUpperCase();
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
       });
 
       document.documentElement.lang = lang;
       document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
     }
 
-    function closeAllLangDropdowns() {
-      document.querySelectorAll(".lang-dropdown").forEach(dropdown => {
-        dropdown.classList.remove("open");
-        const toggle = dropdown.querySelector(".lang-toggle");
-        if (toggle) {
-          toggle.setAttribute("aria-expanded", "false");
-        }
-      });
-    }
-
-    function initLanguageDropdown() {
-      const dropdowns = document.querySelectorAll(".lang-dropdown");
-
-      dropdowns.forEach(dropdown => {
-        const toggle = dropdown.querySelector(".lang-toggle");
-        const menu = dropdown.querySelector(".lang-menu");
-
-        if (!toggle || !menu) return;
-
-        toggle.addEventListener("click", (e) => {
-          e.stopPropagation();
-          const isOpen = dropdown.classList.contains("open");
-          closeAllLangDropdowns();
-          if (!isOpen) {
-            dropdown.classList.add("open");
-            toggle.setAttribute("aria-expanded", "true");
-          }
-        });
-      });
-
-      document.querySelectorAll(".lang-option").forEach(option => {
-        option.addEventListener("click", (e) => {
-          const lang = option.getAttribute("data-lang");
-          setLanguage(lang);
-          closeAllLangDropdowns();
-        });
-      });
-
-      document.addEventListener("click", () => {
-        closeAllLangDropdowns();
-      });
-    }
-
     function initSlider() {
-      const images = ["a.jpg", "b.jpg", "c.JPG", "d.jpg"]; // c.JPG büyük harfle
+      // Dosya adları: a.jpg, b.jpg, c.JPG, d.jpg
+      const images = ["a.jpg", "b.jpg", "c.JPG", "d.jpg"];
       let currentIndex = 0;
 
       const imgEl = document.getElementById("heroSliderImage");
@@ -2143,7 +2015,13 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       setLanguage("tr");
-      initLanguageDropdown();
+
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const lang = btn.getAttribute("data-lang");
+          setLanguage(lang);
+        });
+      });
 
       // Sosyal bar küçült / aç
       const socialBar = document.getElementById("socialBar");
