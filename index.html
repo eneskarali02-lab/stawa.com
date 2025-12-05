@@ -2,7 +2,8 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Mobilde zoom kapalı, tam uyum -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
   <title>STAWA — Women’s Trousers & Womenswear Manufacturing</title>
 
   <!-- Google Font -->
@@ -177,7 +178,7 @@
       box-shadow: 0 10px 26px rgba(0,0,0,0.9);
     }
 
-    /* Mobil için ayrı dil switch */
+    /* Mobil dil switch */
     .lang-switch-mobile {
       display: none;
     }
@@ -1187,22 +1188,16 @@
 
     @media (max-width: 720px) {
       .header-inner {
-        padding: 12px 14px;
+        padding: 10px 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
       }
 
-      nav {
-        display: none;
-      }
-
-      .lang-switch-mobile {
-        display: flex;
-        margin-left: auto;
-        gap: 4px;
-      }
-
-      .lang-switch-mobile .lang-btn {
-        padding: 4px 8px;
-        font-size: 11px;
+      .brand {
+        order: 1;
+        width: 100%;
+        justify-content: flex-start;
       }
 
       .brand-logo {
@@ -1214,22 +1209,56 @@
         letter-spacing: 0.12em;
       }
 
+      nav {
+        display: none;
+      }
+
+      /* Dil seçimi logonun hemen altına */
+      .lang-switch-mobile {
+        display: flex;
+        order: 2;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 4px;
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+
+      .lang-switch-mobile .lang-btn {
+        padding: 4px 8px;
+        font-size: 11px;
+      }
+
       .container {
         padding: 20px 14px 30px;
       }
 
+      body.page {
+        font-size: 13px;
+      }
+
       .hero {
         padding-top: 20px;
-        gap: 22px;
+        gap: 20px;
       }
 
       .hero h1 {
-        font-size: 22px;
+        font-size: 20px;
       }
 
       .hero-lead {
-        font-size: 13px;
+        font-size: 12.5px;
         line-height: 1.7;
+      }
+
+      .pill-tag {
+        font-size: 11px;
+        padding: 5px 10px;
+      }
+
+      .cta {
+        padding: 9px 18px;
+        font-size: 12px;
       }
 
       .section-inner {
@@ -1237,8 +1266,92 @@
         border-radius: 22px;
       }
 
+      .section-header h2 {
+        font-size: 16px;
+      }
+
+      .section-header span {
+        font-size: 12px;
+      }
+
       .about-text {
-        font-size: 14px;
+        font-size: 13px;
+      }
+
+      .fact-card {
+        padding: 10px 10px 9px;
+        border-radius: 14px;
+      }
+
+      .fact-title {
+        font-size: 13px;
+      }
+
+      .fact-sub {
+        font-size: 12px;
+      }
+
+      .about-side-card {
+        padding: 16px 14px 12px;
+        border-radius: 18px;
+      }
+
+      .about-side-card h3 {
+        font-size: 11px;
+      }
+
+      .about-side-card p {
+        font-size: 13px;
+      }
+
+      /* İletişim kartları mobilde daha küçük */
+      .contact-card {
+        padding: 14px 12px 12px;
+        border-radius: 18px;
+      }
+
+      .contact-card-title {
+        font-size: 13px;
+      }
+
+      .contact-highlight {
+        padding: 11px 11px 9px;
+        border-radius: 14px;
+      }
+
+      .contact-highlight-label {
+        font-size: 10px;
+      }
+
+      .contact-lead,
+      .contact-sub,
+      .contact-note {
+        font-size: 12.5px;
+      }
+
+      .contact-form label {
+        font-size: 11px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        padding: 8px 10px;
+        margin-bottom: 10px;
+        font-size: 13px;
+        border-radius: 9px;
+      }
+
+      .contact-form textarea {
+        min-height: 90px;
+      }
+
+      .contact-form .cta-primary {
+        padding: 8px 16px;
+        font-size: 12px;
+      }
+
+      #msg {
+        font-size: 11px;
       }
 
       .social-bar {
@@ -1278,53 +1391,45 @@
       }
 
       .bottom-contact-title {
-        font-size: 18px;
+        font-size: 17px;
       }
 
       .bottom-contact-subtitle {
-        font-size: 13px;
+        font-size: 12px;
       }
 
       .bottom-contact-grid {
         flex-direction: column;
         align-items: stretch;
-        gap: 12px;
+        gap: 10px;
       }
 
-      /* İletişim kutuları mobilde daha küçük */
+      /* Alt iletişim kutuları daha küçük */
       .bottom-contact-row {
         max-width: 100%;
-        padding: 8px 12px;
-        border-radius: 16px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        padding: 7px 10px;
+        border-radius: 14px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        gap: 8px;
       }
 
       .bottom-contact-icon {
-        width: 30px;
-        height: 30px;
-        font-size: 14px;
+        width: 26px;
+        height: 26px;
+        font-size: 13px;
       }
 
       .bottom-contact-label {
-        font-size: 11px;
-        letter-spacing: 0.16em;
+        font-size: 10px;
+        letter-spacing: 0.14em;
       }
 
       .bottom-contact-value {
-        font-size: 14px;
+        font-size: 13px;
       }
 
-      .contact-card {
-        padding: 16px 14px 14px;
-        border-radius: 20px;
-      }
-
-      .contact-card-title {
-        font-size: 14px;
-      }
-
-      .contact-lead {
-        font-size: 14px;
+      footer {
+        font-size: 11px;
       }
     }
   </style>
@@ -1430,7 +1535,7 @@
         </div>
       </nav>
 
-      <!-- Mobil için ayrı dil seçici (nav gizlenince bu kalıyor) -->
+      <!-- Mobil için: logo altına gelen dil seçici -->
       <div class="lang-switch lang-switch-mobile">
         <button type="button" class="lang-btn active" data-lang="tr">TR</button>
         <button type="button" class="lang-btn" data-lang="en">EN</button>
@@ -1492,7 +1597,6 @@
           <!-- FOTOĞRAF SLIDER -->
           <div class="hero-slider" id="heroSlider">
             <div class="hero-slider-main" id="heroSliderMain">
-              <!-- buradaki kaynak c.JPG olarak değiştirildi -->
               <img id="heroSliderImage" src="c.JPG" alt="STAWA Collection Look">
               <div class="hero-slider-overlay"></div>
               <div class="hero-slider-label">
@@ -1509,7 +1613,6 @@
               </div>
             </div>
             <div class="hero-slider-dots" id="heroSliderDots" aria-label="Slider navigation">
-              <!-- tek görsel için tek nokta -->
               <button type="button" class="hero-slider-dot active" data-index="0"></button>
             </div>
           </div>
@@ -1960,7 +2063,6 @@
     }
 
     function initSlider() {
-      // sadece c.JPG kullanılıyor
       const images = ["c.JPG"];
       let currentIndex = 0;
 
@@ -1982,7 +2084,6 @@
       }
 
       if (images.length <= 1) {
-        // tek görsel varsa butonları devre dışı hissettirelim
         if (prevBtn) prevBtn.style.display = "none";
         if (nextBtn) nextBtn.style.display = "none";
       } else {
@@ -2010,7 +2111,6 @@
         }, 6000);
       }
 
-      // Lightbox açma
       const lightbox = document.getElementById("lightbox");
       const lightboxImage = document.getElementById("lightboxImage");
       const lightboxClose = document.getElementById("lightboxClose");
@@ -2053,7 +2153,6 @@
         });
       });
 
-      // Sosyal bar küçült / aç
       const socialBar = document.getElementById("socialBar");
       const socialClose = document.getElementById("socialClose");
 
@@ -2063,7 +2162,6 @@
         });
       }
 
-      // Scroll reveal
       const revealElements = document.querySelectorAll('.reveal');
 
       const observer = new IntersectionObserver((entries) => {
@@ -2079,7 +2177,6 @@
 
       revealElements.forEach(el => observer.observe(el));
 
-      // Slider
       initSlider();
     });
   </script>
