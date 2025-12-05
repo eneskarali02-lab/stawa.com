@@ -1,0 +1,1985 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>STAWA — Women’s Trousers & Womenswear Manufacturing</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome ikonlar için -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg-top: #050507;
+      --bg-bottom: #f7f8fc;
+
+      --accent: #f5f5f5;
+      --accent-soft: #e0e0e0;
+      --muted-dark: #8e92a3;
+      --muted-light: #6a6d7b;
+
+      --line-soft-light: rgba(0,0,0,0.06);
+      --card-shadow-light: 0 26px 70px rgba(15,16,35,0.20);
+
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-pill: 999px;
+
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.28s ease-out;
+    }
+
+    * { box-sizing: border-box; }
+
+    body.page {
+      margin: 0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 15px;
+      background: linear-gradient(
+        to bottom,
+        var(--bg-top) 0,
+        var(--bg-top) 700px,
+        #12131a 760px,
+        #202230 830px,
+        var(--bg-bottom) 100%
+      );
+      color: var(--accent);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* DESEN KATMANI */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("damask-transparent.png");
+      background-repeat: repeat;
+      background-size: 260px 260px;
+      opacity: 0.20;
+      mix-blend-mode: soft-light;
+      z-index: -1;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5,5,10,0.96),
+        rgba(5,5,10,0.88),
+        rgba(5,5,10,0.20)
+      );
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      width: 200px;
+      max-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 10px 26px rgba(0,0,0,0.75));
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .brand-text-sub {
+      font-size: 13px;
+      color: var(--muted-dark);
+      white-space: nowrap;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--accent-soft);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(10,11,20,0.72);
+      backdrop-filter: blur(14px);
+      transition: var(--transition-fast);
+    }
+
+    nav a:hover {
+      border-color: rgba(255,255,255,0.45);
+      background: rgba(20,22,40,0.95);
+    }
+
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 12px;
+    }
+
+    .lang-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(8,8,12,0.85);
+      color: var(--accent-soft);
+      font-size: 12px;
+      padding: 5px 10px;
+      cursor: pointer;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: var(--transition-fast);
+    }
+
+    .lang-btn.active {
+      background: #f5f5f5;
+      color: #111;
+      border-color: #f5f5f5;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.9);
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 22px 42px;
+      flex: 1;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.05fr);
+      gap: 40px;
+      align-items: center;
+      padding: 42px 0 22px;
+      color: #f7f7f7;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted-dark);
+      margin-bottom: 12px;
+    }
+
+    .kicker-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #f0b768;
+      box-shadow: 0 0 0 5px rgba(240,183,104,0.28);
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 4.4vw, 40px);
+      line-height: 1.18;
+      margin: 0 0 14px;
+      color: #ffffff;
+    }
+
+    .hero-lead {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--muted-dark);
+      max-width: 560px;
+      margin-bottom: 24px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .pill-tag {
+      border-radius: 999px;
+      padding: 7px 15px;
+      font-size: 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: var(--accent-soft);
+      background: rgba(20,21,30,0.9);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.78);
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition-med);
+      transform: translateY(0);
+    }
+
+    .cta-primary {
+      background: #f5f5f5;
+      color: #111317;
+      box-shadow: 0 18px 46px rgba(0,0,0,0.95);
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 26px 80px rgba(0,0,0,1);
+    }
+
+    .cta-ghost {
+      border: 1px solid rgba(255,255,255,0.45);
+      color: var(--accent-soft);
+      background: transparent;
+      transition: var(--transition-med);
+    }
+
+    .cta-ghost:hover {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.85);
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.9);
+    }
+
+    .hero-cta-note {
+      font-size: 12px;
+      color: var(--muted-dark);
+      margin-top: 6px;
+    }
+
+    .hero-card-wrap {
+      position: relative;
+    }
+
+    .hero-card-glow {
+      position: absolute;
+      inset: -50px -20px auto auto;
+      background: radial-gradient(circle at top, rgba(249,225,190,0.38) 0%, transparent 60%);
+      opacity: 0.95;
+      pointer-events: none;
+      filter: blur(2px);
+    }
+
+    @keyframes cardFloat {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top left, #f7f7f7 0%, #e7e7e7 42%, #d2d2d2 100%);
+      color: #191919;
+      padding: 22px 22px 20px;
+      box-shadow: 0 26px 70px rgba(0,0,0,0.95);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(14px);
+      animation: cardFloat 6s ease-in-out infinite;
+    }
+
+    .hero-card-header {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      z-index: 1;
+    }
+
+    .collection-title {
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #171923;
+    }
+
+    .collection-badge {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,16,35,0.18);
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 10px 26px rgba(15,16,35,0.3);
+    }
+
+    .collection-sub {
+      position: relative;
+      font-size: 13px;
+      color: #55586a;
+      margin-bottom: 10px;
+      z-index: 1;
+      line-height: 1.7;
+    }
+
+    /* HERO SLIDER */
+
+    .hero-slider {
+      position: relative;
+      margin-top: 10px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #111317;
+      box-shadow: 0 22px 60px rgba(0,0,0,0.9);
+    }
+
+    .hero-slider-main {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .hero-slider-main img {
+      width: 100%;
+      display: block;
+      max-height: 380px;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform 0.6s ease-out, filter 0.6s ease-out;
+      filter: saturate(1.05) contrast(1.03);
+    }
+
+    .hero-slider-main:hover img {
+      transform: scale(1.05);
+      filter: saturate(1.1) contrast(1.08);
+    }
+
+    .hero-slider-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.20),
+        rgba(0,0,0,0.55)
+      );
+      pointer-events: none;
+    }
+
+    .hero-slider-label {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.65);
+      color: #f5f5f5;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-slider-label i {
+      font-size: 12px;
+    }
+
+    .hero-slider-controls {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      pointer-events: none;
+    }
+
+    .hero-slider-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.65);
+      background: rgba(0,0,0,0.65);
+      color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      pointer-events: auto;
+      font-size: 14px;
+      transition: var(--transition-fast);
+    }
+
+    .hero-slider-btn:hover {
+      background: #f5f5f5;
+      color: #111317;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.9);
+    }
+
+    .hero-slider-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 10px 10px;
+      background: radial-gradient(circle at top, rgba(0,0,0,0.55), rgba(0,0,0,0.95));
+    }
+
+    .hero-slider-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.6);
+      background: transparent;
+      cursor: pointer;
+      transition: 0.18s ease-out;
+      opacity: 0.6;
+    }
+
+    .hero-slider-dot.active {
+      width: 18px;
+      background: #f5f5f5;
+      opacity: 1;
+    }
+
+    /* LIGHTBOX */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 20px;
+    }
+
+    .lightbox.visible {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 92vh;
+      border-radius: 20px;
+      box-shadow: 0 40px 110px rgba(0,0,0,0.95);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 18px;
+      right: 20px;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.6);
+      background: rgba(0,0,0,0.75);
+      color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: var(--transition-fast);
+      z-index: 1000;
+    }
+
+    .lightbox-close:hover {
+      background: #f5f5f5;
+      color: #111317;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.9);
+    }
+
+    /* SECTIONS */
+
+    .section {
+      padding: 52px 0 26px;
+      margin-top: 30px;
+      border-top: none;
+      color: #111317;
+    }
+
+    .section-inner {
+      position: relative;
+      border-radius: 28px;
+      background: radial-gradient(circle at top left, #ffffff 0%, #f7f8fc 55%, #f1f2fb 100%);
+      box-shadow: var(--card-shadow-light);
+      border: 1px solid rgba(15,16,35,0.05);
+      padding: 30px 28px 28px;
+      overflow: hidden;
+    }
+
+    .section-inner::before {
+      content: "";
+      position: absolute;
+      inset: -60px -40px auto auto;
+      background: radial-gradient(circle at top, rgba(240,184,104,0.22) 0%, transparent 60%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .section-inner::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -80px -40px;
+      background: radial-gradient(circle at bottom, rgba(15,16,35,0.08) 0%, transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .section-header {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 22px;
+      z-index: 1;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: 19px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #111317;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-header h2::after {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 72px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #111317, rgba(17,19,23,0.1));
+    }
+
+    .section-header span {
+      font-size: 13px;
+      color: var(--muted-light);
+    }
+
+    .muted { color: var(--muted-light); }
+
+    .about-layout {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 28px;
+      align-items: flex-start;
+      z-index: 1;
+    }
+
+    .about-text {
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .about-facts {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .fact-card {
+      border-radius: var(--radius-md);
+      background: linear-gradient(145deg, #ffffff 0%, #f7f8fc 55%, #eef0fa 100%);
+      border: 1px solid rgba(15,16,35,0.06);
+      padding: 13px 13px 12px;
+      box-shadow: 0 18px 40px rgba(15,16,35,0.20);
+      backdrop-filter: blur(10px);
+      transition:
+        transform 0.22s ease-out,
+        box-shadow 0.22s ease-out,
+        border-color 0.22s ease-out,
+        background 0.22s ease-out;
+    }
+
+    .fact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 26px 60px rgba(15,16,35,0.35);
+      border-color: rgba(240,184,104,0.65);
+      background: linear-gradient(145deg, #ffffff 0%, #f9f3ea 45%, #f0e4d3 100%);
+    }
+
+    .fact-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #111317;
+    }
+
+    .fact-sub {
+      font-size: 13px;
+      color: var(--muted-light);
+      line-height: 1.7;
+    }
+
+    /* Vizyon / Misyon – kart */
+    .about-side-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, #ffffff 0%, #f7f8fc 55%, #eef0fa 100%);
+      border: 1px solid rgba(15,16,35,0.09);
+      padding: 20px 22px 18px;
+      box-shadow: 0 18px 40px rgba(15,16,35,0.18);
+      color: #111317;
+      overflow: hidden;
+    }
+
+    .about-side-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 18px;
+      bottom: 18px;
+      width: 3px;
+      border-radius: 999px;
+      background: linear-gradient(
+        180deg,
+        rgba(240,184,104,0.95),
+        rgba(240,184,104,0.15)
+      );
+      opacity: 0.9;
+    }
+
+    .about-side-card h3 {
+      margin: 0 0 6px;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #8c6b2b;
+      padding-left: 12px;
+    }
+
+    .about-side-card p {
+      font-size: 14px;
+      color: var(--muted-light);
+      margin: 0 0 10px;
+      padding-left: 12px;
+      line-height: 1.8;
+    }
+
+    /* CONTACT LAYOUT & CARDS */
+
+    .contact-layout {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.1fr);
+      gap: 28px;
+      align-items: flex-start;
+      z-index: 1;
+    }
+
+    .contact-card {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(150deg, #ffffff 0%, #f5f6fb 55%, #eceef9 100%);
+      border: 1px solid rgba(15,16,35,0.06);
+      padding: 20px 20px 18px;
+      box-shadow: 0 20px 52px rgba(15,16,35,0.22);
+      backdrop-filter: blur(14px);
+      color: #111317;
+    }
+
+    .contact-card-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #111317;
+    }
+
+    .contact-highlight {
+      margin: 8px 0 12px;
+      padding: 15px 15px 13px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ffffff 0%, #f7f2e9 40%, #f3e4cf 100%);
+      border: 1px solid rgba(240,184,104,0.55);
+      box-shadow: 0 12px 32px rgba(15,16,35,0.16);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-highlight::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 11px;
+      bottom: 11px;
+      width: 3px;
+      border-radius: 999px;
+      background: linear-gradient(180deg,#c8903f,#f0b868);
+      opacity: 0.9;
+    }
+
+    .contact-highlight-label {
+      font-size: 11px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: #8c6b2b;
+      margin-bottom: 6px;
+      padding-left: 12px;
+    }
+
+    .contact-lead {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #111317;
+      margin: 0;
+      padding-left: 12px;
+    }
+
+    .contact-sub {
+      font-size: 14px;
+      line-height: 1.8;
+      margin-top: 6px;
+    }
+
+    .contact-note {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted-light);
+      line-height: 1.7;
+    }
+
+    .contact-form label {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 5px;
+      color: var(--muted-light);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      border-radius: 11px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: rgba(255,255,255,0.96);
+      color: #111317;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease,
+        transform 0.18s ease;
+      box-shadow: 0 4px 14px rgba(15,16,35,0.08);
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: rgba(240,184,104,0.9);
+      box-shadow: 0 0 0 1px rgba(240,184,104,0.7), 0 10px 26px rgba(15,16,35,0.18);
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .contact-form .cta-primary {
+      background: #f5f6fb;
+      color: #111317;
+      box-shadow: 0 6px 16px rgba(15,16,35,0.12);
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+
+    .contact-form .cta-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(15,16,35,0.18);
+      background: #ffffff;
+    }
+
+    #msg {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted-light);
+    }
+
+    /* ALT BÜYÜK İLETİŞİM BLOĞU */
+
+    .bottom-contact {
+      margin-top: 12px;
+      padding: 26px 0 8px;
+      background: transparent;
+    }
+
+    .bottom-contact-inner {
+      max-width: 1180px;
+      margin: 0 auto 20px;
+      padding: 24px 28px 24px;
+      border-radius: 28px;
+      border: 1px solid rgba(0,0,0,0.1);
+      background: linear-gradient(135deg,#ffffff,#f5f6fb,#f3f1ff);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      color: #111317;
+    }
+
+    .bottom-contact-header {
+      text-align: center;
+    }
+
+    .bottom-contact-kicker {
+      font-size: 11px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: #8e92a3;
+      margin-bottom: 4px;
+    }
+
+    .bottom-contact-title {
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .bottom-contact-subtitle {
+      margin: 0;
+      font-size: 14px;
+      color: #6a6d7b;
+    }
+
+    .bottom-contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+    }
+
+    .bottom-contact-row {
+      flex: 1 1 280px;
+      max-width: 360px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .bottom-contact-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg,#111317,#34374a);
+      color: #f5f5f5;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .bottom-contact-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .bottom-contact-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #8e92a3;
+    }
+
+    .bottom-contact-value {
+      font-size: 15px;
+      font-weight: 500;
+      color: #111317;
+      text-decoration: none;
+    }
+
+    .bottom-contact-value:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      padding: 10px 0 20px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted-light);
+      border-top: 1px solid var(--line-soft-light);
+      margin-top: 0;
+      background: transparent;
+    }
+
+    /* SOL SABİT SOSYAL BAR */
+
+    .social-bar {
+      position: fixed;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px 8px;
+      border-radius: 999px;
+      background: rgba(10, 11, 20, 0.88);
+      border: 1px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.85);
+      transition: var(--transition-fast);
+    }
+
+    .social-close {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: rgba(15,15,24,0.9);
+      color: #f5f5f5;
+      cursor: pointer;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 4px;
+      transition: var(--transition-fast);
+    }
+
+    .social-close:hover {
+      background: #f5f5f5;
+      color: #111317;
+    }
+
+    @keyframes iconFloat {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-1px); }
+      100% { transform: translateY(0); }
+    }
+
+    .social-link {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #f5f5f5;
+      background: rgba(30,32,50,0.95);
+      border: 1px solid rgba(255,255,255,0.22);
+      font-size: 16px;
+      transition:
+        transform 0.18s ease-out,
+        box-shadow 0.18s ease-out,
+        background 0.18s ease-out,
+        border-color 0.18s ease-out;
+      animation: iconFloat 5s ease-in-out infinite;
+      overflow: visible;
+    }
+
+    .social-link:hover {
+      animation: none;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.9);
+      border-color: rgba(255,255,255,0.85);
+      background: #f5f5f5;
+      color: #111317;
+    }
+
+    .social-link::after {
+      content: attr(data-label);
+      position: absolute;
+      left: 40px;
+      top: 50%;
+      transform: translateY(-50%) translateX(6px);
+      background: rgba(5,5,10,0.95);
+      color: #f5f5f5;
+      font-size: 12px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      white-space: nowrap;
+      border: 1px solid rgba(255,255,255,0.25);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.8);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+    }
+
+    .social-link:hover::after {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    .social-link.whatsapp { color: #32d951; }
+    .social-link.whatsapp:hover { color: #111317; }
+
+    .social-link.instagram { color: #f56040; }
+    .social-link.facebook { color: #1877f2; }
+    .social-link.telegram { color: #2aabee; }
+    .social-link.mail { color: #ffb347; }
+
+    .social-link.tiktok {
+      color: #ffffff;
+    }
+    .social-link.tiktok:hover {
+      color: #111317;
+    }
+
+    .social-bar.collapsed {
+      padding: 6px;
+      gap: 0;
+      border-radius: 999px;
+    }
+
+    .social-bar.collapsed .social-link {
+      display: none;
+    }
+
+    .social-bar.collapsed .social-close {
+      margin: 0;
+      width: 32px;
+      height: 32px;
+      transform: rotate(180deg);
+    }
+
+    /* SCROLL REVEAL */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RTL destek - Arapça için hafif ayar */
+    html[dir="rtl"] body.page {
+      text-align: right;
+    }
+
+    html[dir="rtl"] .hero,
+    html[dir="rtl"] .about-layout,
+    html[dir="rtl"] .contact-layout {
+      direction: rtl;
+    }
+
+    html[dir="rtl"] nav {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .lang-switch {
+      margin-left: 0;
+      margin-right: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-card-wrap {
+        order: -1;
+      }
+      .about-layout,
+      .contact-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .social-bar {
+        left: 10px;
+      }
+
+      html[dir="rtl"] .social-bar {
+        left: auto;
+        right: 10px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .header-inner {
+        padding: 16px 14px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .container {
+        padding: 24px 16px 34px;
+      }
+
+      .hero {
+        padding-top: 24px;
+        gap: 26px;
+      }
+
+      .section-inner {
+        padding: 22px 18px 20px;
+        border-radius: 22px;
+      }
+
+      .social-bar {
+        top: auto;
+        bottom: 18px;
+        transform: none;
+        flex-direction: row;
+        border-radius: 999px;
+        padding: 8px 10px;
+      }
+
+      .social-bar.collapsed {
+        padding: 6px 8px;
+      }
+
+      .social-close {
+        margin: 0 6px 0 0;
+      }
+
+      .social-bar.collapsed .social-close {
+        margin: 0;
+      }
+
+      .social-link::after {
+        left: 50%;
+        top: -6px;
+        transform: translate(-50%, -100%);
+      }
+
+      .social-link:hover::after {
+        transform: translate(-50%, -110%);
+      }
+
+      .bottom-contact-inner {
+        padding: 20px 18px 20px;
+      }
+
+      .bottom-contact-title {
+        font-size: 19px;
+      }
+
+      .bottom-contact-grid {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .bottom-contact-row {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body class="page">
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+    <img id="lightboxImage" src="" alt="STAWA Collection Image" />
+  </div>
+
+  <!-- SOL SABİT SOSYAL BAR -->
+  <div class="social-bar" id="socialBar">
+    <button class="social-close" id="socialClose" title="Küçült / Aç" aria-label="Sosyal bağlantı çubuğunu küçült / aç">×</button>
+
+    <a class="social-link phone"
+       href="tel:+905368467073"
+       title="Telefon"
+       aria-label="Telefon"
+       data-label="Telefon">
+      <i class="fa-solid fa-phone" aria-hidden="true"></i>
+    </a>
+
+    <a class="social-link whatsapp"
+       href="https://wa.me/905368467073"
+       target="_blank"
+       title="WhatsApp"
+       aria-label="WhatsApp"
+       data-label="WhatsApp">
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <a class="social-link instagram"
+       href="https://www.instagram.com/stawa_34?igsh=MWN6YzVvdjVhb250dw%3D%3D&utm_source=qr"
+       target="_blank"
+       title="Instagram"
+       aria-label="Instagram sayfamız"
+       data-label="Instagram">
+      <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+    </a>
+
+    <a class="social-link facebook"
+       href="https://www.facebook.com/share/1aQLVRTqcC/?mibextid=wwXIfr"
+       target="_blank"
+       title="Facebook"
+       aria-label="Facebook sayfamız"
+       data-label="Facebook">
+      <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+    </a>
+
+    <a class="social-link telegram"
+       href="https://t.me/+905368467073"
+       target="_blank"
+       title="Telegram"
+       aria-label="Telegram Kanalı"
+       data-label="Telegram">
+      <i class="fa-brands fa-telegram" aria-hidden="true"></i>
+    </a>
+
+    <a class="social-link tiktok"
+       href="https://www.tiktok.com/@stawa_34?_r=1&_t=ZS-91yTDhXgVxR"
+       target="_blank"
+       title="TikTok"
+       aria-label="TikTok sayfamız"
+       data-label="TikTok">
+      <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+    </a>
+
+    <a class="social-link mail"
+       href="mailto:stawa.3434@gmail.com?subject=STAWA%20Wholesale%20Inquiry"
+       title="Mail"
+       aria-label="Mail"
+       data-label="Mail">
+      <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="stawa_logo_transparent.png" alt="STAWA Logo">
+        </div>
+        <div>
+          <div class="brand-text-sub" data-i18n="brand_sub">
+            Modern Kadın Pantolonlarında Minimal Zarafet
+          </div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#home" data-i18n="nav_home">Ana Sayfa</a>
+        <a href="#about" data-i18n="nav_about">Hakkımızda</a>
+        <a href="#contact" data-i18n="nav_contact">İletişim</a>
+
+        <div class="lang-switch">
+          <button type="button" class="lang-btn active" data-lang="tr">TR</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="ru">RU</button>
+          <button type="button" class="lang-btn" data-lang="ar">AR</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="home">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="left">
+        <div class="kicker">
+          <span class="kicker-dot"></span>
+          <span data-i18n="kicker_text">2012'den beri · Laleli</span>
+        </div>
+
+        <h1 data-i18n="hero_title">
+          Modern kadın pantolonlarında minimal, güçlü ve zamansız bir çizgi.
+        </h1>
+
+        <p class="hero-lead" data-i18n="hero_lead">
+          STAWA, 2012'den beri İstanbul Laleli’de kendi imalathanesinde ağırlıklı olarak kadın pantolonu üreten, aynı zamanda talebe göre ceket, takım, etek gibi farklı kadın giyim ürünlerinde de üretim yapabilen bir toptan ihracat markasıdır. Üretimin bize ait olması; hızlı imalatı, uygun fiyatı ve esnek üretimi mümkün kılar.
+        </p>
+
+        <div class="hero-tags">
+          <div class="pill-tag" data-i18n="tag_wholesale">Sadece Toptan Satış</div>
+          <div class="pill-tag" data-i18n="tag_export">İhracat Odaklı Üretim</div>
+          <div class="pill-tag" data-i18n="tag_focus">Ağırlıklı Kadın Pantolon Üretimi</div>
+        </div>
+
+        <div class="hero-cta-group">
+          <a class="cta cta-primary" href="#contact" data-i18n="cta_primary">
+            Teklif Talep Et
+          </a>
+          <a class="cta cta-ghost" href="#about" data-i18n="cta_secondary">
+            Markayı Tanı
+          </a>
+        </div>
+        <div class="hero-cta-note" data-i18n="cta_note">
+          WhatsApp veya e-posta ile model, adet ve teslim süresi hakkında hızlı dönüş.
+        </div>
+      </div>
+
+      <div class="hero-card-wrap">
+        <div class="hero-card-glow"></div>
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <div class="collection-title" data-i18n="collection_title">
+              Koleksiyon · Öne Çıkan
+            </div>
+            <div class="collection-badge" data-i18n="collection_badge">FW · ESSENTIAL</div>
+          </div>
+          <div class="collection-sub" data-i18n="collection_sub">
+            Ana uzmanlık: kadın pantolonu. Ek kapasite: ceket, takım, etek gibi farklı kadın giyim ürünleri.
+          </div>
+
+          <!-- FOTOĞRAF SLIDER -->
+          <div class="hero-slider" id="heroSlider">
+            <div class="hero-slider-main" id="heroSliderMain">
+              <img id="heroSliderImage" src="a.jpg" alt="STAWA Collection Look 1">
+              <div class="hero-slider-overlay"></div>
+              <div class="hero-slider-label">
+                <i class="fa-solid fa-images" aria-hidden="true"></i>
+                <span data-i18n="slider_label">Koleksiyondan Görseller</span>
+              </div>
+              <div class="hero-slider-controls">
+                <button type="button" class="hero-slider-btn" id="prevSlide" aria-label="Önceki görsel">
+                  <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="hero-slider-btn" id="nextSlide" aria-label="Sonraki görsel">
+                  <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+            <div class="hero-slider-dots" id="heroSliderDots" aria-label="Slider navigation">
+              <button type="button" class="hero-slider-dot active" data-index="0"></button>
+              <button type="button" class="hero-slider-dot" data-index="1"></button>
+              <button type="button" class="hero-slider-dot" data-index="2"></button>
+              <button type="button" class="hero-slider-dot" data-index="3"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HAKKIMIZDA -->
+    <section id="about" class="section">
+      <div class="section-inner reveal">
+        <div class="section-header">
+          <h2 data-i18n="about_title">Hakkımızda</h2>
+          <span data-i18n="about_sub">
+            2012'den bugüne, Laleli merkezli kadın pantolonu ağırlıklı üretim.
+          </span>
+        </div>
+
+        <div class="about-layout">
+          <div>
+            <p class="about-text muted" data-i18n="about_text">
+              STAWA, İstanbul Laleli’de kendi üretim tesisine sahip olan butik bir kadın giyim üreticisidir. Ana uzmanlığımız kadın pantolonu olsa da, koleksiyonlarımıza ve müşteri talebine bağlı olarak ceket, takım, etek ve farklı kadın giyim ürünlerini de imal edebiliyoruz. Bu yapı hızlı teslim, esnek adet ve uygun fiyat–kalite dengesini sağlar.
+            </p>
+
+            <div class="about-facts">
+              <div class="fact-card">
+                <div class="fact-title" data-i18n="fact1_title">12+ Yıllık Deneyim</div>
+                <div class="fact-sub" data-i18n="fact1_sub">
+                  2012'den beri kesintisiz üretim ve ihracat tecrübesi.
+                </div>
+              </div>
+              <div class="fact-card">
+                <div class="fact-title" data-i18n="fact2_title">Esnek ve Hızlı Üretim</div>
+                <div class="fact-sub" data-i18n="fact2_sub">
+                  Tüm üretim süreçlerinin kendi imalathanemizde olması sayesinde, hem hızlı termin hem de talebe göre esnek adet üretimi sunuyoruz.
+                </div>
+              </div>
+              <div class="fact-card">
+                <div class="fact-title" data-i18n="fact3_title">Kontrollü Teslimat</div>
+                <div class="fact-sub" data-i18n="fact3_sub">
+                  Kendi tesisimizde üretim ve düzenli kalite kontrol ile güvenilir sevkiyat akışı.
+                </div>
+              </div>
+              <div class="fact-card">
+                <div class="fact-title" data-i18n="fact4_title">Kalite & Uygun Fiyat</div>
+                <div class="fact-sub" data-i18n="fact4_sub">
+                  Kendi üretim yapımız sayesinde kumaş ve işçilik kalitesinden ödün vermeden rekabetçi ve uygun fiyatlı teklifler hazırlıyoruz.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="about-side-card">
+            <h3 data-i18n="vision_title">Vizyonumuz</h3>
+            <p data-i18n="vision_text">
+              Dünya kadınlarına modern, zarif ve rahat pantolon, ceket ve takımlardan oluşan; görsel olarak sakin ama duruş olarak güçlü bir koleksiyon sunan marka olmak.
+            </p>
+
+            <h3 data-i18n="mission_title">Misyonumuz</h3>
+            <p data-i18n="mission_text">
+              Kadın pantolonu üretimindeki uzmanlığımızı, kendi imalathanemizdeki hızlı ve talebe göre şekillenen süreçlerle birleştirerek; uluslararası alıcılar için kontrollü, güvenilir ve uygun fiyatlı bir tedarik ağı sunmak.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- İLETİŞİM (başlıksız blok) -->
+    <section id="contact" class="section">
+      <div class="contact-layout reveal">
+        <div>
+          <div class="contact-card">
+            <div class="contact-card-title" data-i18n="contact_card_title">
+              STAWA — Toptan Kadın Pantolonu & Kadın Giyim Üretimi
+            </div>
+
+            <div class="contact-highlight">
+              <div class="contact-highlight-label" data-i18n="contact_highlight_label">
+                ÜRETİM ODAĞIMIZ
+              </div>
+              <p class="contact-lead" data-i18n="contact_intro_main">
+                Ana üretim odağımız kadın pantolonu; ancak koleksiyon dinamiklerine ve talebe göre ceket, takım, etek ve diğer kadın giyim ürünlerini de kendi imalathanemizde üretebiliyoruz.
+              </p>
+            </div>
+
+            <p class="muted contact-sub" data-i18n="contact_intro_sub">
+              Model, adet ve teslim süresiyle ilgili talepleriniz için bizimle iletişime geçebilirsiniz.
+            </p>
+
+            <div class="contact-note" data-i18n="contact_note">
+              Not: Talep ettiğiniz ürün türünü (pantolon, ceket, takım, etek vb.) ve adet bilgisini belirtiniz. Pantolon üretiminde uzmanız; diğer ürünlerde de talebe göre hızlı ve uygun fiyatlı üretim sağlayabiliriz.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="contact-card">
+            <div class="contact-card-title" data-i18n="contact_form_title">
+              Mail ile Teklif Talebi
+            </div>
+
+            <form class="contact-form"
+                  action="mailto:stawa.3434@gmail.com"
+                  method="POST"
+                  enctype="text/plain">
+              <label data-i18n="form_name_label">Firma / Alıcı Adı</label>
+              <input type="text" name="Firma / Company" data-i18n-placeholder="form_name_ph"
+                     placeholder="Firma veya kişi adı" />
+
+              <label data-i18n="form_email_label">E-posta</label>
+              <input type="email" name="Email" data-i18n-placeholder="form_email_ph"
+                     placeholder="mail@ornek.com" />
+
+              <label data-i18n="form_message_label">Mesaj / Sipariş Özeti</label>
+              <textarea name="Mesaj" data-i18n-placeholder="form_message_ph"
+                        placeholder="Ürün türü, adet, hedef teslim tarihi vb."></textarea>
+
+              <div class="contact-actions">
+                <button class="cta cta-primary" type="submit" data-i18n="form_send">
+                  Gönder
+                </button>
+              </div>
+            </form>
+            <div id="msg" data-i18n="form_msg_hint">
+              Not: “Gönder” butonu varsayılan mail uygulamanız üzerinden mesaj oluşturacaktır.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ALT BÜYÜK İLETİŞİM BLOĞU -->
+  <section class="bottom-contact">
+    <div class="bottom-contact-inner">
+      <div class="bottom-contact-header">
+        <div class="bottom-contact-kicker" data-i18n="bottom_contact_kicker">
+          Doğrudan İletişim
+        </div>
+        <div class="bottom-contact-title" data-i18n="bottom_contact_title">
+          İletişim Bilgileri
+        </div>
+        <p class="bottom-contact-subtitle" data-i18n="bottom_contact_subtitle">
+          Toptan sipariş ve ihracat talepleriniz için aşağıdaki kanallardan bize ulaşabilirsiniz.
+        </p>
+      </div>
+
+      <div class="bottom-contact-grid">
+        <div class="bottom-contact-row">
+          <div class="bottom-contact-icon">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          </div>
+          <div class="bottom-contact-text">
+            <div class="bottom-contact-label" data-i18n="label_phone">Telefon / WhatsApp</div>
+            <a class="bottom-contact-value" href="tel:+905368467073">0536 846 70 73</a>
+          </div>
+        </div>
+
+        <div class="bottom-contact-row">
+          <div class="bottom-contact-icon">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          </div>
+          <div class="bottom-contact-text">
+            <div class="bottom-contact-label" data-i18n="label_email">Mail</div>
+            <a class="bottom-contact-value" href="mailto:stawa.3434@gmail.com">stawa.3434@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="bottom-contact-row">
+          <div class="bottom-contact-icon">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          </div>
+          <div class="bottom-contact-text">
+            <div class="bottom-contact-label" data-i18n="label_address">Adres</div>
+            <div class="bottom-contact-value">
+              İstanbul – Fatih, Laleli, Barcelona İş Merkezi No: 9
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span data-i18n="footer_text">
+      © STAWA — 2012 - Günümüz · İstanbul Laleli · Kadın Pantolonu & Kadın Giyim Üretimi · Uygun Fiyat & Kalite
+    </span>
+  </footer>
+
+  <script>
+    const i18n = {
+      tr: {
+        brand_sub: "Modern Kadın Pantolonlarında Minimal Zarafet",
+        nav_home: "Ana Sayfa",
+        nav_about: "Hakkımızda",
+        nav_contact: "İletişim",
+        nav_wholesale: "Sadece Toptan",
+        kicker_text: "2012'den beri · Laleli",
+        hero_title: "Modern kadın pantolonlarında minimal, güçlü ve zamansız bir çizgi.",
+        hero_lead: "STAWA, 2012'den beri İstanbul Laleli’de kendi imalathanesinde ağırlıklı olarak kadın pantolonu üreten, aynı zamanda talebe göre ceket, takım, etek gibi farklı kadın giyim ürünlerinde de üretim yapabilen bir toptan ihracat markasıdır. Üretimin bize ait olması; hızlı imalatı, uygun fiyatı ve esnek üretimi mümkün kılar.",
+        tag_wholesale: "Sadece Toptan Satış",
+        tag_export: "İhracat Odaklı Üretim",
+        tag_focus: "Ağırlıklı Kadın Pantolon Üretimi",
+        cta_primary: "Teklif Talep Et",
+        cta_secondary: "Markayı Tanı",
+        cta_note: "WhatsApp veya e-posta ile model, adet ve teslim süresi hakkında hızlı dönüş.",
+        collection_title: "Koleksiyon · Öne Çıkan",
+        collection_badge: "FW · ESSENTIAL",
+        collection_sub: "Ana uzmanlık: kadın pantolonu. Ek kapasite: ceket, takım, etek gibi farklı kadın giyim ürünleri.",
+        slider_label: "Koleksiyondan Görseller",
+        about_title: "Hakkımızda",
+        about_sub: "2012'den bugüne, Laleli merkezli kadın pantolonu ağırlıklı üretim.",
+        about_text: "STAWA, İstanbul Laleli’de kendi üretim tesisine sahip olan butik bir kadın giyim üreticisidir. Ana uzmanlığımız kadın pantolonu olsa da, koleksiyonlarımıza ve müşteri talebine bağlı olarak ceket, takım, etek ve farklı kadın giyim ürünlerini de imal edebiliyoruz. Bu yapı hızlı teslim, esnek adet ve uygun fiyat–kalite dengesini sağlar.",
+        fact1_title: "12+ Yıllık Deneyim",
+        fact1_sub: "2012'den beri kesintisiz üretim ve ihracat tecrübesi.",
+        fact2_title: "Esnek ve Hızlı Üretim",
+        fact2_sub: "Tüm üretim süreçlerinin kendi imalathanemizde olması sayesinde, hem hızlı termin hem de talebe göre esnek adet üretimi sunuyoruz.",
+        fact3_title: "Kontrollü Teslimat",
+        fact3_sub: "Kendi tesisimizde üretim ve düzenli kalite kontrol ile güvenilir sevkiyat akışı.",
+        fact4_title: "Kalite & Uygun Fiyat",
+        fact4_sub: "Kendi üretim yapımız sayesinde kumaş ve işçilik kalitesinden ödün vermeden rekabetçi ve uygun fiyatlı teklifler hazırlıyoruz.",
+        vision_title: "Vizyonumuz",
+        vision_text: "Dünya kadınlarına modern, zarif ve rahat pantolon, ceket ve takımlardan oluşan; görsel olarak sakin ama duruş olarak güçlü bir koleksiyon sunan marka olmak.",
+        mission_title: "Misyonumuz",
+        mission_text: "Kadın pantolonu üretimindeki uzmanlığımızı, kendi imalathanemizdeki hızlı ve talebe göre şekillenen süreçlerle birleştirerek; uluslararası alıcılar için kontrollü, güvenilir ve uygun fiyatlı bir tedarik ağı sunmak.",
+        contact_title: "İletişim",
+        contact_card_title: "STAWA — Toptan Kadın Pantolonu & Kadın Giyim Üretimi",
+        contact_highlight_label: "ÜRETİM ODAĞIMIZ",
+        contact_intro_main: "Ana üretim odağımız kadın pantolonu; ancak koleksiyon dinamiklerine ve talebe göre ceket, takım, etek ve diğer kadın giyim ürünlerini de kendi imalathanemizde üretebiliyoruz.",
+        contact_intro_sub: "Model, adet ve teslim süresiyle ilgili talepleriniz için bizimle iletişime geçebilirsiniz.",
+        contact_note: "Not: Talep ettiğiniz ürün türünü (pantolon, ceket, takım, etek vb.) ve adet bilgisini belirtiniz. Pantolon üretiminde uzmanız; diğer ürünlerde de talebe göre hızlı ve uygun fiyatlı üretim sağlayabiliriz.",
+        contact_form_title: "Mail ile Teklif Talebi",
+        label_phone: "Telefon / WhatsApp",
+        label_email: "Mail",
+        label_address: "Adres",
+        form_name_label: "Firma / Alıcı Adı",
+        form_email_label: "E-posta",
+        form_message_label: "Mesaj / Sipariş Özeti",
+        form_name_ph: "Firma veya kişi adı",
+        form_email_ph: "mail@ornek.com",
+        form_message_ph: "Ürün türü, adet, hedef teslim tarihi vb.",
+        form_send: "Gönder",
+        form_mailto: "Mail Aç",
+        form_msg_hint: "Not: “Gönder” butonu varsayılan mail uygulamanız üzerinden mesaj oluşturacaktır.",
+        bottom_contact_title: "İletişim Bilgileri",
+        bottom_contact_kicker: "Doğrudan İletişim",
+        bottom_contact_subtitle: "Toptan sipariş ve ihracat talepleriniz için aşağıdaki kanallardan bize ulaşabilirsiniz.",
+        footer_text: "© STAWA — 2012 - Günümüz · İstanbul Laleli · Kadın Pantolonu & Kadın Giyim Üretimi · Uygun Fiyat & Kalite"
+      },
+      en: {
+        brand_sub: "Minimal Elegance in Women’s Trousers",
+        nav_home: "Home",
+        nav_about: "About",
+        nav_contact: "Contact",
+        nav_wholesale: "Wholesale Only",
+        kicker_text: "Since 2012 · Laleli",
+        hero_title: "A minimal, strong and timeless line in women’s trousers.",
+        hero_lead: "Since 2012, STAWA has been a wholesale export brand based in Istanbul’s Laleli district, primarily specializing in women's trousers, while also producing jackets, suits, skirts and other womenswear items upon demand in its own facility. In-house manufacturing enables fast production, competitive pricing and flexible, demand-driven quantities.",
+        tag_wholesale: "Wholesale Only",
+        tag_export: "Export-Oriented Production",
+        tag_focus: "Primary Expertise: Women’s Trousers",
+        cta_primary: "Request a Quotation",
+        cta_secondary: "Discover the Brand",
+        cta_note: "Fast replies via WhatsApp or e-mail about models, quantities and lead times.",
+        collection_title: "Collection · Highlight",
+        collection_badge: "FW · ESSENTIAL",
+        collection_sub: "Main focus: women’s trousers. Additional capacity: jackets, suits, skirts and other womenswear items.",
+        slider_label: "Looks from the Collection",
+        about_title: "About Us",
+        about_sub: "Since 2012, trouser-focused womenswear production in Laleli.",
+        about_text: "STAWA is a boutique womenswear manufacturer with its own production facility in Istanbul’s Laleli. Our main expertise is women's trousers, but depending on seasonal needs and buyer requests, we also manufacture jackets, suits, skirts and various other womenswear products. This structure allows fast delivery, flexible capacity and an excellent price–quality balance.",
+        fact1_title: "12+ Years of Experience",
+        fact1_sub: "Continuous production and export experience since 2012.",
+        fact2_title: "Fast & Flexible Production",
+        fact2_sub: "Because all processes are handled in our own facility, we offer short lead times and demand-driven, flexible order quantities.",
+        fact3_title: "Controlled Delivery",
+        fact3_sub: "In-house production and regular quality checks ensure reliable shipment flow.",
+        fact4_title: "Quality & Competitive Pricing",
+        fact4_sub: "With fully in-house production, we keep control over fabrics and workmanship while offering competitive, budget-friendly price levels.",
+        vision_title: "Our Vision",
+        vision_text: "To be a calm yet strong brand that offers modern, elegant and comfortable trousers, jackets and suits for women worldwide.",
+        mission_title: "Our Mission",
+        mission_text: "Combining our strong expertise in women’s trouser production with fast, demand-driven in-house manufacturing, we provide international buyers with a controlled, reliable and competitively priced supply chain.",
+        contact_title: "Contact",
+        contact_card_title: "STAWA — Wholesale Women’s Trousers & Womenswear",
+        contact_highlight_label: "OUR PRODUCTION FOCUS",
+        contact_intro_main: "Our primary production focus is women’s trousers; however, depending on collection dynamics and buyer needs, we also manufacture jackets, suits, skirts and other womenswear items in our own facility.",
+        contact_intro_sub: "Please contact us for inquiries on models, quantities and lead times.",
+        contact_note: "Note: Please specify the product type (trousers, jackets, suits, skirts, etc.) and quantity. We specialize in trousers but offer fast and competitively priced production for other items as well.",
+        contact_form_title: "Quotation Request by E-mail",
+        label_phone: "Phone / WhatsApp",
+        label_email: "E-mail",
+        label_address: "Address",
+        form_name_label: "Company / Buyer Name",
+        form_email_label: "E-mail",
+        form_message_label: "Message / Order Summary",
+        form_name_ph: "Company or contact name",
+        form_email_ph: "mail@example.com",
+        form_message_ph: "Product type, quantity, target delivery date, etc.",
+        form_send: "Send",
+        form_mailto: "Open Mail",
+        form_msg_hint: "Note: “Send” will open your default mail application with the form content.",
+        bottom_contact_title: "Contact Information",
+        bottom_contact_kicker: "Direct Contact",
+        bottom_contact_subtitle: "For wholesale and export inquiries, you can reach us through the channels below.",
+        footer_text: "© STAWA — 2012 - Present · Istanbul Laleli · Women’s Trousers & Womenswear Manufacturing · Quality at Competitive Prices"
+      },
+      ru: {
+        brand_sub: "Минималистичная элегантность в женских брюках",
+        nav_home: "Главная",
+        nav_about: "О нас",
+        nav_contact: "Контакты",
+        nav_wholesale: "Только опт",
+        kicker_text: "С 2012 года · Лалели",
+        hero_title: "Минимальная, выразительная и вне времени линия женских брюк.",
+        hero_lead: "С 2012 года STAWA — оптовый экспортный бренд в стамбульском районе Лалели, который специализируется в основном на производстве женских брюк, а также по запросу выпускает жакеты, костюмы, юбки и другие изделия женской одежды на собственной фабрике. Собственное производство обеспечивает быстрый пошив, гибкие объёмы и выгодные цены.",
+        tag_wholesale: "Только оптовые продажи",
+        tag_export: "Производство на экспорт",
+        tag_focus: "Главная специализация: Женские брюки",
+        cta_primary: "Запросить предложение",
+        cta_secondary: "Узнать о бренде",
+        cta_note: "Быстрый ответ по моделям, количеству и срокам через WhatsApp или e-mail.",
+        collection_title: "Коллекция · Лучшее",
+        collection_badge: "FW · ESSENTIAL",
+        collection_sub: "Основной продукт: женские брюки. Дополнительные возможности: жакеты, костюмы, юбки и др.",
+        slider_label: "Образы из коллекции",
+        about_title: "О нас",
+        about_sub: "С 2012 года производим женские брюки и одежду в Лалели.",
+        about_text: "STAWA — бутик-производитель женской одежды с собственной фабрикой в Лалели. Наше основное направление — женские брюки, однако в зависимости от сезона и спроса мы также производим жакеты, костюмы, юбки и другие изделия. Такой подход позволяет нам работать быстро, гибко и поддерживать отличное соотношение цены и качества.",
+        fact1_title: "12+ лет опыта",
+        fact1_sub: "Непрерывный опыт производства и экспорта с 2012 года.",
+        fact2_title: "Быстрое и гибкое производство",
+        fact2_sub: "Так как все процессы выполняются на нашей собственной фабрике, мы можем обеспечить короткие сроки и производство под запрос клиента (по требуемым объёмам).",
+        fact3_title: "Контроль поставок",
+        fact3_sub: "Собственное производство и регулярный контроль качества обеспечивают надёжный поток отгрузок.",
+        fact4_title: "Качество и выгодные цены",
+        fact4_sub: "Благодаря собственному производству мы контролируем качество тканей и пошива и можем предлагать клиентам конкурентные и выгодные цены.",
+        vision_title: "Наша визия",
+        vision_text: "Быть спокойным, но сильным брендом, предлагающим современный, элегантный и комфортный ассортимент женских брюк, жакетов и костюмов по всему миру.",
+        mission_title: "Наша миссия",
+        mission_text: "Объединяя сильную экспертизу в производстве женских брюк с быстрым и гибким пошивом на собственной фабрике, мы создаём для международных клиентов надёжную и выгодную цепочку поставок.",
+        contact_title: "Контакты",
+        contact_card_title: "STAWA — оптовое производство женских брюк и одежды",
+        contact_highlight_label: "НАШЕ ПРОИЗВОДСТВЕННОЕ НАПРАВЛЕНИЕ",
+        contact_intro_main: "Наш основной производственный фокус — женские брюки; однако в зависимости от коллекции и запросов клиентов мы также производим жакеты, костюмы, юбки и другие изделия женской одежды на нашей собственной фабрике.",
+        contact_intro_sub: "Свяжитесь с нами по вопросам моделей, объёмов и сроков поставки.",
+        contact_note: "Примечание: укажите категорию изделия (брюки, жакеты, юбки, костюмы и т.д.) и тираж. Мы специализируемся на брюках, но можем быстро и выгодно производить и другие позиции.",
+        contact_form_title: "Запрос предложения по e-mail",
+        label_phone: "Телефон / WhatsApp",
+        label_email: "E-mail",
+        label_address: "Адрес",
+        form_name_label: "Компания / Имя покупателя",
+        form_email_label: "E-mail",
+        form_message_label: "Сообщение / Краткое описание заказа",
+        form_name_ph: "Название компании или контактное лицо",
+        form_email_ph: "mail@example.com",
+        form_message_ph: "Тип изделия, тираж, желаемые сроки и т.д.",
+        form_send: "Отправить",
+        form_mailto: "Открыть почту",
+        form_msg_hint: "Примечание: кнопка «Отправить» откроет ваше почтовое приложение с заполненным письмом.",
+        bottom_contact_title: "Контактная информация",
+        bottom_contact_kicker: "Прямой контакт",
+        bottom_contact_subtitle: "По вопросам оптовых заказов и экспорта свяжитесь с нами через каналы ниже.",
+        footer_text: "© STAWA — 2012 - наст. время · Стамбул, Лалели · Производство женских брюк и одежды"
+      },
+      ar: {
+        brand_sub: "أناقة بسيطة في بنطلونات السيدات",
+        nav_home: "الصفحة الرئيسية",
+        nav_about: "من نحن",
+        nav_contact: "اتصال",
+        nav_wholesale: "جملة فقط",
+        kicker_text: "منذ 2012 · لاليلي",
+        hero_title: "خط بسيط، قوي وخالد في بنطلونات السيدات.",
+        hero_lead: "منذ عام 2012، تعد STAWA علامة تصدير بالجملة مقرها في منطقة لاليلي في إسطنبول، متخصصة أساساً في بنطلونات السيدات، مع إمكانية إنتاج البليزرات، الطقم، التنانير وغيرها من ملابس السيدات حسب الطلب في مصنعنا الخاص. الإنتاج الداخلي يتيح سرعة في التنفيذ، وأسعاراً تنافسية وكميات مرنة حسب الطلب.",
+        tag_wholesale: "مبيعات جملة فقط",
+        tag_export: "إنتاج موجه للتصدير",
+        tag_focus: "التخصص الأساسي: بنطلونات السيدات",
+        cta_primary: "طلب عرض سعر",
+        cta_secondary: "اكتشف العلامة",
+        cta_note: "استجابة سريعة عبر واتساب أو البريد الإلكتروني بخصوص الموديلات، الكميات ومواعيد التسليم.",
+        collection_title: "مجموعة · مختارات",
+        collection_badge: "FW · ESSENTIAL",
+        collection_sub: "التركيز الرئيسي: بنطلونات السيدات. القدرة الإضافية: بليزرات، أطقم، تنانير وغيرها من ملابس السيدات.",
+        slider_label: "صور من المجموعة",
+        about_title: "من نحن",
+        about_sub: "منذ 2012، إنتاج ملابس سيدات مع تركيز على البنطلونات في لاليلي.",
+        about_text: "STAWA هي مُنتِج بوتيك لملابس السيدات تمتلك مصنعاً خاصاً في لاليلي – إسطنبول. تخصصنا الرئيسي هو بنطلونات السيدات، ومع ذلك، وبحسب مواسم المجموعة وطلبات العملاء، نقوم أيضاً بإنتاج البليزرات، الأطقم، التنانير ومنتجات أخرى لملابس السيدات. يتيح لنا هذا الهيكل سرعة في التسليم، مرونة في الكميات وتوازناً ممتازاً بين السعر والجودة.",
+        fact1_title: "أكثر من 12 سنة خبرة",
+        fact1_sub: "خبرة مستمرة في الإنتاج والتصدير منذ عام 2012.",
+        fact2_title: "إنتاج سريع ومرن",
+        fact2_sub: "بما أن جميع المراحل تتم في مصنعنا الخاص، يمكننا تقديم مواعيد تسليم قصيرة وكميات مرنة حسب طلب العميل.",
+        fact3_title: "تسليم تحت رقابة",
+        fact3_sub: "الإنتاج الداخلي والفحص المنتظم للجودة يضمنان تدفق شحنات موثوقاً.",
+        fact4_title: "جودة وأسعار تنافسية",
+        fact4_sub: "من خلال الإنتاج الداخلي الكامل، نتحكم في جودة الأقمشة والخياطة مع الحفاظ على مستويات أسعار تنافسية ومناسبة.",
+        vision_title: "رؤيتنا",
+        vision_text: "أن نكون علامة هادئة في مظهرها لكن قوية في حضورها، تقدّم للسيدات حول العالم بنطلونات، بليزرات وأطقم عصرية، أنيقة ومريحة.",
+        mission_title: "مهمتنا",
+        mission_text: "من خلال الجمع بين خبرتنا القوية في إنتاج بنطلونات السيدات وبين عمليات إنتاج سريعة ومرنة في مصنعنا الخاص، نوفر لسوق المشترين الدوليين سلسلة توريد موثوقة وبأسعار تنافسية.",
+        contact_title: "اتصال",
+        contact_card_title: "STAWA — إنتاج بنطلونات وملابس سيدات جملة",
+        contact_highlight_label: "محور إنتاجنا",
+        contact_intro_main: "محورنا الإنتاجي الأساسي هو بنطلونات السيدات؛ ومع ذلك، ووفقاً لديناميكية المجموعات وطلبات العملاء، نقوم أيضاً بإنتاج البليزرات، الأطقم، التنانير وغيرها من ملابس السيدات في مصنعنا الخاص.",
+        contact_intro_sub: "للاستفسار عن الموديلات، الكميات ومواعيد التسليم، تواصلوا معنا.",
+        contact_note: "ملاحظة: يرجى تحديد نوع المنتج (بنطال، بليزر، طقم، تنورة، إلخ) إضافة إلى الكمية المطلوبة. نحن متخصصون في البنطلونات، كما يمكننا إنتاج باقي الأصناف بسرعة وبأسعار مناسبة.",
+        contact_form_title: "طلب عرض سعر عبر البريد الإلكتروني",
+        label_phone: "هاتف / واتساب",
+        label_email: "البريد الإلكتروني",
+        label_address: "العنوان",
+        form_name_label: "اسم الشركة / المشتري",
+        form_email_label: "البريد الإلكتروني",
+        form_message_label: "الرسالة / ملخص الطلب",
+        form_name_ph: "اسم الشركة أو جهة الاتصال",
+        form_email_ph: "mail@example.com",
+        form_message_ph: "نوع المنتج، الكمية، تاريخ التسليم المستهدف، إلخ.",
+        form_send: "إرسال",
+        form_mailto: "فتح البريد",
+        form_msg_hint: "ملاحظة: زر \"إرسال\" سيفتح تطبيق البريد الافتراضي لديكم مع مضمون النموذج.",
+        bottom_contact_title: "معلومات الاتصال",
+        bottom_contact_kicker: "اتصال مباشر",
+        bottom_contact_subtitle: "للاستفسار عن الطلبات بالجملة والتصدير، يمكنكم التواصل معنا عبر القنوات التالية.",
+        footer_text: "© STAWA — 2012 - حتى الآن · إسطنبول لاليلي · إنتاج بنطلونات وملابس سيدات · جودة وأسعار مناسبة"
+      }
+    };
+
+    function setLanguage(lang) {
+      const dict = i18n[lang] || i18n.tr;
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key]) {
+          el.placeholder = dict[key];
+        }
+      });
+
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+      });
+
+      document.documentElement.lang = lang;
+      document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+    }
+
+    function initSlider() {
+      const images = ["a.jpg", "b.jpg", "c.jpg", "d.jpg"];
+      let currentIndex = 0;
+
+      const imgEl = document.getElementById("heroSliderImage");
+      const dotsContainer = document.getElementById("heroSliderDots");
+      const dots = dotsContainer ? dotsContainer.querySelectorAll(".hero-slider-dot") : [];
+      const prevBtn = document.getElementById("prevSlide");
+      const nextBtn = document.getElementById("nextSlide");
+      const main = document.getElementById("heroSliderMain");
+
+      function showSlide(index) {
+        if (!imgEl) return;
+        currentIndex = (index + images.length) % images.length;
+        imgEl.src = images[currentIndex];
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("active", i === currentIndex);
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+          showSlide(currentIndex - 1);
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          showSlide(currentIndex + 1);
+        });
+      }
+
+      dots.forEach(dot => {
+        dot.addEventListener("click", () => {
+          const idx = parseInt(dot.getAttribute("data-index"), 10);
+          showSlide(idx);
+        });
+      });
+
+      // Lightbox açma
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImage = document.getElementById("lightboxImage");
+      const lightboxClose = document.getElementById("lightboxClose");
+
+      if (main && lightbox && lightboxImage) {
+        main.addEventListener("click", () => {
+          lightboxImage.src = images[currentIndex];
+          lightbox.classList.add("visible");
+        });
+      }
+
+      if (lightboxClose && lightbox) {
+        lightboxClose.addEventListener("click", () => {
+          lightbox.classList.remove("visible");
+        });
+
+        lightbox.addEventListener("click", (e) => {
+          if (e.target === lightbox) {
+            lightbox.classList.remove("visible");
+          }
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && lightbox.classList.contains("visible")) {
+            lightbox.classList.remove("visible");
+          }
+        });
+      }
+
+      // Otomatik geçiş (6 sn)
+      setInterval(() => {
+        showSlide(currentIndex + 1);
+      }, 6000);
+
+      showSlide(0);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setLanguage("tr");
+
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const lang = btn.getAttribute("data-lang");
+          setLanguage(lang);
+        });
+      });
+
+      // Sosyal bar küçült / aç
+      const socialBar = document.getElementById("socialBar");
+      const socialClose = document.getElementById("socialClose");
+
+      if (socialClose && socialBar) {
+        socialClose.addEventListener("click", () => {
+          socialBar.classList.toggle("collapsed");
+        });
+      }
+
+      // Scroll reveal
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      revealElements.forEach(el => observer.observe(el));
+
+      // Slider
+      initSlider();
+    });
+  </script>
+</body>
+</html>
