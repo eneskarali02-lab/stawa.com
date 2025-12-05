@@ -157,25 +157,82 @@
       background: rgba(20,22,40,0.95);
     }
 
+    /* YENİ: DİL SEÇİMİ DROPDOWN (ZARİF) */
+
     .lang-switch {
+      position: relative;
       display: flex;
-      align-items: center;
-      gap: 4px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
       margin-left: 0;
-      flex-wrap: wrap;
+    }
+
+    .lang-toggle {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.45);
+      background: rgba(8,8,12,0.92);
+      color: var(--accent-soft);
+      font-size: 12px;
+      padding: 6px 12px;
+      cursor: pointer;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(14px);
+      transition: var(--transition-fast);
+    }
+
+    .lang-toggle i {
+      font-size: 13px;
+    }
+
+    .lang-toggle:hover {
+      background: rgba(20,20,30,0.98);
+      border-color: rgba(255,255,255,0.85);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.85);
+    }
+
+    .lang-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 6px;
+      padding: 6px;
+      border-radius: 16px;
+      background: rgba(8,8,12,0.98);
+      border: 1px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 46px rgba(0,0,0,0.9);
+      display: none;
+      min-width: 130px;
+      z-index: 30;
+    }
+
+    .lang-menu.open {
+      display: block;
     }
 
     .lang-btn {
+      width: 100%;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.28);
-      background: rgba(8,8,12,0.85);
+      border: 1px solid transparent;
+      background: transparent;
       color: var(--accent-soft);
       font-size: 12px;
       padding: 5px 10px;
       cursor: pointer;
       letter-spacing: 0.14em;
       text-transform: uppercase;
+      text-align: left;
       transition: var(--transition-fast);
+    }
+
+    .lang-btn:hover {
+      border-color: rgba(255,255,255,0.65);
+      background: rgba(255,255,255,0.06);
     }
 
     .lang-btn.active {
@@ -1150,8 +1207,7 @@
     }
 
     html[dir="rtl"] .lang-switch {
-      margin-left: 0;
-      margin-right: 12px;
+      align-items: flex-end;
     }
 
     /* TABLET / ORTA EKRAN */
@@ -1211,10 +1267,6 @@
       nav a {
         font-size: 13px;
         padding: 6px 12px;
-      }
-
-      .lang-switch {
-        margin-top: 4px;
       }
 
       .container {
@@ -1281,7 +1333,7 @@
       .bottom-contact-row {
         flex: 1 1 auto;
         max-width: 100%;
-        padding: 6px 10px;        /* KUTU KÜÇÜLDÜ */
+        padding: 6px 10px;        /* KUTU KÜÇÜK MOBİL */
         border-radius: 14px;
         gap: 8px;
         box-shadow: 0 6px 16px rgba(0,0,0,0.08);
@@ -1380,11 +1432,22 @@
           <div class="brand-text-sub" data-i18n="brand_sub">
             Modern Kadın Pantolonlarında Minimal Zarafet
           </div>
+          <!-- YENİ ZARİF DİL DROPDOWN -->
           <div class="lang-switch">
-            <button type="button" class="lang-btn active" data-lang="tr">TR</button>
-            <button type="button" class="lang-btn" data-lang="en">EN</button>
-            <button type="button" class="lang-btn" data-lang="ru">RU</button>
-            <button type="button" class="lang-btn" data-lang="ar">AR</button>
+            <button type="button"
+                    class="lang-toggle"
+                    id="langToggle"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+              <i class="fa-solid fa-globe"></i>
+              <span class="current-lang-label">TR</span>
+            </button>
+            <div class="lang-menu" id="langMenu">
+              <button type="button" class="lang-btn active" data-lang="tr">TR</button>
+              <button type="button" class="lang-btn" data-lang="en">EN</button>
+              <button type="button" class="lang-btn" data-lang="ru">RU</button>
+              <button type="button" class="lang-btn" data-lang="ar">AR</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1913,6 +1976,12 @@
         btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
       });
 
+      // Üstte görünen mevcut dil etiketini güncelle
+      const currentLabelEl = document.querySelector(".current-lang-label");
+      if (currentLabelEl) {
+        currentLabelEl.textContent = lang.toUpperCase();
+      }
+
       document.documentElement.lang = lang;
       document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
     }
@@ -2002,10 +2071,36 @@
     document.addEventListener("DOMContentLoaded", () => {
       setLanguage("tr");
 
+      // Dil menüsü: aç/kapa
+      const langToggle = document.getElementById("langToggle");
+      const langMenu = document.getElementById("langMenu");
+
+      if (langToggle && langMenu) {
+        langToggle.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const willOpen = !langMenu.classList.contains("open");
+          langMenu.classList.toggle("open", willOpen);
+          langToggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
+        });
+
+        // Dışarı tıklayınca kapat
+        document.addEventListener("click", (e) => {
+          if (!langMenu.contains(e.target) && !langToggle.contains(e.target)) {
+            langMenu.classList.remove("open");
+            langToggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      // Dil seçimi
       document.querySelectorAll(".lang-btn").forEach(btn => {
         btn.addEventListener("click", () => {
           const lang = btn.getAttribute("data-lang");
           setLanguage(lang);
+          if (langMenu && langToggle) {
+            langMenu.classList.remove("open");
+            langToggle.setAttribute("aria-expanded", "false");
+          }
         });
       });
 
