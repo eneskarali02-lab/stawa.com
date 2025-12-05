@@ -91,7 +91,7 @@
     .header-inner {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 12px 22px; /* daraltılmış */
+      padding: 12px 22px; /* biraz daraltıldı */
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -105,7 +105,7 @@
     }
 
     .brand-logo {
-      width: 160px;     /* 180'den daraltılmış */
+      width: 160px;     /* 180'den daraltıldı */
       max-height: 80px;
       display: flex;
       align-items: center;
@@ -971,27 +971,26 @@
     .bottom-contact-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 18px;
       justify-content: center;
     }
 
-    /* >>> BURAYI İYİCE İNCELTTİM <<< */
     .bottom-contact-row {
-      flex: 1 1 260px;
-      max-width: 340px;
+      flex: 1 1 280px;
+      max-width: 360px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 7px 12px;      /* önceye göre daha az */
-      border-radius: 18px;    /* biraz daha küçük radius */
+      gap: 12px;
+      padding: 11px 16px;
+      border-radius: 20px;
       background: rgba(255,255,255,0.96);
       border: 1px solid rgba(0,0,0,0.05);
-      box-shadow: 0 8px 22px rgba(0,0,0,0.06); /* gölge de hafifletildi */
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
     }
 
     .bottom-contact-icon {
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       border-radius: 999px;
       display: flex;
       align-items: center;
@@ -1233,7 +1232,7 @@
       }
 
       .brand-text-sub {
-        display: none;  /* mobilde gizli */
+        display: none;  /* mobilde gizli, sen istemiştin */
       }
 
       nav {
@@ -1261,7 +1260,7 @@
         gap: 22px;
       }
 
-      /* Büyük başlık mobilde gizli */
+      /* Büyük başlık mobilde gizli kalsın */
       .hero h1 {
         display: none;
       }
@@ -1315,7 +1314,7 @@
       }
 
       .bottom-contact-inner {
-        padding: 18px 14px 18px;
+        padding: 20px 18px 20px;
       }
 
       .bottom-contact-title {
@@ -1325,24 +1324,24 @@
       .bottom-contact-grid {
         flex-direction: column;
         align-items: stretch;
-        gap: 10px;
       }
 
-      /* ALT İLETİŞİM – MOBİLDE DAHA DA KÜÇÜK KUTU */
+      /* ALT İLETİŞİM – KUTULARI KÜÇÜLT, YAZI BOYUTLARINA DOKUNMA */
       .bottom-contact-row {
         max-width: 100%;
-        padding: 5px 8px;          /* çok daha ince padding */
-        border-radius: 14px;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-        gap: 8px;
+        padding: 8px 10px;       /* dikdörtgen küçüldü */
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
       }
 
       .bottom-contact-icon {
-        width: 26px;
-        height: 26px;
-        font-size: 13px;
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
       }
-      /* label (12px) ve value (15px) font-size'lar yukarıdaki gibi KALDI */
+
+      /* label ve value font-size burada OVERRIDE edilmiyor,
+         yukarıdaki 12px / 15px aynen korunuyor */
     }
   </style>
 </head>
