@@ -1321,23 +1321,41 @@
         font-size: 19px; 
       } 
 
-      .bottom-contact-grid { 
-        /* hala alt alta ama STRECH DEĞİL, ORTALANIYOR */ 
-        flex-direction: column; 
-        align-items: center; 
-        gap: 8px; 
-      } 
+      .bottom-contact-grid .bottom-contact-grid {
+  flex-direction: column;
+  align-items: stretch;   /* hepsi aynı genişlik */
+  gap: 8px;
+}
+
 
       /* ALT İLETİŞİM – MOBİL İYİCE İNCELTİLMİŞ */ 
-      .bottom-contact-row { 
-        flex: 0 0 auto;              /* büyümesin */ 
-        display: inline-flex;        /* sadece içerik kadar geniş */ 
-        max-width: 100%; 
-        padding: 3px 8px;            /* çok ince padding */ 
-        border-radius: 10px; 
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
-        gap: 6px; 
-      } 
+      @media (max-width: 720px) {
+  /* ... diğer mobil kodların ... */
+
+  .bottom-contact-grid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .bottom-contact-row {
+    flex: 0 0 auto;
+    width: 100%;          /* hepsi adres kutusu gibi tam genişlik */
+    max-width: 100%;
+    display: flex;        /* inline-flex değil */
+    padding: 6px 10px;    /* çok ince ama dengeli */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    gap: 8px;
+  }
+
+  .bottom-contact-icon {
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+  }
+}
+
 
       .bottom-contact-icon { 
         width: 22px; 
@@ -1950,3 +1968,4 @@
   </script> 
 </body> 
 </html>
+
