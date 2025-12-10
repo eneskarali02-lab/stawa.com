@@ -1230,25 +1230,29 @@
       flex-direction: row-reverse;
     }
 
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-card-wrap {
-        order: -1;
-      }
-      .about-layout,
-      .contact-layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .social-bar {
-        left: 10px;
-      }
-      html[dir="rtl"] .social-bar {
-        left: auto;
-        right: 10px;
-      }
-    }
+  @media (max-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-card-wrap {
+    order: -1;
+  }
+
+  .about-layout,
+  .contact-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .social-bar {
+    left: 10px;
+  }
+
+  html[dir="rtl"] .social-bar {
+    left: auto;
+    right: 10px;
+  }
+}
 
 @media (max-width: 720px) {
   /* HEADER mobil */
@@ -1324,10 +1328,16 @@
   .social-bar {
     top: auto;
     bottom: 18px;
+    left: 12px;
     transform: none;
     flex-direction: row;
     border-radius: 999px;
     padding: 8px 10px;
+  }
+
+  html[dir="rtl"] .social-bar {
+    left: auto;
+    right: 12px;
   }
 
   .social-bar.collapsed {
@@ -1352,8 +1362,9 @@
     transform: translate(-50%, -110%);
   }
 
+  /* ALT İLETİŞİM – MOBİLDE EN İNCE HALİ */
   .bottom-contact-inner {
-    padding: 14px 14px 14px; /* üst–alt biraz kısaltıldı */
+    padding: 6px 10px 6px;   /* üst–alt minimum */
   }
 
   .bottom-contact-title {
@@ -1367,33 +1378,32 @@
   .bottom-contact-grid {
     flex-direction: column;
     align-items: stretch;
-    gap: 6px; /* kutular arası boşluk azaldı */
+    gap: 4px;                /* kutular arası boşluk da az */
   }
 
-  /* ALT İLETİŞİM – MOBİLDE DAHA İNCE KUTU */
   .bottom-contact-row {
     max-width: 100%;
-    padding: 2px 10px;      /* ✅ üst–alt çok az → yükseklik düşer */
-    border-radius: 14px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-    gap: 6px;               /* ikon–yazı arası azaldı */
+    flex: 0 0 auto;          /* kendi içeriği kadar */
+    padding: 0 8px;          /* ÜST–ALT = 0 → yükseklik = ikon + yazı */
+    border-radius: 10px;
+    box-shadow: none;        /* gölge yok, daha ince durur */
+    gap: 6px;
     align-items: center;
   }
 
   .bottom-contact-icon {
-    width: 26px;
-    height: 26px;
+    width: 22px;
+    height: 22px;
     font-size: 13px;
   }
 
-  /* Yazıların boyutuna dokunmadan dikey boşluğu sıkılaştırıyoruz */
   .bottom-contact-text {
-    gap: 2px;
+    gap: 1px;
   }
 
   .bottom-contact-label,
   .bottom-contact-value {
-    line-height: 1.2;
+    line-height: 1.1;        /* yazının etrafındaki boşluğu iyice sıkıyoruz */
   }
 }
 
@@ -2174,6 +2184,7 @@
   </script>
 </body>
 </html>
+
 
 
 
