@@ -1251,137 +1251,139 @@
     }
 
  @media (max-width: 720px) {
-      /* HEADER mobil */
-      .header-inner {
-        padding: 10px 14px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
+      /* HEADER mobil */
+      .header-inner {
+        padding: 10px 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
 
-      .brand {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 10px;
-      }
+      .brand {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 10px;
+      }
 
-      .brand-logo {
-        width: 140px;   /* mobilde biraz daha dar */
-        max-height: 70px;
-      }
+      .brand-logo {
+        width: 140px;   /* mobilde biraz daha dar */
+        max-height: 70px;
+      }
 
-      .brand-text-sub {
-        display: none;  /* mobilde gizli */
-      }
+      .brand-text-sub {
+        display: none;  /* mobilde gizli */
+      }
 
-      nav {
-        width: 100%;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
 
-      nav a {
-        font-size: 13px;
-        padding: 6px 12px;
-      }
+      nav a {
+        font-size: 13px;
+        padding: 6px 12px;
+      }
 
-      .lang-switch {
-        margin-left: auto;
-      }
+      .lang-switch {
+        margin-left: auto;
+      }
 
-      .container {
-        padding: 24px 16px 34px;
-      }
+      .container {
+        padding: 24px 16px 34px;
+      }
 
-      .hero {
-        padding-top: 24px;
-        gap: 22px;
-      }
+      .hero {
+        padding-top: 24px;
+        gap: 22px;
+      }
 
-      /* Büyük başlık mobilde gizli */
-      .hero h1 {
-        display: none;
-      }
+      /* Büyük başlık mobilde gizli */
+      .hero h1 {
+        display: none;
+      }
 
-      .hero-lead {
-        font-size: 13px;
-        line-height: 1.7;
-        margin-bottom: 18px;
-      }
+      .hero-lead {
+        font-size: 13px;
+        line-height: 1.7;
+        margin-bottom: 18px;
+      }
 
-      .pill-tag {
-        font-size: 11px;
-        padding: 6px 12px;
-      }
+      .pill-tag {
+        font-size: 11px;
+        padding: 6px 12px;
+      }
 
-      .section-inner {
-        padding: 22px 18px 20px;
-        border-radius: 22px;
-      }
+      .section-inner {
+        padding: 22px 18px 20px;
+        border-radius: 22px;
+      }
 
-      /* Sosyal bar altta yatay */
-      .social-bar {
-        top: auto;
-        bottom: 18px;
-        transform: none;
-        flex-direction: row;
-        border-radius: 999px;
-        padding: 8px 10px;
-      }
+      /* Sosyal bar altta yatay */
+      .social-bar {
+        top: auto;
+        bottom: 18px;
+        transform: none;
+        flex-direction: row;
+        border-radius: 999px;
+        padding: 8px 10px;
+      }
 
-      .social-bar.collapsed {
-        padding: 6px 8px;
-      }
+      .social-bar.collapsed {
+        padding: 6px 8px;
+      }
 
-      .social-close {
-        margin: 0 6px 0 0;
-      }
+      .social-close {
+        margin: 0 6px 0 0;
+      }
 
-      .social-bar.collapsed .social-close {
-        margin: 0;
-      }
+      .social-bar.collapsed .social-close {
+        margin: 0;
+      }
 
-      .social-link::after {
-        left: 50%;
-        top: -6px;
-        transform: translate(-50%, -100%);
-      }
+      .social-link::after {
+        left: 50%;
+        top: -6px;
+        transform: translate(-50%, -100%);
+      }
 
-      .social-link:hover::after {
-        transform: translate(-50%, -110%);
-      }
+      .social-link:hover::after {
+        transform: translate(-50%, -110%);
+      }
 
-      .bottom-contact-inner {
-        padding: 18px 14px 18px;
-      }
+      .bottom-contact-inner {
+        padding: 18px 14px 18px;
+      }
 
-      .bottom-contact-title {
-        font-size: 19px;
-      }
+      .bottom-contact-title {
+        font-size: 19px;
+      }
 
-      .bottom-contact-grid {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-      }
+      .bottom-contact-grid {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
 
-      /* ALT İLETİŞİM – MOBİLDE DAHA DA KÜÇÜK KUTU */
-      .bottom-contact-row {
-        max-width: 100%;
-        padding: 5px 8px;          /* çok daha ince padding */
-        border-radius: 14px;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-        gap: 8px;
-      }
+      /* ALT İLETİŞİM – MOBİLDE DAHA DA KÜÇÜK KUTU */
+      .bottom-contact-row {
+        max-width: 100%;
+        /* 🔥 DİKEY DOLGU AZALTILDI: 5px'den 2px'e */
+        padding: 2px 8px;
+        border-radius: 14px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+        gap: 8px;
+      }
 
-      .bottom-contact-icon {
-        width: 26px;
-        height: 26px;
-        font-size: 13px;
-      }
-      /* label (12px) ve value (15px) font-size'lar yukarıdaki gibi KALDI */
-    }
+      .bottom-contact-icon {
+        /* İKON BOYUTU KÜÇÜLTÜLDÜ: 26px'den 22px'e */
+        width: 22px;
+        height: 22px;
+        font-size: 13px;
+      }
+      /* label (12px) ve value (15px) font-size'lar yukarıdaki gibi KALDI */
+    }
 
 
   </style>
@@ -2158,6 +2160,7 @@
   </script>
 </body>
 </html>
+
 
 
 
