@@ -1382,14 +1382,15 @@
   }
 
   .bottom-contact-row {
-    max-width: 100%;
-    flex: 0 0 auto;          /* kendi içeriği kadar */
-    padding: 0 8px;          /* ÜST–ALT = 0 → yükseklik = ikon + yazı */
-    border-radius: 10px;
-    box-shadow: none;        /* gölge yok, daha ince durur */
-    gap: 6px;
-    align-items: center;
-  }
+  max-width: 100%;
+  flex: 0 0 auto;
+  padding: 2px 14px;   /* ← SADECE BU SATIR DEĞİŞTİ */
+  border-radius: 12px; /* çok az geri açtık */
+  box-shadow: none;
+  gap: 8px;            /* ikon–yazı nefes alsın */
+  align-items: center;
+}
+
 
   .bottom-contact-icon {
     width: 22px;
@@ -2184,6 +2185,7 @@
   </script>
 </body>
 </html>
+
 
 
 
