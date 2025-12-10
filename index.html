@@ -1251,8 +1251,7 @@
     }
 
 @media (max-width: 720px) {
-
-  /* ================= HEADER ================= */
+  /* HEADER mobil */
   .header-inner {
     padding: 10px 14px;
     flex-direction: column;
@@ -1267,12 +1266,12 @@
   }
 
   .brand-logo {
-    width: 140px;
+    width: 140px;   /* mobilde biraz daha dar */
     max-height: 70px;
   }
 
   .brand-text-sub {
-    display: none;
+    display: none;  /* mobilde gizli */
   }
 
   nav {
@@ -1291,17 +1290,16 @@
     margin-left: auto;
   }
 
-  /* ================= CONTAINER ================= */
   .container {
     padding: 24px 16px 34px;
   }
 
-  /* ================= HERO ================= */
   .hero {
     padding-top: 24px;
     gap: 22px;
   }
 
+  /* Büyük başlık mobilde gizli */
   .hero h1 {
     display: none;
   }
@@ -1317,13 +1315,12 @@
     padding: 6px 12px;
   }
 
-  /* ================= SECTIONS ================= */
   .section-inner {
     padding: 22px 18px 20px;
     border-radius: 22px;
   }
 
-  /* ================= SOCIAL BAR ================= */
+  /* Sosyal bar altta yatay */
   .social-bar {
     top: auto;
     bottom: 18px;
@@ -1355,39 +1352,49 @@
     transform: translate(-50%, -110%);
   }
 
-  /* ====================================================
-     ============== ALT İLETİŞİM (MOBİL) =================
-     ==================================================== */
+  /* ========== ALT İLETİŞİM BLOĞU – MOBİLDE DAHA İNCE KUTULAR ========== */
 
   .bottom-contact-inner {
-    padding: 10px 14px;          /* üst-alt AZALTILDI */
+    padding: 10px 14px 10px;     /* üst–alt boşluk azaldı */
+  }
+
+  .bottom-contact-title {
+    font-size: 19px;
+  }
+
+  .bottom-contact-subtitle {
+    font-size: 13px;
   }
 
   .bottom-contact-grid {
     flex-direction: column;
     align-items: stretch;
-    gap: 4px;                    /* kutular arası boşluk az */
+    gap: 6px;                    /* kutular arası boşluk biraz az */
   }
 
-  /* ✅ SADECE BEYAZ KUTU YÜKSEKLİĞİ KIRILIYOR */
+  /* 🔥 BEYAZ KUTUNUN YÜKSEKLİĞİNİ ASIL AZALTAN YER BURASI */
   .bottom-contact-row {
-    width: 100%;
-    padding: 1px 10px;           /* 🔥 ASIL YÜKSEKLİĞİ AZALTAN SATIR */
+    /* genişliğe DOKUNMUYORUZ (width / max-width yok) */
+    padding: 3px 12px;           /* üst–alt çok az → daha ince */
     border-radius: 14px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    gap: 6px;
-    align-items: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    gap: 6px;                    /* ikon–yazı arası biraz az */
+    align-items: center;         /* içerik dikeyde ortalı */
   }
 
-  /* ikon çok az küçülür → yükseklik düşer */
   .bottom-contact-icon {
-    width: 22px;
+    width: 22px;                 /* biraz küçüldü, yükseklik düşer */
     height: 22px;
     font-size: 12px;
   }
 
-  /* yazıya DOKUNMADIK */
+  .bottom-contact-text {
+    gap: 2px;                    /* label ile value arası sıkı */
+  }
+
+  /* Yazıların font-size'ına ve line-height'ına DOKUNMADIK */
 }
+
 
 
 
@@ -2167,6 +2174,7 @@
   </script>
 </body>
 </html>
+
 
 
 
