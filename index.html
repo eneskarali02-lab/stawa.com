@@ -1255,7 +1255,7 @@
 }
 
 @media (max-width: 720px) {
-  /* HEADER mobil */
+  /* HEADER */
   .header-inner {
     padding: 10px 14px;
     flex-direction: column;
@@ -1263,26 +1263,9 @@
     gap: 8px;
   }
 
-  .brand {
-    width: 100%;
-    justify-content: flex-start;
-    gap: 10px;
-  }
-
   .brand-logo {
-    width: 140px;   /* mobilde biraz daha dar */
+    width: 140px;
     max-height: 70px;
-  }
-
-  .brand-text-sub {
-    display: none;  /* mobilde gizli */
-  }
-
-  nav {
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 8px;
   }
 
   nav a {
@@ -1290,123 +1273,50 @@
     padding: 6px 12px;
   }
 
-  .lang-switch {
-    margin-left: auto;
-  }
-
   .container {
     padding: 24px 16px 34px;
   }
 
-  .hero {
-    padding-top: 24px;
-    gap: 22px;
-  }
-
-  /* Büyük başlık mobilde gizli */
   .hero h1 {
     display: none;
   }
 
-  .hero-lead {
-    font-size: 13px;
-    line-height: 1.7;
-    margin-bottom: 18px;
-  }
-
-  .pill-tag {
-    font-size: 11px;
-    padding: 6px 12px;
-  }
-
-  .section-inner {
-    padding: 22px 18px 20px;
-    border-radius: 22px;
-  }
-
-  /* Sosyal bar altta yatay */
+  /* SOSYAL BAR */
   .social-bar {
-    top: auto;
     bottom: 18px;
     left: 12px;
-    transform: none;
+    top: auto;
     flex-direction: row;
-    border-radius: 999px;
     padding: 8px 10px;
   }
 
-  html[dir="rtl"] .social-bar {
-    left: auto;
-    right: 12px;
-  }
-
-  .social-bar.collapsed {
-    padding: 6px 8px;
-  }
-
-  .social-close {
-    margin: 0 6px 0 0;
-  }
-
-  .social-bar.collapsed .social-close {
-    margin: 0;
-  }
-
-  .social-link::after {
-    left: 50%;
-    top: -6px;
-    transform: translate(-50%, -100%);
-  }
-
-  .social-link:hover::after {
-    transform: translate(-50%, -110%);
-  }
-
-  /* ALT İLETİŞİM – MOBİLDE EN İNCE HALİ */
+  /* ALT İLETİŞİM – DENGELİ */
   .bottom-contact-inner {
-    padding: 6px 10px 6px;   /* üst–alt minimum */
-  }
-
-  .bottom-contact-title {
-    font-size: 19px;
-  }
-
-  .bottom-contact-subtitle {
-    font-size: 13px;
+    padding: 12px 14px;
   }
 
   .bottom-contact-grid {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 4px;                /* kutular arası boşluk da az */
+    gap: 8px;
   }
 
   .bottom-contact-row {
-    max-width: 100%;
-    flex: 0 0 auto;          /* kendi içeriği kadar */
-    padding: 0 8px;          /* ÜST–ALT = 0 → yükseklik = ikon + yazı */
-    border-radius: 10px;
-    box-shadow: none;        /* gölge yok, daha ince durur */
-    gap: 6px;
-    align-items: center;
+    padding: 6px 12px;          /* ✅ yükseklik makul */
+    border-radius: 14px;
+    gap: 8px;
+    box-shadow: 0 5px 14px rgba(0,0,0,0.08);
   }
 
   .bottom-contact-icon {
-    width: 22px;
-    height: 22px;
-    font-size: 13px;
-  }
-
-  .bottom-contact-text {
-    gap: 1px;
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
   }
 
   .bottom-contact-label,
   .bottom-contact-value {
-    line-height: 1.1;        /* yazının etrafındaki boşluğu iyice sıkıyoruz */
+    line-height: 1.3;
   }
 }
-
 
 
 
@@ -2184,6 +2094,7 @@
   </script>
 </body>
 </html>
+
 
 
 
