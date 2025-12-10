@@ -1250,163 +1250,138 @@
       }
     }
 
-@media (max-width: 720px) {
+  @media (max-width: 720px) {
+      /* HEADER mobil */
+      .header-inner {
+        padding: 10px 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
 
-  /* ================= HEADER ================= */
-  .header-inner {
-    padding: 10px 14px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
+      .brand {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 10px;
+      }
 
-  .brand {
-    width: 100%;
-    justify-content: flex-start;
-    gap: 10px;
-  }
+      .brand-logo {
+        width: 140px;   /* mobilde biraz daha dar */
+        max-height: 70px;
+      }
 
-  .brand-logo {
-    width: 140px;
-    max-height: 70px;
-  }
+      .brand-text-sub {
+        display: none;  /* mobilde gizli */
+      }
 
-  .brand-text-sub {
-    display: none;
-  }
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
 
-  nav {
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+      nav a {
+        font-size: 13px;
+        padding: 6px 12px;
+      }
 
-  nav a {
-    font-size: 13px;
-    padding: 6px 12px;
-  }
+      .lang-switch {
+        margin-left: auto;
+      }
 
-  .lang-switch {
-    margin-left: auto;
-  }
+      .container {
+        padding: 24px 16px 34px;
+      }
 
-  /* ================= CONTAINER ================= */
-  .container {
-    padding: 24px 16px 34px;
-  }
+      .hero {
+        padding-top: 24px;
+        gap: 22px;
+      }
 
-  /* ================= HERO ================= */
-  .hero {
-    padding-top: 24px;
-    gap: 22px;
-  }
+      /* Büyük başlık mobilde gizli */
+      .hero h1 {
+        display: none;
+      }
 
-  .hero h1 {
-    display: none;
-  }
+      .hero-lead {
+        font-size: 13px;
+        line-height: 1.7;
+        margin-bottom: 18px;
+      }
 
-  .hero-lead {
-    font-size: 13px;
-    line-height: 1.7;
-    margin-bottom: 18px;
-  }
+      .pill-tag {
+        font-size: 11px;
+        padding: 6px 12px;
+      }
 
-  .pill-tag {
-    font-size: 11px;
-    padding: 6px 12px;
-  }
+      .section-inner {
+        padding: 22px 18px 20px;
+        border-radius: 22px;
+      }
 
-  .section-inner {
-    padding: 22px 18px 20px;
-    border-radius: 22px;
-  }
+      /* Sosyal bar altta yatay */
+      .social-bar {
+        top: auto;
+        bottom: 18px;
+        transform: none;
+        flex-direction: row;
+        border-radius: 999px;
+        padding: 8px 10px;
+      }
 
-  /* ================= SOCIAL BAR ================= */
-  .social-bar {
-    top: auto;
-    bottom: 18px;
-    transform: none;
-    flex-direction: row;
-    border-radius: 999px;
-    padding: 8px 10px;
-  }
+      .social-bar.collapsed {
+        padding: 6px 8px;
+      }
 
-  .social-bar.collapsed {
-    padding: 6px 8px;
-  }
+      .social-close {
+        margin: 0 6px 0 0;
+      }
 
-  .social-close {
-    margin: 0 6px 0 0;
-  }
+      .social-bar.collapsed .social-close {
+        margin: 0;
+      }
 
-  .social-link::after {
-    left: 50%;
-    top: -6px;
-    transform: translate(-50%, -100%);
-  }
+      .social-link::after {
+        left: 50%;
+        top: -6px;
+        transform: translate(-50%, -100%);
+      }
 
-  .social-link:hover::after {
-    transform: translate(-50%, -110%);
-  }
+      .social-link:hover::after {
+        transform: translate(-50%, -110%);
+      }
 
+      .bottom-contact-inner {
+        padding: 18px 14px 18px;
+      }
 
+      .bottom-contact-title {
+        font-size: 19px;
+      }
 
-  /* ============================================================
-     ===============  ALT İLETİŞİM — EN İNCE VERSİYON  ============
-     ============================================================ */
+      .bottom-contact-grid {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
 
-  .bottom-contact-inner {
-    padding: 10px 10px;
-  }
+      /* ALT İLETİŞİM – MOBİLDE DAHA DA KÜÇÜK KUTU */
+      .bottom-contact-row {
+        max-width: 100%;
+        padding: 5px 8px;          /* çok daha ince padding */
+        border-radius: 14px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+        gap: 8px;
+      }
 
-  .bottom-contact-grid {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 4px;                        /* kutular arası en az boşluk */
-  }
-
-  .bottom-contact-row {
-    width: 100%;
-    padding: 0 10px !important;      /* üst-alt tamamen 0 → EN İNCE */
-    height: 28px !important;         /* sabit yükseklik */
-    min-height: 28px !important;
-    display: flex;
-    align-items: center !important;
-    gap: 6px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-  }
-
-  .bottom-contact-icon {
-    width: 20px !important;
-    height: 20px !important;
-    font-size: 11px !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .bottom-contact-text {
-    flex-direction: row !important;   /* label + value yan yana */
-    align-items: center !important;
-    gap: 4px !important;
-  }
-
-  .bottom-contact-label {
-    font-size: 11px !important;
-    line-height: 1 !important;
-    white-space: nowrap;
-  }
-
-  .bottom-contact-value {
-    font-size: 13px !important;
-    line-height: 1 !important;
-    white-space: nowrap;
-  }
-
-}
-
+      .bottom-contact-icon {
+        width: 26px;
+        height: 26px;
+        font-size: 13px;
+      }
+      /* label (12px) ve value (15px) font-size'lar yukarıdaki gibi KALDI */
+    }
 
 
 
@@ -2184,6 +2159,7 @@
   </script>
 </body>
 </html>
+
 
 
 
