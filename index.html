@@ -1251,7 +1251,8 @@
     }
 
    @media (max-width: 720px) {
-  /* HEADER mobil */
+
+  /* ================= HEADER ================= */
   .header-inner {
     padding: 10px 14px;
     flex-direction: column;
@@ -1266,12 +1267,12 @@
   }
 
   .brand-logo {
-    width: 140px;   /* mobilde biraz daha dar */
+    width: 140px;
     max-height: 70px;
   }
 
   .brand-text-sub {
-    display: none;  /* mobilde gizli */
+    display: none;
   }
 
   nav {
@@ -1290,16 +1291,17 @@
     margin-left: auto;
   }
 
+  /* ================= CONTAINER ================= */
   .container {
     padding: 24px 16px 34px;
   }
 
+  /* ================= HERO ================= */
   .hero {
     padding-top: 24px;
     gap: 22px;
   }
 
-  /* Büyük başlık mobilde gizli */
   .hero h1 {
     display: none;
   }
@@ -1315,12 +1317,13 @@
     padding: 6px 12px;
   }
 
+  /* ================= SECTIONS ================= */
   .section-inner {
     padding: 22px 18px 20px;
     border-radius: 22px;
   }
 
-  /* Sosyal bar altta yatay */
+  /* ================= SOCIAL BAR (ALTTA) ================= */
   .social-bar {
     top: auto;
     bottom: 18px;
@@ -1352,13 +1355,14 @@
     transform: translate(-50%, -110%);
   }
 
-  /* ALT İLETİŞİM BLOĞU – DAHA KÜÇÜK ve DAHA KISA KUTULAR */
+  /* ================= ALT İLETİŞİM BLOĞU ================= */
+
   .bottom-contact-inner {
-    padding: 14px 10px 14px;      /* iç boşluk azaldı */
+    padding: 14px 14px 14px;
   }
 
   .bottom-contact-header {
-    margin-bottom: 8px;           /* üst yazı ile kutular arası azaldı */
+    margin-bottom: 8px;
   }
 
   .bottom-contact-title {
@@ -1371,17 +1375,18 @@
 
   .bottom-contact-grid {
     flex-direction: column;
-    align-items: center;          /* kutular ortalansın */
-    gap: 8px;                     /* aralarındaki boşluk azaldı */
+    align-items: stretch;   /* ✅ TAM GENİŞLİK */
+    gap: 6px;               /* ✅ Daha az boşluk */
   }
 
+  /* ✅ GENİŞLİK AYNI – SADECE YÜKSEKLİK AZ */
   .bottom-contact-row {
-    width: 100%;
-    max-width: 260px;             /* tam ekran değil, daha kısa dikdörtgen */
-    padding: 3px 8px;             /* yükseklik azalsın diye iç boşluk iyice düştü */
+    max-width: 100%;
+    padding: 2px 10px;      /* üst-alt kısaltıldı */
     border-radius: 14px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);  /* gölge hafif */
-    gap: 6px;                     /* ikon ile yazı arası az */
+    gap: 6px;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
   }
 
   .bottom-contact-icon {
@@ -1390,17 +1395,16 @@
     font-size: 12px;
   }
 
-  /* Yazı boyutları aynen kalsın, sadece satır boşluğu biraz sıkı */
-  .bottom-contact-label {
-    font-size: 12px;
-    line-height: 1.2;
+  .bottom-contact-text {
+    gap: 1px;
   }
 
+  .bottom-contact-label,
   .bottom-contact-value {
-    font-size: 15px;
-    line-height: 1.2;
+    line-height: 1.2;       /* ✅ Yüksekliği kıran asıl nokta */
   }
 }
+
 
   </style>
 </head>
@@ -2176,6 +2180,7 @@
   </script>
 </body>
 </html>
+
 
 
 
