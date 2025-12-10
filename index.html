@@ -1250,7 +1250,7 @@
       }
     }
 
-   @media (max-width: 720px) {
+@media (max-width: 720px) {
 
   /* ================= HEADER ================= */
   .header-inner {
@@ -1323,7 +1323,7 @@
     border-radius: 22px;
   }
 
-  /* ================= SOCIAL BAR (ALTTA) ================= */
+  /* ================= SOCIAL BAR ================= */
   .social-bar {
     top: auto;
     bottom: 18px;
@@ -1355,55 +1355,59 @@
     transform: translate(-50%, -110%);
   }
 
-  /* ================= ALT İLETİŞİM BLOĞU ================= */
+
+
+  /* ============================================================
+     ===============  ALT İLETİŞİM — EN İNCE HALİ  ===============
+     ============================================================ */
 
   .bottom-contact-inner {
-    padding: 14px 14px 14px;
-  }
-
-  .bottom-contact-header {
-    margin-bottom: 8px;
-  }
-
-  .bottom-contact-title {
-    font-size: 18px;
-  }
-
-  .bottom-contact-subtitle {
-    font-size: 12px;
+    padding: 10px 10px 10px; /* daha az iç boşluk */
   }
 
   .bottom-contact-grid {
     flex-direction: column;
-    align-items: stretch;   /* ✅ TAM GENİŞLİK */
-    gap: 6px;               /* ✅ Daha az boşluk */
+    align-items: stretch;
+    gap: 4px; /* kutular arası min boşluk */
   }
 
-  /* ✅ GENİŞLİK AYNI – SADECE YÜKSEKLİK AZ */
+  /* 📌 **EN İNCE KUTU** */
   .bottom-contact-row {
-    max-width: 100%;
-    padding: 2px 10px;      /* üst-alt kısaltıldı */
-    border-radius: 14px;
-    gap: 6px;
+    max-width: 100%;  /* tam genişlik */
+    padding: 0px 10px; /* ÜST-ALT = **0 PX** → mümkün olan en ince yükseklik */
+    min-height: 34px;  /* ikon ve yazı çakışmasın diye minimum ideal yükseklik */
+    display: flex;
     align-items: center;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    gap: 6px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
 
   .bottom-contact-icon {
-    width: 24px;
-    height: 24px;
-    font-size: 12px;
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .bottom-contact-text {
-    gap: 1px;
+    gap: 0px; /* label + value arası sıfırlandı */
   }
 
-  .bottom-contact-label,
-  .bottom-contact-value {
-    line-height: 1.2;       /* ✅ Yüksekliği kıran asıl nokta */
+  .bottom-contact-label {
+    font-size: 11px;
+    line-height: 1.1;
   }
+
+  .bottom-contact-value {
+    font-size: 14px;
+    line-height: 1.1;
+  }
+
 }
+
 
 
   </style>
@@ -2180,6 +2184,7 @@
   </script>
 </body>
 </html>
+
 
 
 
