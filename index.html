@@ -1255,7 +1255,7 @@
 }
 
 @media (max-width: 720px) {
-  /* HEADER mobil */
+  /* HEADER */
   .header-inner {
     padding: 10px 14px;
     flex-direction: column;
@@ -1265,23 +1265,20 @@
 
   .brand {
     width: 100%;
-    justify-content: flex-start;
     gap: 10px;
   }
 
   .brand-logo {
-    width: 140px;   /* mobilde biraz daha dar */
+    width: 140px;
     max-height: 70px;
   }
 
   .brand-text-sub {
-    display: none;  /* mobilde gizli */
+    display: none;
   }
 
   nav {
     width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
     gap: 8px;
   }
 
@@ -1303,7 +1300,6 @@
     gap: 22px;
   }
 
-  /* Büyük başlık mobilde gizli */
   .hero h1 {
     display: none;
   }
@@ -1324,14 +1320,13 @@
     border-radius: 22px;
   }
 
-  /* Sosyal bar altta yatay */
+  /* SOSYAL BAR */
   .social-bar {
     top: auto;
     bottom: 18px;
     left: 12px;
     transform: none;
     flex-direction: row;
-    border-radius: 999px;
     padding: 8px 10px;
   }
 
@@ -1340,57 +1335,29 @@
     right: 12px;
   }
 
-  .social-bar.collapsed {
-    padding: 6px 8px;
-  }
-
   .social-close {
-    margin: 0 6px 0 0;
+    margin-right: 6px;
   }
 
-  .social-bar.collapsed .social-close {
-    margin: 0;
-  }
-
-  .social-link::after {
-    left: 50%;
-    top: -6px;
-    transform: translate(-50%, -100%);
-  }
-
-  .social-link:hover::after {
-    transform: translate(-50%, -110%);
-  }
-
-  /* ALT İLETİŞİM – MOBİLDE EN İNCE HALİ */
+  /* ALT İLETİŞİM – MOBİL */
   .bottom-contact-inner {
-    padding: 6px 10px 6px;   /* üst–alt minimum */
-  }
-
-  .bottom-contact-title {
-    font-size: 19px;
-  }
-
-  .bottom-contact-subtitle {
-    font-size: 13px;
+    padding: 6px 12px;
   }
 
   .bottom-contact-grid {
     flex-direction: column;
-    align-items: stretch;
-    gap: 4px;                /* kutular arası boşluk da az */
+    gap: 4px;
   }
 
   .bottom-contact-row {
-  max-width: 100%;
-  flex: 0 0 auto;
-  padding: 2px 14px;   /* ← SADECE BU SATIR DEĞİŞTİ */
-  border-radius: 12px; /* çok az geri açtık */
-  box-shadow: none;
-  gap: 8px;            /* ikon–yazı nefes alsın */
-  align-items: center;
-}
-
+    max-width: 100%;
+    flex: 0 0 auto;
+    padding: 1px 14px;      /* ← YÜKSEKLİK BURADAN GELİYOR */
+    border-radius: 12px;
+    box-shadow: none;
+    gap: 8px;
+    align-items: center;
+  }
 
   .bottom-contact-icon {
     width: 22px;
@@ -1404,10 +1371,9 @@
 
   .bottom-contact-label,
   .bottom-contact-value {
-    line-height: 1.1;        /* yazının etrafındaki boşluğu iyice sıkıyoruz */
+    line-height: 1.05;      /* ← YÜKSEKLİK BURADAN GELİYOR */
   }
 }
-
 
 
 
@@ -2185,6 +2151,7 @@
   </script>
 </body>
 </html>
+
 
 
 
