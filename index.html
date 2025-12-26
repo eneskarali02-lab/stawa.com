@@ -32,10 +32,12 @@
       --transition-med: 0.28s ease-out;
 
       --gold: #f0b868;
-      --gold-2: #c8903f;
+      --ink: #111317;
     }
 
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body.page {
       margin: 0;
@@ -62,9 +64,7 @@
       inset: 0;
       pointer-events: none;
 
-      /* Kumaş dokusu için 2 kat ince çapraz çizgi + alttaki damask */
       background-image:
-        /* çok ince açık çizgiler */
         repeating-linear-gradient(
           135deg,
           rgba(255, 255, 255, 0.03) 0px,
@@ -72,7 +72,6 @@
           transparent 1px,
           transparent 4px
         ),
-        /* çok ince koyu çizgiler */
         repeating-linear-gradient(
           45deg,
           rgba(0, 0, 0, 0.10) 0px,
@@ -80,7 +79,6 @@
           transparent 1px,
           transparent 4px
         ),
-        /* senin damask desenin */
         url("damask-transparent.png");
 
       background-size:
@@ -100,83 +98,144 @@
       flex-direction: column;
     }
 
-    /* ===== JS EXTRA UI ===== */
+    /* ====== JS ENHANCEMENTS UI ====== */
     .scroll-progress {
       position: fixed;
-      top: 0;
-      left: 0;
+      left: 0; top: 0;
       height: 3px;
       width: 0%;
+      background: linear-gradient(90deg, rgba(240,184,104,1), rgba(255,255,255,0.9));
       z-index: 9999;
-      background: linear-gradient(90deg, var(--gold), rgba(255,255,255,0.85));
-      box-shadow: 0 10px 24px rgba(0,0,0,0.55);
-      transform: translateZ(0);
-      opacity: 0.92;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+      transform-origin: left center;
     }
 
-    .back-top {
+    .cursor-glow {
       position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 120;
-      border: 1px solid rgba(255,255,255,0.28);
-      background: rgba(10,11,20,0.86);
-      color: #fff;
-      width: 44px;
-      height: 44px;
+      width: 220px;
+      height: 220px;
       border-radius: 999px;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 18px 50px rgba(0,0,0,0.75);
-      transition: opacity .18s ease, transform .18s ease;
-      opacity: 0;
       pointer-events: none;
-      transform: translateY(8px);
+      z-index: 10;
+      background: radial-gradient(circle, rgba(240,184,104,0.22) 0%, rgba(240,184,104,0.06) 35%, transparent 70%);
+      filter: blur(2px);
+      opacity: 0;
+      transition: opacity 0.18s ease-out;
+      mix-blend-mode: screen;
     }
-    .back-top.visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-    .back-top:hover {
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(255,255,255,0.65);
-      transform: translateY(-1px);
+
+    .toast-wrap {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      display: grid;
+      gap: 10px;
+      z-index: 9999;
+      pointer-events: none;
     }
 
     .toast {
+      pointer-events: none;
+      width: min(360px, calc(100vw - 32px));
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(5,5,10,0.92);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.7);
+      color: #f5f5f5;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.22s ease-out, transform 0.22s ease-out;
+      backdrop-filter: blur(16px);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toast i {
+      margin-top: 2px;
+      color: var(--gold);
+    }
+
+    .toast .t-title {
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      margin-bottom: 2px;
+    }
+
+    .toast .t-sub {
+      font-size: 12px;
+      color: rgba(245,245,245,0.78);
+      line-height: 1.5;
+    }
+
+    .backtop {
+      position: fixed;
+      right: 18px;
+      bottom: 86px;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(10, 11, 20, 0.88);
+      color: #f5f5f5;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      z-index: 9998;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 0.18s ease-out, transform 0.18s ease-out, background 0.18s ease-out;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.75);
+    }
+
+    .backtop.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .backtop:hover {
+      background: rgba(255,255,255,0.10);
+    }
+
+    .kbd-hint {
       position: fixed;
       left: 50%;
-      bottom: 22px;
-      transform: translateX(-50%) translateY(10px);
-      z-index: 2000;
-      padding: 10px 14px;
+      bottom: 18px;
+      transform: translateX(-50%);
+      padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(5,5,10,0.92);
-      border: 1px solid rgba(255,255,255,0.22);
-      color: #f5f5f5;
+      background: rgba(5,5,10,0.70);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(245,245,245,0.82);
       font-size: 12px;
-      letter-spacing: 0.02em;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.85);
-      backdrop-filter: blur(18px);
+      z-index: 9998;
       opacity: 0;
       pointer-events: none;
-      transition: opacity .18s ease, transform .18s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      max-width: min(92vw, 520px);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      transition: opacity 0.22s ease-out;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.6);
     }
-    .toast.visible {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
+
+    .kbd-hint.show { opacity: 1; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-card { animation: none !important; }
+      .social-link { animation: none !important; }
+      .reveal { transition: none !important; }
+      .toast, .backtop, .kbd-hint { transition: none !important; }
     }
-    .toast i { color: var(--gold); }
 
     /* HEADER */
     header {
@@ -251,6 +310,7 @@
       backdrop-filter: blur(14px);
       transition: var(--transition-fast);
       position: relative;
+      outline: none;
     }
 
     nav a:hover {
@@ -259,10 +319,14 @@
     }
 
     nav a.active {
-      border-color: rgba(240,184,104,0.85);
-      background: rgba(240,184,104,0.16);
+      border-color: rgba(240,184,104,0.7);
+      background: rgba(240,184,104,0.14);
       color: #fff;
-      box-shadow: 0 14px 34px rgba(0,0,0,0.55);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.55);
+    }
+
+    nav a:focus-visible {
+      box-shadow: 0 0 0 2px rgba(240,184,104,0.65), 0 14px 40px rgba(0,0,0,0.7);
     }
 
     /* DİL SEÇİCİ – TEK TUŞ + AÇILAN MENÜ */
@@ -415,6 +479,7 @@
       backdrop-filter: blur(10px);
       box-shadow: 0 12px 30px rgba(0,0,0,0.78);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: default;
     }
 
     .pill-tag:hover {
@@ -444,6 +509,7 @@
       transition: var(--transition-med);
       transform: translateY(0);
       user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .cta-primary {
@@ -504,6 +570,8 @@
       border: 1px solid rgba(255,255,255,0.18);
       backdrop-filter: blur(14px);
       animation: cardFloat 6s ease-in-out infinite;
+      transform-style: preserve-3d;
+      will-change: transform;
     }
 
     .hero-card-header {
@@ -551,11 +619,14 @@
       overflow: hidden;
       background: #111317;
       box-shadow: 0 22px 60px rgba(0,0,0,0.9);
-      touch-action: pan-y;
       user-select: none;
+      touch-action: pan-y;
     }
 
-    .hero-slider-main { position: relative; cursor: pointer; }
+    .hero-slider-main {
+      position: relative;
+      cursor: pointer;
+    }
 
     .hero-slider-main img {
       width: 100%;
@@ -563,9 +634,8 @@
       max-height: 380px;
       object-fit: cover;
       transform: scale(1.02);
-      transition: transform 0.6s ease-out, filter 0.6s ease-out, opacity .22s ease;
+      transition: transform 0.6s ease-out, filter 0.6s ease-out, opacity 0.25s ease-out;
       filter: saturate(1.05) contrast(1.03);
-      will-change: transform;
     }
 
     .hero-slider-main:hover img {
@@ -676,7 +746,10 @@
       max-height: 92vh;
       border-radius: 20px;
       box-shadow: 0 40px 110px rgba(0,0,0,0.95);
+      cursor: zoom-in;
     }
+
+    .lightbox img.zoomed { cursor: zoom-out; }
 
     .lightbox-close {
       position: fixed;
@@ -769,7 +842,11 @@
       background: linear-gradient(90deg, #c8903f, rgba(17,19,23,0.1));
     }
 
-    .section-header span { font-size: 13px; color: var(--muted-light); }
+    .section-header span {
+      font-size: 13px;
+      color: var(--muted-light);
+    }
+
     .muted { color: var(--muted-light); }
 
     .about-layout {
@@ -798,6 +875,7 @@
       box-shadow: 0 18px 40px rgba(15,16,35,0.20);
       backdrop-filter: blur(10px);
       transition: transform 0.22s ease-out, box-shadow 0.22s ease-out, border-color 0.22s ease-out, background 0.22s ease-out;
+      cursor: default;
     }
 
     .fact-card:hover {
@@ -807,8 +885,18 @@
       background: linear-gradient(145deg, #ffffff 0%, #f9f3ea 45%, #f0e4d3 100%);
     }
 
-    .fact-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; color: #111317; }
-    .fact-sub { font-size: 13px; color: var(--muted-light); line-height: 1.7; }
+    .fact-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #111317;
+    }
+
+    .fact-sub {
+      font-size: 13px;
+      color: var(--muted-light);
+      line-height: 1.7;
+    }
 
     /* VİZYON/MİSYON KARTI */
     .about-side-card {
@@ -871,7 +959,12 @@
       color: #111317;
     }
 
-    .contact-card-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: #111317; }
+    .contact-card-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #111317;
+    }
 
     .contact-highlight {
       margin: 8px 0 12px;
@@ -905,9 +998,26 @@
       padding-left: 12px;
     }
 
-    .contact-lead { font-size: 15px; line-height: 1.9; color: #111317; margin: 0; padding-left: 12px; }
-    .contact-sub { font-size: 14px; line-height: 1.8; margin-top: 6px; }
-    .contact-note { margin-top: 10px; font-size: 13px; color: var(--muted-light); line-height: 1.7; }
+    .contact-lead {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #111317;
+      margin: 0;
+      padding-left: 12px;
+    }
+
+    .contact-sub {
+      font-size: 14px;
+      line-height: 1.8;
+      margin-top: 6px;
+    }
+
+    .contact-note {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted-light);
+      line-height: 1.7;
+    }
 
     .contact-form label {
       display: block;
@@ -942,13 +1052,17 @@
       transform: translateY(-1px);
     }
 
-    .contact-form textarea { resize: vertical; min-height: 110px; }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
 
     .contact-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 6px;
+      align-items: center;
     }
 
     .contact-form .cta-primary {
@@ -965,7 +1079,33 @@
       background: #ffffff;
     }
 
-    #msg { margin-top: 8px; font-size: 12px; color: var(--muted-light); }
+    .mini-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,19,23,0.12);
+      background: rgba(255,255,255,0.8);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      color: #111317;
+      transition: var(--transition-fast);
+    }
+
+    .mini-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(15,16,35,0.14);
+      background: #fff;
+    }
+
+    #msg {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted-light);
+    }
 
     /* ALT BÜYÜK İLETİŞİM BLOĞU */
     .bottom-contact {
@@ -1006,7 +1146,11 @@
       margin-bottom: 5px;
     }
 
-    .bottom-contact-subtitle { margin: 0; font-size: 14px; color: #6a6d7b; }
+    .bottom-contact-subtitle {
+      margin: 0;
+      font-size: 14px;
+      color: #6a6d7b;
+    }
 
     .bottom-contact-grid {
       display: flex;
@@ -1026,15 +1170,13 @@
       background: rgba(255,255,255,0.96);
       border: 1px solid rgba(0,0,0,0.05);
       box-shadow: 0 8px 22px rgba(0,0,0,0.06);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color .18s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
       cursor: pointer;
-      user-select: none;
     }
 
     .bottom-contact-row:hover {
       transform: translateY(-1px);
       box-shadow: 0 12px 26px rgba(0,0,0,0.12);
-      border-color: rgba(240,184,104,0.45);
     }
 
     .bottom-contact-icon {
@@ -1117,7 +1259,10 @@
       transition: var(--transition-fast);
     }
 
-    .social-close:hover { background: #f5f5f5; color: #111317; }
+    .social-close:hover {
+      background: #f5f5f5;
+      color: #111317;
+    }
 
     @keyframes iconFloat {
       0%   { transform: translateY(0); }
@@ -1141,6 +1286,7 @@
       transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, background 0.18s ease-out, border-color 0.18s ease-out;
       animation: iconFloat 5s ease-in-out infinite;
       overflow: visible;
+      outline: none;
     }
 
     .social-link:hover {
@@ -1150,6 +1296,10 @@
       border-color: rgba(255,255,255,0.85);
       background: #f5f5f5;
       color: #111317;
+    }
+
+    .social-link:focus-visible {
+      box-shadow: 0 0 0 2px rgba(240,184,104,0.65), 0 18px 50px rgba(0,0,0,0.8);
     }
 
     .social-link::after {
@@ -1190,7 +1340,9 @@
       gap: 0;
       border-radius: 999px;
     }
+
     .social-bar.collapsed .social-link { display: none; }
+
     .social-bar.collapsed .social-close {
       margin: 0;
       width: 32px;
@@ -1204,13 +1356,19 @@
       transform: translateY(24px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* RTL */
     html[dir="rtl"] body.page { text-align: right; }
+
     html[dir="rtl"] .hero,
     html[dir="rtl"] .about-layout,
     html[dir="rtl"] .contact-layout { direction: rtl; }
+
     html[dir="rtl"] nav { flex-direction: row-reverse; }
 
     @media (max-width: 900px) {
@@ -1222,7 +1380,6 @@
     }
 
     @media (max-width: 720px) {
-      /* HEADER */
       .header-inner {
         padding: 10px 14px;
         flex-direction: column;
@@ -1236,18 +1393,24 @@
 
       nav { width: 100%; gap: 8px; }
       nav a { font-size: 13px; padding: 6px 12px; }
+
       .lang-switch { margin-left: auto; }
 
       .container { padding: 24px 16px 34px; }
+
       .hero { padding-top: 24px; gap: 22px; }
       .hero h1 { display: none; }
 
-      .hero-lead { font-size: 13px; line-height: 1.7; margin-bottom: 18px; }
+      .hero-lead {
+        font-size: 13px;
+        line-height: 1.7;
+        margin-bottom: 18px;
+      }
+
       .pill-tag { font-size: 11px; padding: 6px 12px; }
 
       .section-inner { padding: 22px 18px 20px; border-radius: 22px; }
 
-      /* SOSYAL BAR */
       .social-bar {
         top: auto;
         bottom: 18px;
@@ -1258,11 +1421,16 @@
       }
 
       html[dir="rtl"] .social-bar { left: auto; right: 12px; }
+
       .social-close { margin-right: 6px; }
 
       /* ALT İLETİŞİM – MOBİL */
       .bottom-contact-inner { padding: 6px 12px; }
-      .bottom-contact-grid { flex-direction: column; gap: 4px; }
+
+      .bottom-contact-grid {
+        flex-direction: column;
+        gap: 4px;
+      }
 
       .bottom-contact-row {
         max-width: 100%;
@@ -1274,32 +1442,33 @@
         align-items: center;
       }
 
-      .bottom-contact-icon { width: 22px; height: 22px; font-size: 13px; }
+      .bottom-contact-icon {
+        width: 22px;
+        height: 22px;
+        font-size: 13px;
+      }
+
       .bottom-contact-text { gap: 1px; }
 
       .bottom-contact-label,
       .bottom-contact-value { line-height: 1.05; }
-    }
 
-    /* Reduce motion saygısı */
-    @media (prefers-reduced-motion: reduce) {
-      * { scroll-behavior: auto !important; }
-      .hero-card { animation: none !important; }
-      .social-link { animation: none !important; }
-      .reveal { transition: none !important; }
-      .hero-slider-main img { transition: none !important; }
+      .backtop { right: 12px; bottom: 82px; }
+      .toast-wrap { right: 12px; bottom: 12px; }
     }
   </style>
 </head>
 
 <body class="page">
 
-  <!-- JS UI: progress + toast + back top -->
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-  <button class="back-top" id="backTop" type="button" aria-label="Yukarı çık">
+  <!-- JS: Scroll Progress + Cursor glow + Toasts + BackTop + Kbd Hint -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+  <div class="toast-wrap" id="toastWrap" aria-hidden="true"></div>
+  <button class="backtop" id="backTop" type="button" aria-label="Yukarı çık">
     <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
   </button>
-  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div class="kbd-hint" id="kbdHint">Kısayollar: <b>G</b> (Galeriyi aç) · <b>/</b> (İletişime git) · <b>ESC</b> (Kapat)</div>
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
@@ -1311,78 +1480,40 @@
   <div class="social-bar" id="socialBar">
     <button class="social-close" id="socialClose" title="Küçült / Aç" aria-label="Sosyal bağlantı çubuğunu küçült / aç">×</button>
 
-    <a class="social-link phone"
-       href="tel:+905368467073"
-       title="Telefon"
-       aria-label="Telefon"
-       data-label="Telefon">
+    <a class="social-link phone" href="tel:+905368467073" title="Telefon" aria-label="Telefon" data-label="Telefon">
       <i class="fa-solid fa-phone" aria-hidden="true"></i>
     </a>
 
-    <a class="social-link whatsapp"
-       href="https://wa.me/905368467073"
-       target="_blank"
-       rel="noopener"
-       title="WhatsApp"
-       aria-label="WhatsApp"
-       data-label="WhatsApp">
+    <a class="social-link whatsapp" href="https://wa.me/905368467073" target="_blank" title="WhatsApp" aria-label="WhatsApp" data-label="WhatsApp">
       <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <a class="social-link instagram"
-       href="https://www.instagram.com/stawa_34?igsh=MWN6YzVvdjVhb250dw%3D%3D&utm_source=qr"
-       target="_blank"
-       rel="noopener"
-       title="Instagram"
-       aria-label="Instagram sayfamız"
-       data-label="Instagram">
+    <a class="social-link instagram" href="https://www.instagram.com/stawa_34?igsh=MWN6YzVvdjVhb250dw%3D%3D&utm_source=qr" target="_blank" title="Instagram" aria-label="Instagram sayfamız" data-label="Instagram">
       <i class="fa-brands fa-instagram" aria-hidden="true"></i>
     </a>
 
-    <a class="social-link facebook"
-       href="https://www.facebook.com/share/1aQLVRTqcC/?mibextid=wwXIfr"
-       target="_blank"
-       rel="noopener"
-       title="Facebook"
-       aria-label="Facebook sayfamız"
-       data-label="Facebook">
+    <a class="social-link facebook" href="https://www.facebook.com/share/1aQLVRTqcC/?mibextid=wwXIfr" target="_blank" title="Facebook" aria-label="Facebook sayfamız" data-label="Facebook">
       <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
     </a>
 
-    <a class="social-link telegram"
-       href="https://t.me/+905368467073"
-       target="_blank"
-       rel="noopener"
-       title="Telegram"
-       aria-label="Telegram Kanalı"
-       data-label="Telegram">
+    <a class="social-link telegram" href="https://t.me/+905368467073" target="_blank" title="Telegram" aria-label="Telegram Kanalı" data-label="Telegram">
       <i class="fa-brands fa-telegram" aria-hidden="true"></i>
     </a>
 
-    <a class="social-link tiktok"
-       href="https://www.tiktok.com/@stawa_34?_r=1&_t=ZS-91yTDhXgVxR"
-       target="_blank"
-       rel="noopener"
-       title="TikTok"
-       aria-label="TikTok sayfamız"
-       data-label="TikTok">
+    <a class="social-link tiktok" href="https://www.tiktok.com/@stawa_34?_r=1&_t=ZS-91yTDhXgVxR" target="_blank" title="TikTok" aria-label="TikTok sayfamız" data-label="TikTok">
       <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
     </a>
 
-    <a class="social-link mail"
-       href="mailto:stawa.3434@gmail.com?subject=STAWA%20Wholesale%20Inquiry"
-       title="Mail"
-       aria-label="Mail"
-       data-label="Mail">
+    <a class="social-link mail" href="mailto:stawa.3434@gmail.com?subject=STAWA%20Wholesale%20Inquiry" title="Mail" aria-label="Mail" data-label="Mail">
       <i class="fa-solid fa-envelope" aria-hidden="true"></i>
     </a>
   </div>
 
-  <header id="siteHeader">
+  <header>
     <div class="header-inner">
       <div class="brand">
         <div class="brand-logo">
-          <img src="stawa_logo_transparent.png" alt="STAWA Logo">
+          <img src="stawa_logo_transparent.png" alt="STAWA Logo" loading="eager" decoding="async">
         </div>
         <div>
           <div class="brand-text-sub" data-i18n="brand_sub">
@@ -1391,7 +1522,7 @@
         </div>
       </div>
 
-      <nav id="mainNav">
+      <nav aria-label="Site navigation">
         <a href="#home" data-i18n="nav_home">Ana Sayfa</a>
         <a href="#about" data-i18n="nav_about">Hakkımızda</a>
         <a href="#contact" data-i18n="nav_contact">İletişim</a>
@@ -1399,7 +1530,7 @@
         <!-- DİL TEK TUŞ + MENÜ -->
         <div class="lang-switch">
           <button type="button" class="lang-toggle" id="langToggle">TR</button>
-          <div class="lang-menu" id="langMenu">
+          <div class="lang-menu" id="langMenu" role="menu" aria-label="Language menu">
             <button type="button" class="lang-btn active" data-lang="tr">TR</button>
             <button type="button" class="lang-btn" data-lang="en">EN</button>
             <button type="button" class="lang-btn" data-lang="ru">RU</button>
@@ -1412,7 +1543,7 @@
 
   <main class="container" id="home">
     <!-- HERO -->
-    <section class="hero" id="hero">
+    <section class="hero" aria-label="Hero section">
       <div class="left">
         <div class="kicker">
           <span class="kicker-dot"></span>
@@ -1427,7 +1558,7 @@
           STAWA, 2012'den beri İstanbul Laleli’de kendi imalathanesinde ağırlıklı olarak kadın pantolonu üreten, aynı zamanda talebe göre ceket, takım, etek gibi farklı kadın giyim ürünlerinde de üretim yapabilen bir toptan ihracat markasıdır. Üretimin bize ait olması; hızlı imalatı, uygun fiyatı ve esnek üretimi mümkün kılar.
         </p>
 
-        <div class="hero-tags">
+        <div class="hero-tags" id="heroTags">
           <div class="pill-tag" data-i18n="tag_wholesale">Sadece Toptan Satış</div>
           <div class="pill-tag" data-i18n="tag_export">İhracat Odaklı Üretim</div>
           <div class="pill-tag" data-i18n="tag_focus">Ağırlıklı Kadın Pantolon Üretimi</div>
@@ -1437,7 +1568,6 @@
           <a class="cta cta-primary" href="#contact" data-i18n="cta_primary">Teklif Talep Et</a>
           <a class="cta cta-ghost" href="#about" data-i18n="cta_secondary">Markayı Tanı</a>
         </div>
-
         <div class="hero-cta-note" data-i18n="cta_note">
           WhatsApp veya e-posta ile model, adet ve teslim süresi hakkında hızlı dönüş.
         </div>
@@ -1445,7 +1575,7 @@
 
       <div class="hero-card-wrap">
         <div class="hero-card-glow"></div>
-        <div class="hero-card">
+        <div class="hero-card" id="heroCard">
           <div class="hero-card-header">
             <div class="collection-title" data-i18n="collection_title">Koleksiyon · Öne Çıkan</div>
             <div class="collection-badge" data-i18n="collection_badge">FW · ESSENTIAL</div>
@@ -1455,9 +1585,9 @@
           </div>
 
           <!-- FOTOĞRAF SLIDER -->
-          <div class="hero-slider" id="heroSlider" aria-label="STAWA slider">
-            <div class="hero-slider-main" id="heroSliderMain" aria-label="Slider ana görsel">
-              <img id="heroSliderImage" src="a.jpg" alt="STAWA Collection Look 1" loading="eager">
+          <div class="hero-slider" id="heroSlider" aria-label="Collection slider">
+            <div class="hero-slider-main" id="heroSliderMain" role="button" tabindex="0" aria-label="Görseli büyütmek için tıkla">
+              <img id="heroSliderImage" src="a.jpg" alt="STAWA Collection Look 1" loading="eager" decoding="async">
               <div class="hero-slider-overlay"></div>
               <div class="hero-slider-label">
                 <i class="fa-solid fa-images" aria-hidden="true"></i>
@@ -1472,12 +1602,11 @@
                 </button>
               </div>
             </div>
-
             <div class="hero-slider-dots" id="heroSliderDots" aria-label="Slider navigation">
-              <button type="button" class="hero-slider-dot active" data-index="0" aria-label="1"></button>
-              <button type="button" class="hero-slider-dot" data-index="1" aria-label="2"></button>
-              <button type="button" class="hero-slider-dot" data-index="2" aria-label="3"></button>
-              <button type="button" class="hero-slider-dot" data-index="3" aria-label="4"></button>
+              <button type="button" class="hero-slider-dot active" data-index="0" aria-label="1. görsel"></button>
+              <button type="button" class="hero-slider-dot" data-index="1" aria-label="2. görsel"></button>
+              <button type="button" class="hero-slider-dot" data-index="2" aria-label="3. görsel"></button>
+              <button type="button" class="hero-slider-dot" data-index="3" aria-label="4. görsel"></button>
             </div>
           </div>
         </div>
@@ -1485,7 +1614,7 @@
     </section>
 
     <!-- HAKKIMIZDA -->
-    <section id="about" class="section" aria-label="About">
+    <section id="about" class="section" aria-label="About section">
       <div class="section-inner reveal">
         <div class="section-header">
           <h2 data-i18n="about_title">Hakkımızda</h2>
@@ -1498,7 +1627,7 @@
               STAWA, İstanbul Laleli’de kendi üretim tesisine sahip olan butik bir kadın giyim üreticisidir. Ana uzmanlığımız kadın pantolonu olsa da, koleksiyonlarımıza ve müşteri talebine bağlı olarak ceket, takım, etek ve farklı kadın giyim ürünlerini de imal edebiliyoruz. Bu yapı hızlı teslim, esnek adet ve uygun fiyat–kalite dengesini sağlar.
             </p>
 
-            <div class="about-facts">
+            <div class="about-facts" id="aboutFacts">
               <div class="fact-card">
                 <div class="fact-title" data-i18n="fact1_title">12+ Yıllık Deneyim</div>
                 <div class="fact-sub" data-i18n="fact1_sub">2012'den beri kesintisiz üretim ve ihracat tecrübesi.</div>
@@ -1538,7 +1667,7 @@
     </section>
 
     <!-- İLETİŞİM BLOĞU -->
-    <section id="contact" class="section" aria-label="Contact">
+    <section id="contact" class="section" aria-label="Contact section">
       <div class="contact-layout reveal">
         <div>
           <div class="contact-card">
@@ -1567,22 +1696,33 @@
           <div class="contact-card">
             <div class="contact-card-title" data-i18n="contact_form_title">Mail ile Teklif Talebi</div>
 
-            <!-- mailto action kalabilir ama JS ile intercept edeceğiz -->
             <form class="contact-form" id="quoteForm"
                   action="mailto:stawa.3434@gmail.com"
                   method="POST"
                   enctype="text/plain">
               <label data-i18n="form_name_label">Firma / Alıcı Adı</label>
-              <input id="fName" type="text" name="Firma / Company" data-i18n-placeholder="form_name_ph" placeholder="Firma veya kişi adı" autocomplete="name" />
+              <input type="text" name="Firma / Company" id="fName"
+                     data-i18n-placeholder="form_name_ph"
+                     placeholder="Firma veya kişi adı" autocomplete="organization" />
 
               <label data-i18n="form_email_label">E-posta</label>
-              <input id="fEmail" type="email" name="Email" data-i18n-placeholder="form_email_ph" placeholder="mail@ornek.com" autocomplete="email" />
+              <input type="email" name="Email" id="fEmail"
+                     data-i18n-placeholder="form_email_ph"
+                     placeholder="mail@ornek.com" autocomplete="email" />
 
               <label data-i18n="form_message_label">Mesaj / Sipariş Özeti</label>
-              <textarea id="fMsg" name="Mesaj" data-i18n-placeholder="form_message_ph" placeholder="Ürün türü, adet, hedef teslim tarihi vb."></textarea>
+              <textarea name="Mesaj" id="fMsg"
+                        data-i18n-placeholder="form_message_ph"
+                        placeholder="Ürün türü, adet, hedef teslim tarihi vb."></textarea>
 
               <div class="contact-actions">
-                <button class="cta cta-primary" type="submit" data-i18n="form_send">Gönder</button>
+                <button class="cta cta-primary" type="submit" id="sendBtn" data-i18n="form_send">Gönder</button>
+                <button class="mini-btn" type="button" id="copyMsgBtn" title="Mesajı panoya kopyala">
+                  <i class="fa-regular fa-copy" aria-hidden="true"></i> Kopyala
+                </button>
+                <button class="mini-btn" type="button" id="waMsgBtn" title="WhatsApp ile hazır mesaj gönder">
+                  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp
+                </button>
               </div>
             </form>
 
@@ -1607,7 +1747,7 @@
       </div>
 
       <div class="bottom-contact-grid" id="bottomContactGrid">
-        <div class="bottom-contact-row" data-copy="0536 846 70 73" data-toast="Telefon kopyalandı">
+        <div class="bottom-contact-row" data-copy="0536 846 70 73" data-copy-label="Telefon">
           <div class="bottom-contact-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></div>
           <div class="bottom-contact-text">
             <div class="bottom-contact-label" data-i18n="label_phone">Telefon / WhatsApp</div>
@@ -1615,7 +1755,7 @@
           </div>
         </div>
 
-        <div class="bottom-contact-row" data-copy="stawa.3434@gmail.com" data-toast="E-posta kopyalandı">
+        <div class="bottom-contact-row" data-copy="stawa.3434@gmail.com" data-copy-label="E-posta">
           <div class="bottom-contact-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div>
           <div class="bottom-contact-text">
             <div class="bottom-contact-label" data-i18n="label_email">Mail</div>
@@ -1623,13 +1763,11 @@
           </div>
         </div>
 
-        <div class="bottom-contact-row" data-copy="İstanbul – Fatih, Laleli, Barcelona İş Merkezi No: 9" data-toast="Adres kopyalandı">
+        <div class="bottom-contact-row" data-copy="İstanbul – Fatih, Laleli, Barcelona İş Merkezi No: 9" data-copy-label="Adres">
           <div class="bottom-contact-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></div>
           <div class="bottom-contact-text">
             <div class="bottom-contact-label" data-i18n="label_address">Adres</div>
-            <div class="bottom-contact-value">
-              İstanbul – Fatih, Laleli, Barcelona İş Merkezi No: 9
-            </div>
+            <div class="bottom-contact-value">İstanbul – Fatih, Laleli, Barcelona İş Merkezi No: 9</div>
           </div>
         </div>
       </div>
@@ -1637,18 +1775,26 @@
   </section>
 
   <footer>
-    <span data-i18n="footer_text" id="footerText">
+    <span data-i18n="footer_text">
       © STAWA — 2012 - Günümüz · İstanbul Laleli · Kadın Pantolonu & Kadın Giyim Üretimi · Uygun Fiyat & Kalite
     </span>
   </footer>
 
   <script>
-  (() => {
-    "use strict";
+    /***********************
+     *  JS MANYAĞI PACK ✅
+     *  - Language persistence (localStorage)
+     *  - Smooth anchor with offset + active nav
+     *  - Scroll progress bar + back-to-top
+     *  - Cursor glow (desktop) + reduced motion friendly
+     *  - Slider upgrades: autoplay pause on hover, swipe, keyboard, preloading, URL hash deep-link
+     *  - Lightbox: ESC close, arrow navigation, pinch-ish zoom toggle
+     *  - Reveal + counter-like “pulse” on facts
+     *  - Form: validation, mailto builder, copy-to-clipboard, whatsapp message compose
+     *  - Copy click on bottom contact rows
+     *  - Tiny toasts + keyboard shortcuts
+     ************************/
 
-    /* =========================
-      I18N (Senin metinlerin)
-    ========================== */
     const i18n = {
       tr: {
         brand_sub: "Modern Kadın Pantolonlarında Minimal Zarafet",
@@ -1701,7 +1847,6 @@
         form_email_ph: "mail@ornek.com",
         form_message_ph: "Ürün türü, adet, hedef teslim tarihi vb.",
         form_send: "Gönder",
-        form_mailto: "Mail Aç",
         form_msg_hint: "Not: “Gönder” butonu varsayılan mail uygulamanız üzerinden mesaj oluşturacaktır.",
         bottom_contact_title: "İletişim Bilgileri",
         bottom_contact_kicker: "Doğrudan İletişim",
@@ -1759,7 +1904,6 @@
         form_email_ph: "mail@example.com",
         form_message_ph: "Product type, quantity, target delivery date, etc.",
         form_send: "Send",
-        form_mailto: "Open Mail",
         form_msg_hint: "Note: “Send” will open your default mail application with the form content.",
         bottom_contact_title: "Contact Information",
         bottom_contact_kicker: "Direct Contact",
@@ -1817,7 +1961,6 @@
         form_email_ph: "mail@example.com",
         form_message_ph: "Тип изделия, тираж, желаемые сроки и т.д.",
         form_send: "Отправить",
-        form_mailto: "Открыть почту",
         form_msg_hint: "Примечание: кнопка «Отправить» откроет ваше почтовое приложение с заполненным письмом.",
         bottom_contact_title: "Контактная информация",
         bottom_contact_kicker: "Прямой контакт",
@@ -1875,7 +2018,6 @@
         form_email_ph: "mail@example.com",
         form_message_ph: "نوع المنتج، الكمية، تاريخ التسليم المستهدف، إلخ.",
         form_send: "إرسال",
-        form_mailto: "فتح البريد",
         form_msg_hint: "ملاحظة: زر \"إرسال\" سيفتح تطبيق البريد الافتراضي لديكم مع مضمون النموذج.",
         bottom_contact_title: "معلومات الاتصال",
         bottom_contact_kicker: "اتصال مباشر",
@@ -1884,59 +2026,53 @@
       }
     };
 
-    /* =========================
-      Helpers (throttle/debounce)
-    ========================== */
-    const $  = (sel, root=document) => root.querySelector(sel);
     const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+    const $ = (sel, root=document) => root.querySelector(sel);
 
-    const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
-    const prefersReducedMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    const throttle = (fn, wait=100) => {
-      let last = 0, t = null;
-      return (...args) => {
-        const now = performance.now();
-        const remaining = wait - (now - last);
-        if (remaining <= 0) {
-          last = now;
-          fn(...args);
-        } else if (!t) {
-          t = setTimeout(() => {
-            t = null;
-            last = performance.now();
-            fn(...args);
-          }, remaining);
-        }
-      };
+    const storage = {
+      get(key, fallback=null) {
+        try { const v = localStorage.getItem(key); return v ?? fallback; } catch { return fallback; }
+      },
+      set(key, val) { try { localStorage.setItem(key, String(val)); } catch {} },
+      del(key) { try { localStorage.removeItem(key); } catch {} }
     };
 
-    const debounce = (fn, wait=150) => {
-      let t = null;
-      return (...args) => {
-        clearTimeout(t);
-        t = setTimeout(() => fn(...args), wait);
-      };
+    const state = {
+      lang: storage.get("stawa_lang", "tr"),
+      socialCollapsed: storage.get("stawa_social_collapsed", "0") === "1",
+      reduceMotion: window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches
     };
 
-    /* =========================
-      Toast
-    ========================== */
-    const toastEl = $("#toast");
-    let toastTimer = null;
-    function toast(message, icon="fa-solid fa-circle-check") {
-      if (!toastEl) return;
-      toastEl.innerHTML = `<i class="${icon}" aria-hidden="true"></i><span>${message}</span>`;
-      toastEl.classList.add("visible");
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toastEl.classList.remove("visible"), 1800);
+    function toast(title, sub="", icon="fa-sparkles", ms=2200) {
+      const wrap = $("#toastWrap");
+      if (!wrap) return;
+
+      const el = document.createElement("div");
+      el.className = "toast";
+      el.innerHTML = `
+        <i class="fa-solid ${icon}" aria-hidden="true"></i>
+        <div>
+          <div class="t-title">${escapeHtml(title)}</div>
+          <div class="t-sub">${escapeHtml(sub)}</div>
+        </div>
+      `;
+      wrap.appendChild(el);
+
+      requestAnimationFrame(() => el.classList.add("show"));
+
+      window.setTimeout(() => {
+        el.classList.remove("show");
+        window.setTimeout(() => el.remove(), 220);
+      }, ms);
     }
 
-    /* =========================
-      Language
-    ========================== */
-    const LANG_KEY = "stawa_lang";
-    function setLanguage(lang, {silent=false} = {}) {
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, (m) => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+      }[m]));
+    }
+
+    function setLanguage(lang) {
       const dict = i18n[lang] || i18n.tr;
 
       $$("[data-i18n]").forEach(el => {
@@ -1949,7 +2085,9 @@
         if (dict[key]) el.placeholder = dict[key];
       });
 
-      $$(".lang-btn").forEach(btn => btn.classList.toggle("active", btn.getAttribute("data-lang") === lang));
+      $$(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+      });
 
       const toggle = $("#langToggle");
       if (toggle) toggle.textContent = lang.toUpperCase();
@@ -1957,19 +2095,368 @@
       document.documentElement.lang = lang;
       document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
 
-      try { localStorage.setItem(LANG_KEY, lang); } catch {}
-      if (!silent) toast(`Language: ${lang.toUpperCase()}`, "fa-solid fa-language");
+      state.lang = lang;
+      storage.set("stawa_lang", lang);
+      toast("Dil değiştirildi", lang.toUpperCase(), "fa-language", 1400);
     }
 
-    function initLanguageMenu() {
+    function smoothScrollToId(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const header = document.querySelector("header");
+      const offset = (header?.offsetHeight || 0) + 10;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: state.reduceMotion ? "auto" : "smooth" });
+    }
+
+    function initNavActiveSpy() {
+      const navLinks = $$("nav a[href^='#']");
+      const sections = navLinks
+        .map(a => document.querySelector(a.getAttribute("href")))
+        .filter(Boolean);
+
+      const map = new Map();
+      navLinks.forEach(a => map.set(a.getAttribute("href"), a));
+
+      const obs = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!visible) return;
+
+        const id = "#" + visible.target.id;
+        navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === id));
+      }, { threshold: [0.25, 0.45, 0.65] });
+
+      sections.forEach(s => obs.observe(s));
+
+      // Smooth anchor click with header offset
+      navLinks.forEach(a => {
+        a.addEventListener("click", (e) => {
+          const href = a.getAttribute("href");
+          if (!href || !href.startsWith("#")) return;
+          e.preventDefault();
+          history.pushState(null, "", href);
+          smoothScrollToId(href.replace("#",""));
+        });
+      });
+
+      // If opened with hash
+      if (location.hash && document.querySelector(location.hash)) {
+        setTimeout(() => smoothScrollToId(location.hash.replace("#","")), 50);
+      }
+    }
+
+    function initScrollProgressAndBackTop() {
+      const bar = $("#scrollProgress");
+      const btn = $("#backTop");
+
+      const onScroll = () => {
+        const doc = document.documentElement;
+        const max = (doc.scrollHeight - doc.clientHeight) || 1;
+        const p = Math.min(1, Math.max(0, window.scrollY / max));
+        if (bar) bar.style.width = (p * 100).toFixed(2) + "%";
+        if (btn) btn.classList.toggle("show", window.scrollY > 600);
+      };
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      if (btn) {
+        btn.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: state.reduceMotion ? "auto" : "smooth" });
+        });
+      }
+    }
+
+    function initCursorGlow() {
+      const glow = $("#cursorGlow");
+      if (!glow) return;
+
+      const isFinePointer = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
+      if (!isFinePointer || state.reduceMotion) return;
+
+      glow.style.opacity = "1";
+      let raf = 0;
+      let targetX = 0, targetY = 0;
+      let x = 0, y = 0;
+
+      const onMove = (e) => {
+        targetX = e.clientX - 110;
+        targetY = e.clientY - 110;
+        if (!raf) raf = requestAnimationFrame(tick);
+      };
+
+      const tick = () => {
+        raf = 0;
+        x += (targetX - x) * 0.18;
+        y += (targetY - y) * 0.18;
+        glow.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        if (Math.abs(targetX - x) + Math.abs(targetY - y) > 0.5) raf = requestAnimationFrame(tick);
+      };
+
+      window.addEventListener("mousemove", onMove, { passive: true });
+      window.addEventListener("mouseleave", () => glow.style.opacity = "0");
+      window.addEventListener("mouseenter", () => glow.style.opacity = "1");
+    }
+
+    function initReveal() {
+      const revealElements = $$(".reveal");
+      if (!revealElements.length) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.15 });
+
+      revealElements.forEach(el => observer.observe(el));
+    }
+
+    function initHeroCardTilt() {
+      const card = $("#heroCard");
+      if (!card || state.reduceMotion) return;
+
+      const isFinePointer = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
+      if (!isFinePointer) return;
+
+      const max = 8; // deg
+      const enter = () => card.style.transition = "transform 0.12s ease-out";
+      const leave = () => {
+        card.style.transition = "transform 0.35s ease-out";
+        card.style.transform = "translateZ(0) rotateX(0deg) rotateY(0deg)";
+      };
+
+      const move = (e) => {
+        const r = card.getBoundingClientRect();
+        const cx = r.left + r.width/2;
+        const cy = r.top + r.height/2;
+        const dx = (e.clientX - cx) / (r.width/2);
+        const dy = (e.clientY - cy) / (r.height/2);
+
+        const rotY = Math.max(-1, Math.min(1, dx)) * max;
+        const rotX = -Math.max(-1, Math.min(1, dy)) * max;
+
+        card.style.transform = `translateZ(0) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+      };
+
+      card.addEventListener("mouseenter", enter);
+      card.addEventListener("mouseleave", leave);
+      card.addEventListener("mousemove", move);
+    }
+
+    function initSlider() {
+      const images = ["a.jpg", "b.jpg", "c.JPG", "d.jpg"];
+      const labels = ["Look 1", "Look 2", "Look 3", "Look 4"];
+      let currentIndex = 0;
+
+      const imgEl = $("#heroSliderImage");
+      const dotsContainer = $("#heroSliderDots");
+      const dots = dotsContainer ? $$(".hero-slider-dot", dotsContainer) : [];
+      const prevBtn = $("#prevSlide");
+      const nextBtn = $("#nextSlide");
+      const main = $("#heroSliderMain");
+      const slider = $("#heroSlider");
+
+      const lightbox = $("#lightbox");
+      const lightboxImage = $("#lightboxImage");
+      const lightboxClose = $("#lightboxClose");
+
+      let timer = 0;
+      const intervalMs = 6000;
+      let isPaused = false;
+
+      // Preload images (idle)
+      const preload = () => {
+        images.forEach(src => {
+          const im = new Image();
+          im.decoding = "async";
+          im.src = src;
+        });
+      };
+
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(preload, { timeout: 1500 });
+      } else {
+        setTimeout(preload, 300);
+      }
+
+      function setAlt() {
+        if (!imgEl) return;
+        imgEl.alt = `STAWA Collection ${labels[currentIndex] || ("Look " + (currentIndex + 1))}`;
+      }
+
+      function showSlide(index, { soft=false } = {}) {
+        if (!imgEl) return;
+
+        currentIndex = (index + images.length) % images.length;
+
+        if (soft) imgEl.style.opacity = "0.3";
+        imgEl.src = images[currentIndex];
+        setAlt();
+
+        dots.forEach((dot, i) => dot.classList.toggle("active", i === currentIndex));
+
+        // Update hash for deep-link (optional)
+        // history.replaceState(null, "", `#home?slide=${currentIndex}`);
+
+        if (soft) {
+          setTimeout(() => imgEl.style.opacity = "1", 120);
+        }
+      }
+
+      function next() { showSlide(currentIndex + 1, { soft:true }); }
+      function prev() { showSlide(currentIndex - 1, { soft:true }); }
+
+      function startAuto() {
+        stopAuto();
+        if (state.reduceMotion) return; // respect reduced-motion
+        timer = setInterval(() => {
+          if (!isPaused) next();
+        }, intervalMs);
+      }
+
+      function stopAuto() {
+        if (timer) clearInterval(timer);
+        timer = 0;
+      }
+
+      if (prevBtn) prevBtn.addEventListener("click", (e) => { e.stopPropagation(); prev(); toast("Önceki", "Görsel değiştirildi", "fa-chevron-left", 900); });
+      if (nextBtn) nextBtn.addEventListener("click", (e) => { e.stopPropagation(); next(); toast("Sonraki", "Görsel değiştirildi", "fa-chevron-right", 900); });
+
+      dots.forEach(dot => {
+        dot.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const idx = parseInt(dot.getAttribute("data-index"), 10);
+          showSlide(idx, { soft:true });
+        });
+      });
+
+      // Pause on hover (desktop)
+      if (slider) {
+        slider.addEventListener("mouseenter", () => { isPaused = true; });
+        slider.addEventListener("mouseleave", () => { isPaused = false; });
+      }
+
+      // Swipe support
+      if (slider) {
+        let startX = 0;
+        let dx = 0;
+        let tracking = false;
+
+        const onStart = (e) => {
+          tracking = true;
+          dx = 0;
+          startX = (e.touches ? e.touches[0].clientX : e.clientX);
+        };
+        const onMove = (e) => {
+          if (!tracking) return;
+          const x = (e.touches ? e.touches[0].clientX : e.clientX);
+          dx = x - startX;
+        };
+        const onEnd = () => {
+          if (!tracking) return;
+          tracking = false;
+          if (Math.abs(dx) > 40) {
+            dx < 0 ? next() : prev();
+          }
+        };
+
+        slider.addEventListener("touchstart", onStart, { passive: true });
+        slider.addEventListener("touchmove", onMove, { passive: true });
+        slider.addEventListener("touchend", onEnd, { passive: true });
+
+        slider.addEventListener("mousedown", onStart);
+        window.addEventListener("mousemove", onMove);
+        window.addEventListener("mouseup", onEnd);
+      }
+
+      // Lightbox open
+      function openLightbox() {
+        if (!lightbox || !lightboxImage) return;
+        lightboxImage.src = images[currentIndex];
+        lightbox.classList.add("visible");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        toast("Galeri", "ESC ile kapat · ← → ile değiştir", "fa-images", 1600);
+      }
+
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove("visible");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        const img = $("#lightboxImage");
+        if (img) img.classList.remove("zoomed");
+        if (img) img.style.transform = "";
+      }
+
+      if (main) {
+        main.addEventListener("click", openLightbox);
+        main.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLightbox(); }
+        });
+      }
+
+      if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+      if (lightbox) {
+        lightbox.addEventListener("click", (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+      }
+
+      // Lightbox zoom toggle
+      if (lightboxImage) {
+        lightboxImage.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const zoomed = lightboxImage.classList.toggle("zoomed");
+          if (zoomed) {
+            lightboxImage.style.transform = "scale(1.6)";
+            toast("Zoom", "Tekrar tıkla: normal", "fa-magnifying-glass-plus", 900);
+          } else {
+            lightboxImage.style.transform = "";
+            toast("Zoom", "Normal", "fa-magnifying-glass-minus", 800);
+          }
+        });
+      }
+
+      // Keyboard control
+      document.addEventListener("keydown", (e) => {
+        if (lightbox && lightbox.classList.contains("visible")) {
+          if (e.key === "Escape") closeLightbox();
+          if (e.key === "ArrowRight") { next(); if (lightboxImage) lightboxImage.src = images[currentIndex]; }
+          if (e.key === "ArrowLeft") { prev(); if (lightboxImage) lightboxImage.src = images[currentIndex]; }
+        } else {
+          if (e.key === "ArrowRight") next();
+          if (e.key === "ArrowLeft") prev();
+        }
+      });
+
+      // Update lightbox image when slide changes while open
+      const syncLightbox = () => {
+        if (lightbox && lightbox.classList.contains("visible") && lightboxImage) {
+          lightboxImage.src = images[currentIndex];
+          lightboxImage.classList.remove("zoomed");
+          lightboxImage.style.transform = "";
+        }
+      };
+
+      // wrap showSlide
+      const _showSlide = showSlide;
+      showSlide = (idx, opts) => { _showSlide(idx, opts); syncLightbox(); };
+
+      showSlide(0);
+      startAuto();
+
+      return { openLightbox, closeLightbox, next, prev, showSlide };
+    }
+
+    function initLangMenu() {
       const langMenu = $("#langMenu");
       const langToggle = $("#langToggle");
-
-      const saved = (() => {
-        try { return localStorage.getItem(LANG_KEY); } catch { return null; }
-      })();
-
-      setLanguage(saved || "tr", {silent:true});
 
       if (langToggle && langMenu) {
         langToggle.addEventListener("click", (e) => {
@@ -1977,7 +2464,7 @@
           langMenu.classList.toggle("open");
         });
 
-        document.addEventListener("click", () => langMenu.classList.remove("open"), {passive:true});
+        document.addEventListener("click", () => langMenu.classList.remove("open"));
         langMenu.addEventListener("click", (e) => e.stopPropagation());
       }
 
@@ -1990,395 +2477,46 @@
       });
     }
 
-    /* =========================
-      Smooth Scroll + Offset
-    ========================== */
-    function getHeaderOffset() {
-      const header = $("#siteHeader");
-      if (!header) return 0;
-      const rect = header.getBoundingClientRect();
-      return Math.ceil(rect.height + 10);
-    }
-
-    function smoothScrollToHash(hash) {
-      const target = $(hash);
-      if (!target) return;
-      const y = window.scrollY + target.getBoundingClientRect().top - getHeaderOffset();
-      window.scrollTo({ top: Math.max(0, y), behavior: prefersReducedMotion() ? "auto" : "smooth" });
-    }
-
-    function initNavSmoothScroll() {
-      const nav = $("#mainNav");
-      if (!nav) return;
-      nav.addEventListener("click", (e) => {
-        const a = e.target.closest("a[href^='#']");
-        if (!a) return;
-        const href = a.getAttribute("href");
-        if (!href || href.length < 2) return;
-        e.preventDefault();
-        history.pushState(null, "", href);
-        smoothScrollToHash(href);
-      });
-    }
-
-    /* =========================
-      ScrollSpy (active nav)
-    ========================== */
-    function initScrollSpy() {
-      const links = $$("#mainNav a[href^='#']");
-      if (!links.length) return;
-
-      const sections = links
-        .map(a => $(a.getAttribute("href")))
-        .filter(Boolean);
-
-      const setActive = (id) => {
-        links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === id));
-      };
-
-      const obs = new IntersectionObserver((entries) => {
-        // En çok görüneni seç
-        const visible = entries
-          .filter(en => en.isIntersecting)
-          .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible && visible.target && visible.target.id) {
-          setActive("#" + visible.target.id);
-        }
-      }, {
-        root: null,
-        rootMargin: `-${getHeaderOffset()}px 0px -55% 0px`,
-        threshold: [0.2, 0.35, 0.5, 0.7]
-      });
-
-      sections.forEach(sec => obs.observe(sec));
-
-      // İlk durum
-      setActive("#home");
-    }
-
-    /* =========================
-      Scroll Progress + BackTop
-    ========================== */
-    function initScrollUI() {
-      const progress = $("#scrollProgress");
-      const backTop = $("#backTop");
-
-      const onScroll = throttle(() => {
-        const doc = document.documentElement;
-        const scrollTop = window.scrollY || doc.scrollTop;
-        const height = (doc.scrollHeight - doc.clientHeight) || 1;
-        const pct = clamp((scrollTop / height) * 100, 0, 100);
-
-        if (progress) progress.style.width = pct.toFixed(2) + "%";
-
-        if (backTop) {
-          const show = scrollTop > 520;
-          backTop.classList.toggle("visible", show);
-        }
-      }, 50);
-
-      window.addEventListener("scroll", onScroll, {passive:true});
-      window.addEventListener("resize", debounce(onScroll, 120), {passive:true});
-      onScroll();
-
-      if (backTop) {
-        backTop.addEventListener("click", () => {
-          window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
-        });
-      }
-    }
-
-    /* =========================
-      Social bar collapse
-    ========================== */
     function initSocialBar() {
       const socialBar = $("#socialBar");
       const socialClose = $("#socialClose");
+
       if (!socialBar || !socialClose) return;
 
-      const KEY = "stawa_social_collapsed";
-      const saved = (() => {
-        try { return localStorage.getItem(KEY); } catch { return null; }
-      })();
-
-      if (saved === "1") socialBar.classList.add("collapsed");
+      // restore collapse
+      if (state.socialCollapsed) socialBar.classList.add("collapsed");
 
       socialClose.addEventListener("click", () => {
         socialBar.classList.toggle("collapsed");
-        const isCollapsed = socialBar.classList.contains("collapsed");
-        try { localStorage.setItem(KEY, isCollapsed ? "1" : "0"); } catch {}
+        const collapsed = socialBar.classList.contains("collapsed");
+        storage.set("stawa_social_collapsed", collapsed ? "1" : "0");
+        toast(collapsed ? "Sosyal bar küçültüldü" : "Sosyal bar açıldı", "", "fa-share-nodes", 1100);
       });
     }
 
-    /* =========================
-      Reveal on scroll
-    ========================== */
-    function initReveal() {
-      const revealElements = $$('.reveal');
-      if (!revealElements.length) return;
-
-      if (prefersReducedMotion()) {
-        revealElements.forEach(el => el.classList.add("visible"));
-        return;
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-
-      revealElements.forEach(el => observer.observe(el));
-    }
-
-    /* =========================
-      Slider + Lightbox (MAX JS)
-    ========================== */
-    function initSlider() {
-      const images = ["a.jpg", "b.jpg", "c.JPG", "d.jpg"];
-      let currentIndex = 0;
-
-      const imgEl = $("#heroSliderImage");
-      const dotsContainer = $("#heroSliderDots");
-      const dots = dotsContainer ? $$(".hero-slider-dot", dotsContainer) : [];
-      const prevBtn = $("#prevSlide");
-      const nextBtn = $("#nextSlide");
-      const main = $("#heroSliderMain");
-
-      const lightbox = $("#lightbox");
-      const lightboxImage = $("#lightboxImage");
-      const lightboxClose = $("#lightboxClose");
-
-      const sliderRoot = $("#heroSlider");
-
-      // Autoplay management
-      const AUTO_MS = 6000;
-      let autoTimer = null;
-      let isHover = false;
-      let isLightboxOpen = false;
-      let isSliderVisible = true;
-
-      // Swipe
-      let startX = 0;
-      let startY = 0;
-      let dragging = false;
-
-      function preload(src) {
-        const img = new Image();
-        img.decoding = "async";
-        img.loading = "eager";
-        img.src = src;
-      }
-
-      function showSlide(index, {announce=false} = {}) {
-        if (!imgEl) return;
-        currentIndex = (index + images.length) % images.length;
-
-        // küçük fade
-        imgEl.style.opacity = "0.4";
-        requestAnimationFrame(() => {
-          imgEl.src = images[currentIndex];
-          preload(images[(currentIndex + 1) % images.length]);
-          preload(images[(currentIndex - 1 + images.length) % images.length]);
-
-          setTimeout(() => imgEl.style.opacity = "1", 80);
-        });
-
-        dots.forEach((dot, i) => dot.classList.toggle("active", i === currentIndex));
-
-        if (announce) {
-          toast(`Slide ${currentIndex + 1}/${images.length}`, "fa-solid fa-images");
-        }
-      }
-
-      function next() { showSlide(currentIndex + 1); }
-      function prev() { showSlide(currentIndex - 1); }
-
-      function clearAutoplay() {
-        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
-      }
-
-      function startAutoplay() {
-        clearAutoplay();
-        if (prefersReducedMotion()) return;
-        if (isHover || isLightboxOpen || !isSliderVisible) return;
-
-        autoTimer = setInterval(() => {
-          showSlide(currentIndex + 1);
-        }, AUTO_MS);
-      }
-
-      // Buttons
-      if (prevBtn) prevBtn.addEventListener("click", (e) => { e.stopPropagation(); prev(); startAutoplay(); });
-      if (nextBtn) nextBtn.addEventListener("click", (e) => { e.stopPropagation(); next(); startAutoplay(); });
-
-      // Dots
-      dots.forEach(dot => {
-        dot.addEventListener("click", (e) => {
-          e.stopPropagation();
-          const idx = parseInt(dot.getAttribute("data-index"), 10);
-          if (!Number.isFinite(idx)) return;
-          showSlide(idx, {announce:true});
-          startAutoplay();
-        });
-      });
-
-      // Hover pause
-      if (sliderRoot) {
-        sliderRoot.addEventListener("mouseenter", () => { isHover = true; clearAutoplay(); });
-        sliderRoot.addEventListener("mouseleave", () => { isHover = false; startAutoplay(); });
-      }
-
-      // Visibility pause (IntersectionObserver)
-      if (sliderRoot) {
-        const vObs = new IntersectionObserver((entries) => {
-          const en = entries[0];
-          isSliderVisible = !!(en && en.isIntersecting);
-          if (!isSliderVisible) clearAutoplay();
-          else startAutoplay();
-        }, { threshold: 0.25 });
-        vObs.observe(sliderRoot);
-      }
-
-      // Swipe events
-      const onPointerDown = (e) => {
-        dragging = true;
-        startX = e.clientX;
-        startY = e.clientY;
-      };
-      const onPointerMove = (e) => {
-        if (!dragging) return;
-        // sadece yön ölçümü
-      };
-      const onPointerUp = (e) => {
-        if (!dragging) return;
-        dragging = false;
-
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
-
-        // yatay swipe
-        if (Math.abs(dx) > 45 && Math.abs(dy) < 60) {
-          if (dx < 0) next(); else prev();
-          startAutoplay();
-        }
-      };
-
-      if (sliderRoot) {
-        sliderRoot.addEventListener("pointerdown", onPointerDown, {passive:true});
-        sliderRoot.addEventListener("pointermove", onPointerMove, {passive:true});
-        sliderRoot.addEventListener("pointerup", onPointerUp, {passive:true});
-        sliderRoot.addEventListener("pointercancel", () => { dragging = false; }, {passive:true});
-      }
-
-      // Lightbox open
-      function lockScroll(lock) {
-        document.body.style.overflow = lock ? "hidden" : "";
-      }
-
-      function openLightbox() {
-        if (!lightbox || !lightboxImage) return;
-        isLightboxOpen = true;
-        clearAutoplay();
-        lightboxImage.src = images[currentIndex];
-        lightbox.classList.add("visible");
-        lightbox.setAttribute("aria-hidden", "false");
-        lockScroll(true);
-        toast("Lightbox open (ESC to close)", "fa-solid fa-expand");
-      }
-
-      function closeLightbox() {
-        if (!lightbox) return;
-        isLightboxOpen = false;
-        lightbox.classList.remove("visible");
-        lightbox.setAttribute("aria-hidden", "true");
-        lockScroll(false);
-        startAutoplay();
-      }
-
-      if (main && lightbox && lightboxImage) {
-        main.addEventListener("click", openLightbox);
-      }
-
-      if (lightboxClose && lightbox) {
-        lightboxClose.addEventListener("click", closeLightbox);
-
-        lightbox.addEventListener("click", (e) => {
-          if (e.target === lightbox) closeLightbox();
-        });
-      }
-
-      // Keyboard
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && lightbox && lightbox.classList.contains("visible")) {
-          closeLightbox();
-          return;
-        }
-
-        // slider keyboard only when focus is not in input/textarea
-        const tag = (document.activeElement && document.activeElement.tagName || "").toLowerCase();
-        const typing = tag === "input" || tag === "textarea";
-        if (typing) return;
-
-        if (e.key === "ArrowLeft") {
-          if (lightbox && lightbox.classList.contains("visible")) {
-            prev(); if (lightboxImage) lightboxImage.src = images[currentIndex];
-          } else {
-            prev();
-          }
-          startAutoplay();
-        }
-
-        if (e.key === "ArrowRight") {
-          if (lightbox && lightbox.classList.contains("visible")) {
-            next(); if (lightboxImage) lightboxImage.src = images[currentIndex];
-          } else {
-            next();
-          }
-          startAutoplay();
-        }
-      });
-
-      // Init
-      showSlide(0);
-      preload(images[1]);
-      preload(images[images.length - 1]);
-      startAutoplay();
-    }
-
-    /* =========================
-      Click-to-copy bottom contact
-    ========================== */
     async function copyText(text) {
-      if (!text) return false;
       try {
         if (navigator.clipboard && window.isSecureContext) {
           await navigator.clipboard.writeText(text);
           return true;
         }
-      } catch {}
-      // fallback
-      try {
+        // fallback
         const ta = document.createElement("textarea");
         ta.value = text;
-        ta.setAttribute("readonly", "true");
         ta.style.position = "fixed";
         ta.style.left = "-9999px";
         document.body.appendChild(ta);
+        ta.focus();
         ta.select();
         const ok = document.execCommand("copy");
-        document.body.removeChild(ta);
+        ta.remove();
         return ok;
       } catch {
         return false;
       }
     }
 
-    function initCopyCards() {
+    function initBottomCopy() {
       const grid = $("#bottomContactGrid");
       if (!grid) return;
 
@@ -2386,136 +2524,205 @@
         const row = e.target.closest(".bottom-contact-row");
         if (!row) return;
 
-        // Link'e basınca normal davranış kalsın (tel/mail açsın)
-        const a = e.target.closest("a");
-        if (a) return;
-
         const val = row.getAttribute("data-copy");
-        const msg = row.getAttribute("data-toast") || "Kopyalandı";
-        const ok = await copyText(val);
+        const label = row.getAttribute("data-copy-label") || "Kopyalandı";
+        if (!val) return;
 
-        if (ok) toast(msg, "fa-solid fa-copy");
-        else toast("Kopyalama başarısız", "fa-solid fa-triangle-exclamation");
+        const ok = await copyText(val);
+        toast(ok ? `${label} kopyalandı` : "Kopyalanamadı", ok ? val : "Tarayıcı izin vermedi", ok ? "fa-copy" : "fa-triangle-exclamation", 1400);
       });
     }
 
-    /* =========================
-      Form validation + mailto compose
-    ========================== */
-    function initForm() {
+    function initFormSmartActions() {
       const form = $("#quoteForm");
-      if (!form) return;
+      const fName = $("#fName");
+      const fEmail = $("#fEmail");
+      const fMsg = $("#fMsg");
+      const copyBtn = $("#copyMsgBtn");
+      const waBtn = $("#waMsgBtn");
 
-      const nameEl = $("#fName");
-      const emailEl = $("#fEmail");
-      const msgEl = $("#fMsg");
+      if (!form || !fName || !fEmail || !fMsg) return;
 
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      function mark(el, ok) {
-        if (!el) return;
-        el.style.borderColor = ok ? "rgba(0,0,0,0.12)" : "rgba(220,50,50,0.75)";
-        el.style.boxShadow = ok ? "" : "0 0 0 1px rgba(220,50,50,0.55), 0 10px 26px rgba(15,16,35,0.18)";
+      function buildSummary() {
+        const name = (fName.value || "").trim();
+        const email = (fEmail.value || "").trim();
+        const msg = (fMsg.value || "").trim();
+        const parts = [];
+        if (name) parts.push(`Firma/Alıcı: ${name}`);
+        if (email) parts.push(`E-posta: ${email}`);
+        if (msg) parts.push(`Mesaj: ${msg}`);
+        return parts.join("\n");
       }
 
-      function validate() {
-        const nameOk = !!(nameEl && nameEl.value.trim().length >= 2);
-        const mailOk = !!(emailEl && emailRegex.test(emailEl.value.trim()));
-        const msgOk  = !!(msgEl && msgEl.value.trim().length >= 10);
-
-        mark(nameEl, nameOk);
-        mark(emailEl, mailOk);
-        mark(msgEl, msgOk);
-
-        return nameOk && mailOk && msgOk;
+      function validEmail(v) {
+        const s = (v || "").trim();
+        if (!s) return true; // optional
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
       }
 
-      // live validation
-      [nameEl, emailEl, msgEl].forEach(el => {
-        if (!el) return;
-        el.addEventListener("input", debounce(validate, 120));
-        el.addEventListener("blur", validate);
+      // Live hints
+      [fName, fEmail, fMsg].forEach(inp => {
+        inp.addEventListener("input", () => storage.set("stawa_form_draft", JSON.stringify({
+          name: fName.value, email: fEmail.value, msg: fMsg.value
+        })));
       });
 
-      form.addEventListener("submit", (e) => {
-        // JS ile düzgün mailto oluştur
-        e.preventDefault();
+      // Restore draft
+      try {
+        const draft = JSON.parse(storage.get("stawa_form_draft", "null"));
+        if (draft && (draft.name || draft.email || draft.msg)) {
+          fName.value = draft.name || "";
+          fEmail.value = draft.email || "";
+          fMsg.value = draft.msg || "";
+        }
+      } catch {}
 
-        const ok = validate();
-        if (!ok) {
-          toast("Formu kontrol et: İsim / Mail / Mesaj", "fa-solid fa-triangle-exclamation");
+      // Copy message
+      if (copyBtn) {
+        copyBtn.addEventListener("click", async () => {
+          const txt = buildSummary();
+          if (!txt) return toast("Boş mesaj", "Önce bir şeyler yaz", "fa-pen", 1200);
+          const ok = await copyText(txt);
+          toast(ok ? "Mesaj kopyalandı" : "Kopyalanamadı", ok ? "Panoya alındı" : "Tarayıcı izin vermedi", ok ? "fa-copy" : "fa-triangle-exclamation", 1200);
+        });
+      }
+
+      // WhatsApp compose
+      if (waBtn) {
+        waBtn.addEventListener("click", () => {
+          const txt = buildSummary();
+          if (!txt) return toast("Boş mesaj", "Önce bir şeyler yaz", "fa-pen", 1200);
+          const url = "https://wa.me/905368467073?text=" + encodeURIComponent(txt);
+          window.open(url, "_blank", "noopener");
+          toast("WhatsApp açıldı", "Hazır mesaj oluşturuldu", "fa-whatsapp", 1200);
+        });
+      }
+
+      // Override submit: build mailto with subject/body for cleaner result
+      form.addEventListener("submit", (e) => {
+        const emailOk = validEmail(fEmail.value);
+        if (!emailOk) {
+          e.preventDefault();
+          toast("E-posta hatalı", "Lütfen geçerli bir e-posta gir", "fa-triangle-exclamation", 1600);
+          fEmail.focus();
           return;
         }
 
-        const name = nameEl.value.trim();
-        const email = emailEl.value.trim();
-        const message = msgEl.value.trim();
+        const body = buildSummary();
+        if (!body) {
+          e.preventDefault();
+          toast("Mesaj boş", "Lütfen mesaj alanını doldur", "fa-triangle-exclamation", 1600);
+          fMsg.focus();
+          return;
+        }
 
+        // Make a clean mailto
+        e.preventDefault();
         const subject = "STAWA Wholesale Inquiry";
-        const body =
-`Company / Buyer: ${name}
-E-mail: ${email}
-
-Message:
-${message}
-
-— Sent from stawa website`;
-
         const mailto = `mailto:stawa.3434@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.location.href = mailto;
-
-        toast("Mail oluşturuluyor…", "fa-solid fa-paper-plane");
+        toast("Mail oluşturuldu", "Varsayılan mail uygulaman açılacak", "fa-envelope", 1500);
       });
     }
 
-    /* =========================
-      Footer year auto (JS touch)
-    ========================== */
-    function initFooterYear() {
-      const ft = $("#footerText");
-      if (!ft) return;
-      // metni bozmadan sadece yıl aralığı güncelle (varsa)
-      const year = new Date().getFullYear();
-      const txt = ft.textContent || "";
-      if (txt.includes("2012")) {
-        ft.textContent = txt.replace(/2012\s*-\s*[^·]+/g, `2012 - ${year}`);
-      }
-    }
+    function initTagsMicroInteractions() {
+      const tags = $("#heroTags");
+      if (!tags) return;
 
-    /* =========================
-      Deep link support on load
-    ========================== */
-    function initDeepLink() {
-      if (location.hash && $(location.hash)) {
-        // küçük gecikme: header render olsun
-        setTimeout(() => smoothScrollToHash(location.hash), 40);
-      }
-      window.addEventListener("popstate", () => {
-        if (location.hash && $(location.hash)) smoothScrollToHash(location.hash);
+      tags.addEventListener("click", (e) => {
+        const t = e.target.closest(".pill-tag");
+        if (!t) return;
+        // mini “filter” vibe: scroll to contact
+        toast("Teklif için", "İletişime yönlendiriyorum", "fa-bolt", 1200);
+        smoothScrollToId("contact");
       });
     }
 
-    /* =========================
-      Init
-    ========================== */
+    function initKbdShortcuts(sliderApi) {
+      const hint = $("#kbdHint");
+      const showHint = () => {
+        if (!hint) return;
+        hint.classList.add("show");
+        clearTimeout(showHint._t);
+        showHint._t = setTimeout(() => hint.classList.remove("show"), 2200);
+      };
+
+      document.addEventListener("keydown", (e) => {
+        // ignore if typing
+        const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : "";
+        if (tag === "input" || tag === "textarea") return;
+
+        if (e.key === "g" || e.key === "G") {
+          sliderApi?.openLightbox?.();
+          showHint();
+        }
+        if (e.key === "/") {
+          e.preventDefault();
+          smoothScrollToId("contact");
+          toast("İletişim", "Form alanına geçildi", "fa-paper-plane", 1100);
+          setTimeout(() => $("#fName")?.focus?.(), 450);
+          showHint();
+        }
+      });
+
+      // show hint once
+      setTimeout(showHint, 900);
+    }
+
+    function initPerformancePokes() {
+      // Mark the page “ready” for debugging / future A/B
+      document.documentElement.dataset.js = "on";
+
+      // Preconnect vibes (no extra network calls here, but you can add later)
+      // Small scheduled toast
+      setTimeout(() => {
+        toast("STAWA", "Slider: ← → · Galeri: G", "fa-star", 1600);
+      }, 900);
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
-      initLanguageMenu();
-      initNavSmoothScroll();
-      initScrollSpy();
-      initScrollUI();
+      // Language (persisted)
+      setLanguage(state.lang);
+
+      // Menus
+      initLangMenu();
+
+      // Social bar persisted
       initSocialBar();
+
+      // Reveal
       initReveal();
-      initSlider();
-      initCopyCards();
-      initForm();
-      initFooterYear();
-      initDeepLink();
 
-      // tiny welcome
-      setTimeout(() => toast("STAWA ready ✨", "fa-solid fa-sparkles"), 450);
+      // Nav spy + smooth anchors
+      initNavActiveSpy();
+
+      // Scroll progress + backtop
+      initScrollProgressAndBackTop();
+
+      // Cursor glow
+      initCursorGlow();
+
+      // Hero card tilt
+      initHeroCardTilt();
+
+      // Slider pack
+      const sliderApi = initSlider();
+
+      // Copy on bottom contact rows
+      initBottomCopy();
+
+      // Form smart actions
+      initFormSmartActions();
+
+      // Tags micro
+      initTagsMicroInteractions();
+
+      // Keyboard shortcuts
+      initKbdShortcuts(sliderApi);
+
+      // Perf
+      initPerformancePokes();
     });
-
-  })();
   </script>
 </body>
 </html>
