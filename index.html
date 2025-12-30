@@ -97,23 +97,24 @@
   pointer-events: none;
   z-index: -1;
 
-  /* KÜÇÜK AMA YOĞUN GÖLGE */
+  /* VIP – yumuşak ama hissedilen gölge */
   background: radial-gradient(
     circle at center,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.55) 22%,
-    rgba(0, 0, 0, 0.35) 40%,
-    rgba(0, 0, 0, 0.18) 55%,
-    rgba(0, 0, 0, 0.08) 65%,
-    transparent 72%
+    rgba(0, 0, 0, 0.52) 0%,
+    rgba(0, 0, 0, 0.34) 24%,
+    rgba(0, 0, 0, 0.20) 42%,
+    rgba(0, 0, 0, 0.10) 56%,
+    rgba(0, 0, 0, 0.04) 66%,
+    transparent 74%
   );
 
-  filter: blur(38px);
-  opacity: 0.6;
+  filter: blur(44px);
+  opacity: 0.48;
   transform: translate(-50%, -50%);
-  transition: opacity 0.25s ease-out;
+  transition: opacity 0.35s ease-out;
   mix-blend-mode: multiply;
 }
+
 
 
 
@@ -2416,8 +2417,9 @@ Sent from STAWA website`;
           if (!raf) raf = requestAnimationFrame(loop);
         }, { passive: true });
 
-window.addEventListener("mouseenter", () => glow.style.opacity = "0.62");
-window.addEventListener("mouseleave", () => glow.style.opacity = "0.42");
+window.addEventListener("mouseenter", () => glow.style.opacity = "0.5");
+window.addEventListener("mouseleave", () => glow.style.opacity = "0.34");
+
 
 
       }
@@ -2504,6 +2506,7 @@ window.addEventListener("mouseleave", () => glow.style.opacity = "0.42");
   </script>
 </body>
 </html>
+
 
 
 
