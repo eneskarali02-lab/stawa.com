@@ -91,28 +91,30 @@
     /* JS parallax glow */
     .mouse-glow {
   position: fixed;
-  width: 520px;
-  height: 520px;
+  width: 320px;
+  height: 320px;
   border-radius: 50%;
   pointer-events: none;
   z-index: -1;
 
-  /* ARTIK RENK DEĞİL, GÖLGE */
+  /* KÜÇÜK AMA YOĞUN GÖLGE */
   background: radial-gradient(
     circle at center,
-    rgba(0, 0, 0, 0.35) 0%,
-    rgba(0, 0, 0, 0.22) 25%,
-    rgba(0, 0, 0, 0.12) 45%,
-    rgba(0, 0, 0, 0.05) 60%,
-    transparent 70%
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.55) 22%,
+    rgba(0, 0, 0, 0.35) 40%,
+    rgba(0, 0, 0, 0.18) 55%,
+    rgba(0, 0, 0, 0.08) 65%,
+    transparent 72%
   );
 
-  filter: blur(60px);
-  opacity: 0.35;
+  filter: blur(38px);
+  opacity: 0.6;
   transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease-out;
-  mix-blend-mode: multiply; /* ÖNEMLİ: ışık gibi değil gölge gibi davranır */
+  transition: opacity 0.25s ease-out;
+  mix-blend-mode: multiply;
 }
+
 
 
     .page { min-height: 100vh; display: flex; flex-direction: column; }
@@ -2414,8 +2416,9 @@ Sent from STAWA website`;
           if (!raf) raf = requestAnimationFrame(loop);
         }, { passive: true });
 
-    window.addEventListener("mouseleave", () => glow.style.opacity = "0.08");
-window.addEventListener("mouseenter", () => glow.style.opacity = "0.18");
+window.addEventListener("mouseenter", () => glow.style.opacity = "0.62");
+window.addEventListener("mouseleave", () => glow.style.opacity = "0.42");
+
 
       }
 
@@ -2501,5 +2504,6 @@ window.addEventListener("mouseenter", () => glow.style.opacity = "0.18");
   </script>
 </body>
 </html>
+
 
 
