@@ -1826,9 +1826,9 @@
     }
 
     function showToast({ title="STAWA", message="", icon="fa-solid fa-circle-check", timeout=2600 } = {}) {
-      const wrap = $("#toastWrap");
-      if (!wrap) return;
-
+  return; // ✅ sağ alttaki tüm bildirimleri kapatır
+  const wrap = $("#toastWrap");
+  if (!wrap) return;
       const el = document.createElement("div");
       el.className = "toast";
       el.innerHTML = `
@@ -2506,6 +2506,7 @@ window.addEventListener("mouseleave", () => glow.style.opacity = "0.34");
   </script>
 </body>
 </html>
+
 
 
 
