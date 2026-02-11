@@ -3,182 +3,239 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>STAWA — Admin Panel</title>
+  <title>STAWA — Products</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <style>
     :root{
-      --bg-top:#050507; --bg-bottom:#f7f8fc;
-      --accent:#f5f5f5; --muted:#8e92a3;
-      --gold:#f0b868; --ink:#111317;
-      --radius:24px;
-      --shadow:0 26px 70px rgba(15,16,35,0.20);
+      --ink:#111317;
+      --muted:#6a6d7b;
+      --muted2:#8e92a3;
+      --gold:#f0b868;
+      --gold-soft: rgba(240,184,104,0.18);
+
+      --line: rgba(17,19,23,0.08);
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-pill: 999px;
+
+      --shadow: 0 26px 70px rgba(15,16,35,0.12);
+      --shadow-soft: 0 14px 42px rgba(15,16,35,0.10);
+
+      --t: 0.18s ease-out;
     }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
-      background:linear-gradient(to bottom,var(--bg-top) 0,var(--bg-top) 240px,#151622 320px,var(--bg-bottom) 100%);
-      color:var(--accent);
+      color:var(--ink);
+      background: radial-gradient(circle at top, #ffffff 0%, #fbfbff 45%, #f7f8fc 100%);
       -webkit-font-smoothing:antialiased;
       overflow-x:hidden;
     }
 
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      background-image:
+        repeating-linear-gradient(135deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 6px),
+        url("damask-transparent.png");
+      background-size: 6px 6px, 203px 256px;
+      background-repeat: repeat;
+      opacity: 0.14;
+      mix-blend-mode: multiply;
+      z-index:-2;
+    }
+
     header{
       position:sticky; top:0; z-index:20;
-      backdrop-filter:blur(18px);
-      background:linear-gradient(to bottom, rgba(5,5,10,0.96), rgba(5,5,10,0.75));
-      border-bottom:1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
     }
     .header-inner{
       max-width:1180px; margin:0 auto;
       padding:12px 22px;
       display:flex; align-items:center; justify-content:space-between; gap:14px;
     }
-    .brand{display:flex; align-items:center; gap:10px}
-    .brand-logo{width:160px; filter:drop-shadow(0 10px 26px rgba(0,0,0,0.75))}
-    .brand-logo img{width:100%; height:auto; display:block}
+    .brand{display:flex; align-items:center; gap:12px; min-width: 220px;}
+    .brand-logo{width:150px; filter: drop-shadow(0 10px 24px rgba(0,0,0,0.10));}
+    .brand-logo img{width:100%; height:auto; display:block;}
+    .brand-sub{
+      font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+      color: var(--muted2); white-space: nowrap;
+    }
 
-    nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    nav{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
     nav a{
       text-decoration:none;
-      color:rgba(245,245,245,0.86);
+      color: rgba(17,19,23,0.82);
       font-size:14px; font-weight:500;
       padding:7px 14px;
+      border-radius: var(--radius-pill);
+      border:1px solid rgba(17,19,23,0.10);
+      background: rgba(255,255,255,0.78);
+      transition: var(--t);
+    }
+    nav a:hover{border-color: rgba(17,19,23,0.24); box-shadow: var(--shadow-soft); transform: translateY(-1px);}
+    nav a.active{
+      border-color: rgba(240,184,104,0.65);
+      background: linear-gradient(135deg, rgba(240,184,104,0.18), rgba(255,255,255,0.85));
+    }
+
+    /* Language (flag + code) */
+    .lang-switch{ position:relative; margin-left:8px; }
+    .lang-toggle{
       border-radius:999px;
-      border:1px solid rgba(255,255,255,0.14);
-      background:rgba(10,11,20,0.72);
-      transition:0.18s ease-out;
+      border:1px solid rgba(17,19,23,0.14);
+      background: rgba(255,255,255,0.82);
+      color: rgba(17,19,23,0.80);
+      padding:6px 12px;
+      cursor:pointer;
+      transition: var(--t);
+      display:flex; align-items:center; gap:8px;
+      user-select:none;
+      font-weight:500;
     }
-    nav a:hover{border-color:rgba(255,255,255,0.45); background:rgba(20,22,40,0.95)}
-    nav a.active{border-color:rgba(240,184,104,0.85); background:rgba(240,184,104,0.14); box-shadow:0 14px 40px rgba(0,0,0,0.60)}
+    .lang-toggle::after{content:"▾"; font-size:10px; opacity:0.8}
+    .lang-toggle:hover{border-color: rgba(17,19,23,0.30); box-shadow: var(--shadow-soft); transform: translateY(-1px);}
 
-    .container{max-width:1180px; margin:0 auto; padding:28px 22px 50px;}
+    .lang-menu{
+      position:absolute; top:110%; right:0;
+      min-width:140px;
+      padding:6px;
+      border-radius:16px;
+      background: rgba(255,255,255,0.95);
+      border:1px solid rgba(17,19,23,0.14);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.10);
+      opacity:0; pointer-events:none;
+      transform: translateY(4px);
+      transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+      z-index:30;
+    }
+    .lang-menu.open{opacity:1; pointer-events:auto; transform: translateY(0)}
+    .lang-btn{
+      width:100%;
+      border:none;
+      background: transparent;
+      color: rgba(17,19,23,0.80);
+      font-size:12px;
+      padding:8px 10px;
+      text-align:left;
+      cursor:pointer;
+      text-transform:uppercase;
+      letter-spacing:0.14em;
+      border-radius:12px;
+      display:flex; align-items:center; gap:10px;
+      transition: background 0.16s ease-out, color 0.16s ease-out;
+    }
+    .lang-btn.active{ background:#111317; color:#fff; }
+    .lang-btn:hover{ background: rgba(17,19,23,0.06); }
+    .flag{ font-size:15px; line-height:1; opacity:0.92; }
+    .lang-code{ font-size:12px; letter-spacing:0.10em; }
+
+    .container{max-width:1180px; margin:0 auto; padding:26px 22px 52px;}
+
+    .top{display:flex; flex-direction:column; gap:10px; padding:10px 0 14px;}
     .kicker{
-      display:inline-flex; gap:10px; align-items:center;
-      font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
-      color:var(--muted);
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color: var(--muted2);
     }
-    .kdot{width:7px; height:7px; border-radius:999px; background:var(--gold); box-shadow:0 0 0 5px rgba(240,183,104,0.28)}
-    h1{margin:10px 0 0; font-size:clamp(26px,4vw,36px); line-height:1.15}
-    .lead{margin:10px 0 0; color:rgba(142,146,163,0.95); line-height:1.8; max-width:760px}
+    .kdot{width:7px; height:7px; border-radius:999px; background: var(--gold); box-shadow: 0 0 0 6px var(--gold-soft);}
+    h1{margin:0; font-size: clamp(26px, 3.2vw, 34px); line-height: 1.15;}
+    .lead{margin:0; color: var(--muted); line-height: 1.85; max-width: 760px; font-size: 14px;}
 
-    .grid{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.35fr);
-      gap:18px;
-      align-items:start;
-    }
-    .card{
-      border-radius:var(--radius);
-      background:radial-gradient(circle at top left, #ffffff 0%, #f7f8fc 55%, #f1f2fb 100%);
-      color:var(--ink);
-      box-shadow:var(--shadow);
-      border:1px solid rgba(15,16,35,0.06);
+    .panel{
+      margin-top: 18px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(17,19,23,0.08);
+      box-shadow: var(--shadow);
       overflow:hidden;
     }
-    .card-head{
-      padding:18px 18px 10px;
-      display:flex; justify-content:space-between; gap:10px; align-items:baseline;
+    .panel-head{
+      padding:16px 18px;
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      border-bottom: 1px solid rgba(17,19,23,0.06);
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.78));
     }
-    .card-head h2{margin:0; font-size:14px; letter-spacing:0.16em; text-transform:uppercase}
-    .card-head span{color:#6a6d7b; font-size:13px}
-    .card-body{padding:0 18px 18px}
+    .panel-head h2{
+      margin:0;
+      font-size: 13px;
+      letter-spacing:0.18em;
+      text-transform: uppercase;
+      color: rgba(17,19,23,0.88);
+    }
+    .count{
+      font-size: 12px;
+      color: var(--muted);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,19,23,0.10);
+      background: rgba(255,255,255,0.85);
+      user-select:none;
+      white-space:nowrap;
+    }
 
-    label{
-      display:block;
-      font-size:11px;
-      letter-spacing:0.16em;
-      text-transform:uppercase;
-      color:#6a6d7b;
-      margin:10px 0 6px;
-    }
-    input, textarea, select{
-      width:100%;
-      font-family:inherit;
-      font-size:14px;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid rgba(0,0,0,0.12);
-      background:#fff;
-      outline:none;
-    }
-    textarea{min-height:86px; resize:vertical}
-    .row{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
-
-    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; align-items:center}
-    .btn{
-      border:none; cursor:pointer;
-      border-radius:999px;
-      padding:10px 16px;
-      font-weight:600;
-      font-size:13px;
-      transition:0.18s ease-out;
-    }
-    .btn.primary{background:#111317; color:#f5f5f5; box-shadow:0 12px 30px rgba(0,0,0,0.18)}
-    .btn.primary:hover{transform:translateY(-1px)}
-    .btn.ghost{background:transparent; border:1px solid rgba(17,19,23,0.22); color:#111317}
-    .btn.ghost:hover{background:rgba(17,19,23,0.06)}
-
-    .products{padding:12px 14px 16px; display:grid; gap:10px}
-    .pitem{
-      border-radius:18px;
-      background:linear-gradient(145deg,#ffffff 0%,#f7f8fc 55%,#eef0fa 100%);
-      border:1px solid rgba(15,16,35,0.08);
-      box-shadow:0 10px 26px rgba(15,16,35,0.10);
-      padding:12px 12px 10px;
+    .list{
+      padding: 14px 14px 16px;
       display:grid;
-      grid-template-columns: 1fr auto;
-      gap:10px;
-      align-items:start;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
     }
-    .ptitle{margin:0; font-weight:700}
-    .pmeta{margin-top:4px; color:#6a6d7b; font-size:13px; line-height:1.5}
+    .item{
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(17,19,23,0.08);
+      box-shadow: 0 10px 26px rgba(15,16,35,0.08);
+      padding: 14px 14px 12px;
+      transition: var(--t);
+    }
+    .item:hover{transform: translateY(-2px); box-shadow: 0 18px 42px rgba(15,16,35,0.12); border-color: rgba(240,184,104,0.45);}
+    .name{margin:0; font-weight: 600; font-size: 14px; color: rgba(17,19,23,0.92);}
+    .code{margin-top: 6px; font-size: 12px; color: var(--muted2); letter-spacing: 0.10em; text-transform: uppercase;}
+    .meta{margin-top: 10px; font-size: 13px; color: var(--muted); line-height: 1.65;}
+
     .pill{
       display:inline-flex; align-items:center; gap:8px;
-      margin-top:8px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(0,0,0,0.10);
-      font-size:12px;
+      margin-top: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,19,23,0.10);
+      background: rgba(255,255,255,0.92);
+      font-size: 11px;
       user-select:none;
       width:max-content;
     }
-    .pill.in{background:rgba(50,217,81,0.10); border-color:rgba(50,217,81,0.35)}
-    .pill.out{background:rgba(220,60,60,0.10); border-color:rgba(220,60,60,0.35)}
-    .pill b{letter-spacing:0.10em; text-transform:uppercase}
+    .pill.in{border-color: rgba(50,217,81,0.30); background: rgba(50,217,81,0.08);}
+    .pill.out{border-color: rgba(220,60,60,0.30); background: rgba(220,60,60,0.08);}
+    .pill b{letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; font-size: 10px;}
 
-    .pcontrols{display:flex; flex-direction:column; gap:8px; align-items:flex-end}
-    .iconbtn{
-      width:36px; height:36px;
-      border-radius:999px;
-      border:1px solid rgba(0,0,0,0.12);
-      background:#fff;
-      cursor:pointer;
-      display:grid; place-items:center;
-      transition:0.18s ease-out;
-    }
-    .iconbtn:hover{transform:translateY(-1px); box-shadow:0 10px 22px rgba(0,0,0,0.12)}
-    .note{color:#6a6d7b; font-size:13px; line-height:1.6; margin-top:10px}
+    .empty{padding: 18px; color: var(--muted); font-size: 14px;}
 
-    .gate{
-      max-width:520px;
-      margin:30px auto 0;
-      border-radius:24px;
-      background:rgba(255,255,255,0.10);
-      border:1px solid rgba(255,255,255,0.16);
-      backdrop-filter:blur(12px);
-      padding:18px;
-    }
-    .gate input{
-      background:rgba(255,255,255,0.95);
-    }
-    .hidden{display:none !important;}
+    footer{padding: 18px 0 30px; text-align:center; color: var(--muted2); font-size: 13px;}
 
-    @media (max-width: 900px){ .grid{grid-template-columns:1fr} .brand-logo{width:140px} }
+    html[dir="rtl"] body { text-align:right; }
+    html[dir="rtl"] nav { flex-direction: row-reverse; }
+    html[dir="rtl"] .lang-menu { right:auto; left:0; }
+
+    @media (max-width: 980px){
+      .list{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .brand-sub{ display:none; }
+    }
+    @media (max-width: 640px){
+      .header-inner{ padding:10px 14px; flex-direction:column; align-items:flex-start; gap:10px; }
+      .brand{ width:100%; }
+      nav{ width:100%; }
+      .list{ grid-template-columns: 1fr; }
+      .brand-logo{ width:140px; }
+      .lang-switch{ margin-left:auto; }
+    }
   </style>
 </head>
 
@@ -189,143 +246,174 @@
       <div class="brand-logo">
         <img src="stawa_logo_transparent.png" alt="STAWA Logo" loading="eager">
       </div>
+      <div class="brand-sub" data-i18n="brand_sub">Premium kumaş & zamansız tasarım</div>
     </div>
 
     <nav>
-      <a href="index.html">Ana Sayfa</a>
-      <a href="products.html">Ürünler</a>
-      <a href="admin.html" class="active">Admin</a>
+      <a href="index.html" data-i18n="nav_home">Ana Sayfa</a>
+      <a href="products.html" class="active" data-i18n="nav_products">Ürünler</a>
+      <a href="index.html#about" data-i18n="nav_about">Hakkımızda</a>
+      <a href="index.html#contact" data-i18n="nav_contact">İletişim</a>
+
+      <div class="lang-switch">
+        <button type="button" class="lang-toggle" id="langToggle">
+          <span class="flag" id="langFlag">🇹🇷</span>
+          <span class="lang-code" id="langCode">TR</span>
+        </button>
+
+        <div class="lang-menu" id="langMenu">
+          <button type="button" class="lang-btn active" data-lang="tr"><span class="flag">🇹🇷</span><span>TR</span></button>
+          <button type="button" class="lang-btn" data-lang="en"><span class="flag">🇬🇧</span><span>EN</span></button>
+          <button type="button" class="lang-btn" data-lang="ru"><span class="flag">🇷🇺</span><span>RU</span></button>
+          <button type="button" class="lang-btn" data-lang="ar"><span class="flag">🇸🇦</span><span>AR</span></button>
+        </div>
+      </div>
     </nav>
   </div>
 </header>
 
 <main class="container">
-  <div class="kicker"><span class="kdot"></span> STAWA · Yönetim</div>
-  <h1>Admin Panel</h1>
-  <p class="lead">Ürün ekle/çıkar ve stok var/yok durumunu yönet. (Bu sayfa şifreli açılır.)</p>
+  <section class="top">
+    <div class="kicker"><span class="kdot"></span> <span data-i18n="kicker_products">Koleksiyon</span></div>
+    <h1 data-i18n="products_title">Ürünler</h1>
+    <p class="lead" data-i18n="products_lead">
+      Güncel stok durumu ile listelenen ürünler. Toptan alım için WhatsApp veya e-posta üzerinden iletişime geçebilirsiniz.
+    </p>
+  </section>
 
-  <!-- ŞİFRE KAPISI -->
-  <div class="gate" id="gate">
-    <label>Admin Şifre</label>
-    <input id="pass" type="password" placeholder="Şifreni gir" />
-    <div class="actions">
-      <button class="btn primary" id="unlock"><i class="fa-solid fa-lock-open"></i> Aç</button>
-      <button class="btn ghost" id="logout"><i class="fa-solid fa-right-from-bracket"></i> Çıkış</button>
-    </div>
-    <div class="note">
-      Not: Bu yöntem “gizleme” sağlar ama %100 güvenlik değildir. Gerçek güvenlik için backend gerekir.
-    </div>
-  </div>
-
-  <!-- PANEL (kilit açılınca görünür) -->
-  <section class="grid hidden" id="panel">
-    <!-- EKLE -->
-    <div class="card">
-      <div class="card-head">
-        <h2>Ürün Ekle</h2>
-        <span>Kolay panel</span>
-      </div>
-      <div class="card-body">
-        <div class="row">
-          <div>
-            <label>Ürün Adı</label>
-            <input id="pName" placeholder="Örn: Palazzo Pantolon" />
-          </div>
-          <div>
-            <label>Kod / Model</label>
-            <input id="pCode" placeholder="Örn: STW-204" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div>
-            <label>Fiyat (opsiyonel)</label>
-            <input id="pPrice" placeholder="Örn: 12$ / 480₺" />
-          </div>
-          <div>
-            <label>Stok</label>
-            <select id="pStock">
-              <option value="in">Stok Var</option>
-              <option value="out">Stok Yok</option>
-            </select>
-          </div>
-        </div>
-
-        <label>Açıklama (opsiyonel)</label>
-        <textarea id="pDesc" placeholder="Kumaş, kalıp, renk, beden aralığı vb."></textarea>
-
-        <div class="actions">
-          <button class="btn primary" id="addBtn"><i class="fa-solid fa-plus"></i> Ekle</button>
-          <button class="btn ghost" id="clearBtn"><i class="fa-solid fa-eraser"></i> Temizle</button>
-        </div>
-
-        <div class="note">En az Ürün Adı + Kod/Model girmen yeterli.</div>
-      </div>
+  <section class="panel">
+    <div class="panel-head">
+      <h2 data-i18n="products_list_title">Ürün Listesi</h2>
+      <div class="count" id="countInfo">0</div>
     </div>
 
-    <!-- LİSTE -->
-    <div class="card">
-      <div class="card-head">
-        <h2>Ürün Listesi</h2>
-        <span id="countInfo">0 ürün</span>
-      </div>
-
-      <div class="products" id="products"></div>
-
-      <div class="card-body">
-        <div class="actions">
-          <button class="btn ghost" id="exportBtn"><i class="fa-solid fa-file-export"></i> JSON Dışa Aktar</button>
-          <button class="btn ghost" id="importBtn"><i class="fa-solid fa-file-import"></i> JSON İçe Aktar</button>
-          <input type="file" id="fileInput" accept="application/json" style="display:none">
-          <button class="btn ghost" id="wipeBtn"><i class="fa-solid fa-trash"></i> Tümünü Sil</button>
-        </div>
-        <div class="note">Bu JSON yöntemi, ürünleri başka bilgisayara taşımak için pratik.</div>
-      </div>
-    </div>
+    <div class="list" id="products"></div>
+    <div class="empty" id="emptyState" style="display:none;" data-i18n="products_empty">Henüz ürün eklenmedi.</div>
   </section>
 </main>
 
+<footer>
+  <span data-i18n="footer_text">© STAWA — 2012 - Günümüz · İstanbul Laleli</span>
+</footer>
+
 <script>
-  // ====== Basit Şifre Kapısı (gizleme) ======
-  // Şifreyi değiştir:
-  const ADMIN_PASS = "stawa123";
-  const AUTH_KEY = "stawa_admin_unlocked";
+  const i18n = {
+    tr: {
+      brand_sub: "Premium kumaş & zamansız tasarım",
+      nav_home: "Ana Sayfa", nav_products: "Ürünler", nav_about: "Hakkımızda", nav_contact: "İletişim",
+      kicker_products: "Koleksiyon",
+      products_title: "Ürünler",
+      products_lead: "Güncel stok durumu ile listelenen ürünler. Toptan alım için WhatsApp veya e-posta üzerinden iletişime geçebilirsiniz.",
+      products_list_title: "Ürün Listesi",
+      products_empty: "Henüz ürün eklenmedi.",
+      footer_text: "© STAWA — 2012 - Günümüz · İstanbul Laleli",
+      stock_in: "Stok Var",
+      stock_out: "Stok Yok",
+      count_products: "ürün",
+      price_label: "Fiyat"
+    },
+    en: {
+      brand_sub: "Premium fabric & timeless design",
+      nav_home: "Home", nav_products: "Products", nav_about: "About", nav_contact: "Contact",
+      kicker_products: "Collection",
+      products_title: "Products",
+      products_lead: "Products listed with current stock status. For wholesale orders, contact us via WhatsApp or e-mail.",
+      products_list_title: "Product List",
+      products_empty: "No products yet.",
+      footer_text: "© STAWA — 2012 - Present · Istanbul Laleli",
+      stock_in: "In Stock",
+      stock_out: "Out of Stock",
+      count_products: "products",
+      price_label: "Price"
+    },
+    ru: {
+      brand_sub: "Премиальные ткани и дизайн вне времени",
+      nav_home: "Главная", nav_products: "Товары", nav_about: "О нас", nav_contact: "Контакты",
+      kicker_products: "Коллекция",
+      products_title: "Товары",
+      products_lead: "Товары с актуальным статусом наличия. Для опта свяжитесь через WhatsApp или e-mail.",
+      products_list_title: "Список товаров",
+      products_empty: "Пока нет товаров.",
+      footer_text: "© STAWA — 2012 - наст. время · Стамбул, Лалели",
+      stock_in: "В наличии",
+      stock_out: "Нет в наличии",
+      count_products: "товаров",
+      price_label: "Цена"
+    },
+    ar: {
+      brand_sub: "أقمشة فاخرة وتصميم خالد",
+      nav_home: "الرئيسية", nav_products: "المنتجات", nav_about: "من نحن", nav_contact: "اتصال",
+      kicker_products: "المجموعة",
+      products_title: "المنتجات",
+      products_lead: "المنتجات مع حالة المخزون الحالية. للطلبات بالجملة تواصل عبر واتساب أو البريد.",
+      products_list_title: "قائمة المنتجات",
+      products_empty: "لا توجد منتجات بعد.",
+      footer_text: "© STAWA — 2012 - حتى الآن · إسطنبول لاليلي",
+      stock_in: "متوفر",
+      stock_out: "غير متوفر",
+      count_products: "منتج",
+      price_label: "السعر"
+    }
+  };
 
   const KEY = "stawa_products_v1";
+
+  const storage = {
+    get(key, fallback=null) { try { const v = localStorage.getItem(key); return v===null ? fallback : v; } catch { return fallback; } },
+    set(key, val) { try { localStorage.setItem(key, String(val)); } catch {} }
+  };
+
   const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
 
-  function setUnlocked(v){
-    localStorage.setItem(AUTH_KEY, v ? "1" : "0");
-  }
-  function isUnlocked(){
-    return localStorage.getItem(AUTH_KEY) === "1";
-  }
-  function syncGate(){
-    const panel = $("#panel");
-    const gate = $("#gate");
-    const ok = isUnlocked();
-    panel.classList.toggle("hidden", !ok);
-    gate.classList.toggle("hidden", ok);
+  function getFlag(lang){
+    return ({ tr:"🇹🇷", en:"🇬🇧", ru:"🇷🇺", ar:"🇸🇦" }[lang] || "🇹🇷");
   }
 
-  $("#unlock").addEventListener("click", () => {
-    const p = ($("#pass").value || "").trim();
-    if(p === ADMIN_PASS){
-      setUnlocked(true);
-      $("#pass").value = "";
-      syncGate();
-      render();
-    } else {
-      alert("Şifre yanlış ❌");
+  function setLanguage(lang){
+    const dict = i18n[lang] || i18n.tr;
+
+    $$("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (dict[key]) el.textContent = dict[key];
+    });
+
+    $$(".lang-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+    });
+
+    $("#langCode").textContent = lang.toUpperCase();
+    $("#langFlag").textContent = getFlag(lang);
+
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+
+    storage.set("stawa_lang", lang);
+
+    renderProducts();
+  }
+
+  function initLanguageMenu(){
+    const langMenu = $("#langMenu");
+    const langToggle = $("#langToggle");
+
+    if (langToggle && langMenu){
+      langToggle.addEventListener("click", (e) => { e.stopPropagation(); langMenu.classList.toggle("open"); });
+      document.addEventListener("click", () => langMenu.classList.remove("open"));
+      langMenu.addEventListener("click", (e) => e.stopPropagation());
     }
-  });
 
-  $("#logout").addEventListener("click", () => {
-    setUnlocked(false);
-    syncGate();
-  });
+    $$(".lang-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const lang = btn.getAttribute("data-lang");
+        setLanguage(lang);
+        langMenu?.classList.remove("open");
+      });
+    });
 
-  // ====== Ürün CRUD ======
+    setLanguage(storage.get("stawa_lang", "tr"));
+  }
+
   function escapeHtml(str){
     return String(str).replace(/[&<>"']/g, s => ({
       "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
@@ -338,169 +426,57 @@
       return raw ? JSON.parse(raw) : [];
     }catch{ return []; }
   }
-  function saveProducts(list){
-    localStorage.setItem(KEY, JSON.stringify(list));
-  }
-  function uid(){
-    return Math.random().toString(16).slice(2) + Date.now().toString(16);
-  }
 
-  function clearForm(){
-    $("#pName").value = "";
-    $("#pCode").value = "";
-    $("#pPrice").value = "";
-    $("#pDesc").value = "";
-    $("#pStock").value = "in";
-    $("#pName").focus();
-  }
-
-  function render(){
-    if(!isUnlocked()) return;
+  function renderProducts(){
+    const lang = storage.get("stawa_lang", "tr");
+    const dict = i18n[lang] || i18n.tr;
 
     const list = loadProducts();
     const wrap = $("#products");
-    const countInfo = $("#countInfo");
-    if(!wrap) return;
+    const empty = $("#emptyState");
+    const count = $("#countInfo");
 
-    countInfo.textContent = `${list.length} ürün`;
+    count.textContent = `${list.length} ${dict.count_products}`;
     wrap.innerHTML = "";
 
     if(list.length === 0){
-      wrap.innerHTML = `<div style="padding:14px;color:#6a6d7b;">Henüz ürün eklenmedi.</div>`;
+      empty.style.display = "block";
       return;
     }
+    empty.style.display = "none";
 
     list.forEach(item => {
+      const stockLabel = item.stock === "in" ? dict.stock_in : dict.stock_out;
       const stockClass = item.stock === "in" ? "in" : "out";
-      const stockText  = item.stock === "in" ? "STOK VAR" : "STOK YOK";
 
       const el = document.createElement("div");
-      el.className = "pitem";
+      el.className = "item";
       el.innerHTML = `
-        <div>
-          <p class="ptitle">${escapeHtml(item.name)} <span style="color:#6a6d7b;font-weight:600;">${item.code ? "· " + escapeHtml(item.code) : ""}</span></p>
-          <div class="pmeta">
-            ${item.price ? ("<div><b>Fiyat:</b> " + escapeHtml(item.price) + "</div>") : ""}
-            ${item.desc ? ("<div>" + escapeHtml(item.desc) + "</div>") : ""}
-          </div>
-          <div class="pill ${stockClass}">
-            <i class="fa-solid fa-box" aria-hidden="true"></i>
-            <b>${stockText}</b>
-          </div>
+        <p class="name">${escapeHtml(item.name || "")}</p>
+        ${item.code ? `<div class="code">${escapeHtml(item.code)}</div>` : ``}
+
+        <div class="meta">
+          ${item.price ? `<div><b>${escapeHtml(dict.price_label)}:</b> ${escapeHtml(item.price)}</div>` : ``}
+          ${item.desc ? `<div>${escapeHtml(item.desc)}</div>` : ``}
         </div>
 
-        <div class="pcontrols">
-          <button class="iconbtn" title="Stok değiştir" data-action="toggle" data-id="${item.id}">
-            <i class="fa-solid fa-right-left"></i>
-          </button>
-          <button class="iconbtn" title="Sil" data-action="delete" data-id="${item.id}">
-            <i class="fa-solid fa-trash"></i>
-          </button>
+        <div class="pill ${stockClass}">
+          <i class="fa-solid fa-box" aria-hidden="true"></i>
+          <b>${escapeHtml(stockLabel)}</b>
         </div>
       `;
       wrap.appendChild(el);
     });
   }
 
-  $("#addBtn").addEventListener("click", () => {
-    const name = $("#pName").value.trim();
-    const code = $("#pCode").value.trim();
-    const price = $("#pPrice").value.trim();
-    const desc = $("#pDesc").value.trim();
-    const stock = $("#pStock").value;
-
-    if(!name || !code){
-      alert("Lütfen en az Ürün Adı ve Kod/Model gir.");
-      return;
-    }
-
-    const list = loadProducts();
-    list.unshift({ id: uid(), name, code, price, desc, stock, createdAt: Date.now() });
-    saveProducts(list);
-    clearForm();
-    render();
+  document.addEventListener("DOMContentLoaded", () => {
+    initLanguageMenu();
+    renderProducts();
   });
 
-  $("#clearBtn").addEventListener("click", clearForm);
-
-  $("#products").addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-action]");
-    if(!btn) return;
-
-    const action = btn.getAttribute("data-action");
-    const id = btn.getAttribute("data-id");
-
-    let list = loadProducts();
-    const idx = list.findIndex(x => x.id === id);
-    if(idx === -1) return;
-
-    if(action === "toggle"){
-      list[idx].stock = (list[idx].stock === "in") ? "out" : "in";
-      saveProducts(list);
-      render();
-    }
-
-    if(action === "delete"){
-      if(confirm("Bu ürünü silmek istiyor musun?")){
-        list.splice(idx, 1);
-        saveProducts(list);
-        render();
-      }
-    }
+  window.addEventListener("storage", (e) => {
+    if (e.key === KEY) renderProducts();
   });
-
-  // export / import
-  $("#exportBtn").addEventListener("click", () => {
-    const list = loadProducts();
-    const blob = new Blob([JSON.stringify(list, null, 2)], { type:"application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "stawa-products.json";
-    a.click();
-    URL.revokeObjectURL(url);
-  });
-
-  const fileInput = $("#fileInput");
-  $("#importBtn").addEventListener("click", () => fileInput.click());
-  fileInput.addEventListener("change", async () => {
-    const file = fileInput.files?.[0];
-    if(!file) return;
-    try{
-      const text = await file.text();
-      const data = JSON.parse(text);
-      if(!Array.isArray(data)) throw new Error("Geçersiz JSON");
-
-      const cleaned = data.map(x => ({
-        id: x.id || uid(),
-        name: String(x.name || "").slice(0, 120),
-        code: String(x.code || "").slice(0, 80),
-        price: String(x.price || "").slice(0, 60),
-        desc: String(x.desc || "").slice(0, 400),
-        stock: (x.stock === "out") ? "out" : "in",
-        createdAt: x.createdAt || Date.now()
-      })).filter(x => x.name && x.code);
-
-      saveProducts(cleaned);
-      render();
-      alert("İçe aktarıldı ✅");
-    }catch(err){
-      alert("İçe aktarma hatası: " + err.message);
-    }finally{
-      fileInput.value = "";
-    }
-  });
-
-  $("#wipeBtn").addEventListener("click", () => {
-    if(confirm("Tüm ürünleri silmek istiyor musun?")){
-      saveProducts([]);
-      render();
-    }
-  });
-
-  // init
-  syncGate();
-  if(isUnlocked()) render();
 </script>
 </body>
 </html>
