@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="tr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>STAWA — Ürünler</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    :root{
+      --bg-top:#050507;
+      --bg-bottom:#f7f8fc;
+      --gold:#f0b868;
+      --muted:#6a6d7b;
+      --shadow: 0 26px 70px rgba(15,16,35,0.20);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-pill: 999px;
+    }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      background: linear-gradient(to bottom, var(--bg-top) 0, #15151d 420px, var(--bg-bottom) 100%);
+      color:#f5f5f5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x:hidden;
+    }
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(5,5,10,0.96), rgba(5,5,10,0.75));
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .header-inner{
+      max-width: 1180px;
+      margin:0 auto;
+      padding: 12px 22px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+    .brand-logo{
+      width: 150px;
+      max-height: 70px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      filter: drop-shadow(0 10px 26px rgba(0,0,0,0.75));
+    }
+    .brand-logo img{width:100%; height:auto; display:block;}
+    nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+    nav a{
+      text-decoration:none;
+      color:#e0e0e0;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(10,11,20,0.72);
+      transition: 0.18s ease-out;
+    }
+    nav a:hover{
+      border-color: rgba(255,255,255,0.45);
+      background: rgba(20,22,40,0.95);
+    }
+    nav a.active{
+      border-color: rgba(240,184,104,0.85);
+      background: rgba(240,184,104,0.14);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.60);
+    }
+
+    /* Page container */
+    .container{
+      max-width: 1180px;
+      margin:0 auto;
+      padding: 28px 22px 50px;
+    }
+
+    .page-head{
+      border-radius: 28px;
+      padding: 26px 24px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.06) 55%, rgba(255,255,255,0.03) 100%);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+      margin-bottom: 16px;
+    }
+    .kicker{
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245,245,245,0.75);
+      margin-bottom: 6px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .kicker .dot{
+      width:7px; height:7px; border-radius:999px;
+      background: var(--gold);
+      box-shadow: 0 0 0 5px rgba(240,183,104,0.22);
+    }
+    h1{
+      margin: 0 0 6px;
+      font-size: 26px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+    .sub{
+      margin: 0;
+      color: rgba(245,245,245,0.75);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    /* Admin + grid */
+    .admin{
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: linear-gradient(145deg, #ffffff 0%, #f7f8fc 55%, #eef0fa 100%);
+      box-shadow: var(--shadow);
+      color:#111317;
+      margin-bottom: 16px;
+    }
+    .admin-title{
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 10px;
+      color:#111317;
+    }
+    .admin-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    label{
+      display:block;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    input, select{
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: rgba(255,255,255,0.96);
+      font-family: inherit;
+      outline: none;
+      font-size: 14px;
+    }
+    input:focus, select:focus{
+      border-color: rgba(240,184,104,0.9);
+      box-shadow: 0 0 0 1px rgba(240,184,104,0.55), 0 10px 26px rgba(15,16,35,0.14);
+      background: #fff;
+    }
+
+    .actions{
+      margin-top: 12px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      border-radius: var(--radius-pill);
+      padding: 10px 18px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor:pointer;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: #fff;
+      color:#111317;
+      transition: 0.18s ease-out;
+      user-select:none;
+    }
+    .btn.primary{
+      background: #111317;
+      color:#f5f5f5;
+      border-color: rgba(17,19,23,0.25);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+    }
+    .btn.primary:hover{ transform: translateY(-1px); }
+    .btn.ghost{
+      background: transparent;
+    }
+    .hint{
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card{
+      border-radius: 20px;
+      overflow:hidden;
+      border: 1px solid rgba(15,16,35,0.08);
+      background: #fff;
+      box-shadow: 0 16px 46px rgba(15,16,35,0.14);
+      color:#111317;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 24px 60px rgba(15,16,35,0.18);
+    }
+    .thumb{
+      height: 190px;
+      background: rgba(15,16,35,0.06);
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .body{
+      padding: 12px;
+    }
+    .title{
+      font-weight: 800;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .meta{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .stock{
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.78);
+    }
+    .stock.out{ opacity: 0.55; }
+
+    .card-actions{
+      margin-top: 10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+    }
+    .mini{
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: rgba(255,255,255,0.95);
+      padding: 8px 10px;
+      cursor:pointer;
+      font-family: inherit;
+      font-size: 12px;
+      transition: 0.18s ease-out;
+    }
+    .mini:hover{ transform: translateY(-1px); }
+
+    footer{
+      padding: 18px 0 26px;
+      text-align:center;
+      font-size: 13px;
+      color: rgba(245,245,245,0.65);
+    }
+
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 720px){
+      .header-inner{ flex-direction: column; align-items: flex-start; padding: 10px 14px; }
+      .brand-logo{ width: 140px; }
+      .container{ padding: 22px 16px 40px; }
+      .admin-grid{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: 1fr; }
+      .thumb{ height: 220px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-logo">
+        <!-- Logo dosyan aynı klasörde olmalı -->
+        <img src="stawa_logo_transparent.png" alt="STAWA Logo" loading="eager">
+      </div>
+    </div>
+
+    <nav>
+      <a href="index.html"><i class="fa-solid fa-house"></i> Ana Sayfa</a>
+      <a href="products.html" class="active"><i class="fa-solid fa-boxes-stacked"></i> Ürünler</a>
+      <a href="index.html#contact"><i class="fa-solid fa-envelope"></i> İletişim</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="page-head">
+    <div class="kicker"><span class="dot"></span>STAWA · PRODUCT MANAGER</div>
+    <h1>Ürünler</h1>
+    <p class="sub">
+      Buradan ürün ekleyip çıkarabilir, stok durumunu “Var / Yok” yapabilirsin.
+      Eklenen ürünler tarayıcıda kaydolur (localStorage). Aynı cihazda sayfa yenilense bile durur.
+    </p>
+  </div>
+
+  <section class="admin" aria-label="Ürün yönetimi">
+    <div class="admin-title">Ürün Yönetimi</div>
+
+    <div class="admin-grid">
+      <div>
+        <label>Ürün Adı</label>
+        <input id="pName" type="text" placeholder="Örn: High Waist Wide Leg" />
+      </div>
+
+      <div>
+        <label>Fiyat (opsiyonel)</label>
+        <input id="pPrice" type="text" placeholder="Örn: 12.50$ / 420₺" />
+      </div>
+
+      <div>
+        <label>Görsel (dosya adı / url)</label>
+        <input id="pImg" type="text" placeholder="Örn: products/1.jpg veya https://..." />
+      </div>
+
+      <div>
+        <label>Stok</label>
+        <select id="pStock">
+          <option value="in">Var</option>
+          <option value="out">Yok</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" type="button" id="addProductBtn">
+        <i class="fa-solid fa-plus"></i> Ürün Ekle
+      </button>
+      <button class="btn ghost" type="button" id="clearProductsBtn" title="Tüm ürünleri siler">
+        <i class="fa-solid fa-trash"></i> Tümünü Temizle
+      </button>
+    </div>
+
+    <div class="hint">
+      Görsel alanına “a.jpg” yazarsan dosya bu sayfayla aynı klasörde olmalı.
+      İstersen “products/1.jpg” gibi klasör yolu da verebilirsin.
+    </div>
+  </section>
+
+  <section aria-label="Ürün listesi">
+    <div class="grid" id="productGrid"></div>
+  </section>
+
+</main>
+
+<footer>© STAWA — Products</footer>
+
+<script>
+  const $ = (sel, root=document) => root.querySelector(sel);
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, s => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    }[s]));
+  }
+
+  function initProducts() {
+    const grid = $("#productGrid");
+    if (!grid) return;
+
+    const key = "stawa_products_v1";
+
+    const defaultProducts = [
+      { id: crypto.randomUUID(), name: "High Waist Wide Leg", price: "—", img: "a.jpg", stock: "in" },
+      { id: crypto.randomUUID(), name: "Tailored Straight Fit", price: "—", img: "b.jpg", stock: "out" },
+      { id: crypto.randomUUID(), name: "Minimal Suit Trouser", price: "—", img: "c.JPG", stock: "in" },
+    ];
+
+    const load = () => {
+      try {
+        const raw = localStorage.getItem(key);
+        if (!raw) return defaultProducts;
+        const arr = JSON.parse(raw);
+        return Array.isArray(arr) ? arr : defaultProducts;
+      } catch { return defaultProducts; }
+    };
+
+    const save = (items) => {
+      try { localStorage.setItem(key, JSON.stringify(items)); } catch {}
+    };
+
+    let items = load();
+
+    const stockText = (s) => (s === "in" ? "Stok Var" : "Stok Yok");
+    const safeImg = (src) => (src && src.trim() ? src.trim() : "a.jpg");
+
+    const render = () => {
+      grid.innerHTML = items.map(p => `
+        <div class="card" data-id="${escapeHtml(p.id)}">
+          <div class="thumb">
+            <img src="${escapeHtml(safeImg(p.img))}" alt="${escapeHtml(p.name)}" loading="lazy">
+          </div>
+          <div class="body">
+            <div class="title">${escapeHtml(p.name)}</div>
+            <div class="meta">
+              <div>${escapeHtml(p.price || "—")}</div>
+              <div class="stock ${p.stock === "out" ? "out" : "in"}">${stockText(p.stock)}</div>
+            </div>
+            <div class="card-actions">
+              <button class="mini" type="button" data-action="toggle">Stok Değiştir</button>
+              <button class="mini" type="button" data-action="remove">Sil</button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    };
+
+    const addProduct = ({ name, price, img, stock }) => {
+      items.unshift({
+        id: crypto.randomUUID(),
+        name: name.trim(),
+        price: (price || "").trim() || "—",
+        img: (img || "").trim(),
+        stock
+      });
+      save(items);
+      render();
+    };
+
+    const removeProduct = (id) => {
+      items = items.filter(x => x.id !== id);
+      save(items);
+      render();
+    };
+
+    const toggleStock = (id) => {
+      items = items.map(x => x.id === id ? { ...x, stock: x.stock === "in" ? "out" : "in" } : x);
+      save(items);
+      render();
+    };
+
+    grid.addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-action]");
+      if (!btn) return;
+
+      const card = e.target.closest(".card");
+      if (!card) return;
+
+      const id = card.getAttribute("data-id");
+      const action = btn.getAttribute("data-action");
+
+      if (action === "remove") removeProduct(id);
+      if (action === "toggle") toggleStock(id);
+    });
+
+    // Admin panel
+    const addBtn = $("#addProductBtn");
+    const clearBtn = $("#clearProductsBtn");
+    const pName = $("#pName");
+    const pPrice = $("#pPrice");
+    const pImg = $("#pImg");
+    const pStock = $("#pStock");
+
+    addBtn?.addEventListener("click", () => {
+      const name = (pName.value || "").trim();
+      if (!name) return alert("Ürün adı gir.");
+
+      addProduct({
+        name,
+        price: pPrice.value,
+        img: pImg.value,
+        stock: pStock.value
+      });
+
+      pName.value = "";
+      pPrice.value = "";
+      pImg.value = "";
+      pStock.value = "in";
+    });
+
+    clearBtn?.addEventListener("click", () => {
+      if (!confirm("Tüm ürünleri silmek istediğine emin misin?")) return;
+      items = [];
+      save(items);
+      render();
+    });
+
+    render();
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initProducts();
+  });
+</script>
+
+</body>
+</html>
