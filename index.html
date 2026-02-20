@@ -2467,32 +2467,31 @@ Message: ${msg.value || "-"}`;
 
     /* ---------- Mouse glow + hero tilt ---------- */
     function initMouseFX() {
-      
+  const card = document.getElementById("heroCard");
+  if (!card || prefersReducedMotion()) return;
 
-      // subtle tilt
-      if (card && !prefersReducedMotion()) {
-        let raf2 = null;
-        let rx = 0, ry = 0;
+  let raf2 = null;
+  let rx = 0, ry = 0;
 
-        function apply() {
-          card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
-          raf2 = null;
-        }
+  function apply() {
+    card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+    raf2 = null;
+  }
 
-        card.addEventListener("mousemove", (e) => {
-          const rect = card.getBoundingClientRect();
-          const px = (e.clientX - rect.left) / rect.width - 0.5;
-          const py = (e.clientY - rect.top) / rect.height - 0.5;
-          ry = px * 6;
-          rx = -py * 6;
-          if (!raf2) raf2 = requestAnimationFrame(apply);
-        });
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    ry = px * 6;
+    rx = -py * 6;
+    if (!raf2) raf2 = requestAnimationFrame(apply);
+  });
 
-        card.addEventListener("mouseleave", () => {
-          rx = 0; ry = 0;
-          if (!raf2) raf2 = requestAnimationFrame(apply);
-        });
-      }
+  card.addEventListener("mouseleave", () => {
+    rx = 0; ry = 0;
+    if (!raf2) raf2 = requestAnimationFrame(apply);
+  });
+}
     }
 
     /* ---------- Lazy load images (except hero already eager) ---------- */
@@ -2540,9 +2539,8 @@ Message: ${msg.value || "-"}`;
       initMouseFX();
       initLazyImages();
 // Auto security fix for all target="_blank" links
-document.querySelectorAll('a[target="_blank"]').forEach(link => {
-  link.setAttribute("rel", "noopener noreferrer");
-  document.querySelectorAll('a[target="_blank"]').forEach(a => {
+// Auto security fix for all target="_blank" links
+document.querySelectorAll('a[target="_blank"]').forEach(a => {
   a.setAttribute("rel", "noopener noreferrer");
   a.setAttribute("referrerpolicy", "no-referrer");
 });
@@ -2558,6 +2556,7 @@ document.querySelectorAll('a[target="_blank"]').forEach(link => {
   </script>
 </body>
 </html>
+
 
 
 
