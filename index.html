@@ -2511,7 +2511,10 @@ Sent from STAWA website`;
       initCopyCards();
       initMouseFX();
       initLazyImages();
-
+// Auto security fix for all target="_blank" links
+document.querySelectorAll('a[target="_blank"]').forEach(link => {
+  link.setAttribute("rel", "noopener noreferrer");
+});
       // small friendly toast once per session
       if (!sessionStorage.getItem("stawa_toast_once")) {
         sessionStorage.setItem("stawa_toast_once", "1");
@@ -2523,6 +2526,7 @@ Sent from STAWA website`;
   </script>
 </body>
 </html>
+
 
 
 
