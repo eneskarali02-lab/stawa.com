@@ -2539,11 +2539,11 @@ Message: ${msg.value || "-"}`;
       initMouseFX();
       initLazyImages();
 // Auto security fix for all target="_blank" links
-// Auto security fix for all target="_blank" links
 document.querySelectorAll('a[target="_blank"]').forEach(a => {
   a.setAttribute("rel", "noopener noreferrer");
   a.setAttribute("referrerpolicy", "no-referrer");
 });
+
 
       // small friendly toast once per session
       if (!sessionStorage.getItem("stawa_toast_once")) {
@@ -2556,6 +2556,7 @@ document.querySelectorAll('a[target="_blank"]').forEach(a => {
   </script>
 </body>
 </html>
+
 
 
 
