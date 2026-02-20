@@ -98,6 +98,7 @@
           45deg,
           rgba(0, 0, 0, 0.10) 0px,
           rgba(0, 0, 0, 0.10) 1px,
+          
           transparent 1px,
           transparent 4px
         ),
@@ -110,31 +111,7 @@
     }
 
     /* JS parallax glow */
-    .mouse-glow {
-  position: fixed;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: -1;
-
-  /* VIP – yumuşak ama hissedilen gölge */
-  background: radial-gradient(
-    circle at center,
-    rgba(0, 0, 0, 0.52) 0%,
-    rgba(0, 0, 0, 0.34) 24%,
-    rgba(0, 0, 0, 0.20) 42%,
-    rgba(0, 0, 0, 0.10) 56%,
-    rgba(0, 0, 0, 0.04) 66%,
-    transparent 74%
-  );
-
-  filter: blur(44px);
-  opacity: 0.48;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.35s ease-out;
-  mix-blend-mode: multiply;
-}
+    
 
 
 
@@ -1220,7 +1197,6 @@
 
 <body class="page">
   <div class="scroll-progress" id="scrollProgress"></div>
-  <div class="mouse-glow" id="mouseGlow" aria-hidden="true"></div>
 
   <!-- PRELOADER -->
   <div class="preloader" id="preloader" aria-hidden="true">
@@ -2463,32 +2439,7 @@ Sent from STAWA website`;
 
     /* ---------- Mouse glow + hero tilt ---------- */
     function initMouseFX() {
-      const glow = $("#mouseGlow");
-      const card = $("#heroCard");
-
-      if (glow && !prefersReducedMotion()) {
-        let raf = null;
-        let targetX = window.innerWidth/2;
-        let targetY = window.innerHeight/2;
-
-        function loop() {
-          glow.style.left = targetX + "px";
-          glow.style.top = targetY + "px";
-          raf = null;
-        }
-
-        window.addEventListener("mousemove", (e) => {
-          targetX = e.clientX;
-          targetY = e.clientY;
-          if (!raf) raf = requestAnimationFrame(loop);
-        }, { passive: true });
-
-window.addEventListener("mouseenter", () => glow.style.opacity = "0.5");
-window.addEventListener("mouseleave", () => glow.style.opacity = "0.34");
-
-
-
-      }
+      
 
       // subtle tilt
       if (card && !prefersReducedMotion()) {
@@ -2572,6 +2523,7 @@ window.addEventListener("mouseleave", () => glow.style.opacity = "0.34");
   </script>
 </body>
 </html>
+
 
 
 
