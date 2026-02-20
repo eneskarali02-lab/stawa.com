@@ -15,8 +15,7 @@
 <link rel="canonical" href="https://YOURDOMAIN.com/" />
 
 <!-- Preload hero first slide -->
-<link rel="preload" as="image" href="a.jpg" fetchpriority="high">
-
+<link rel="preload" as="image" href="a.webp" fetchpriority="high">
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="STAWA — Women’s Trousers & Womenswear Manufacturing" />
@@ -1541,10 +1540,9 @@
           <div class="contact-card">
             <div class="contact-card-title" data-i18n="contact_form_title">Mail ile Teklif Talebi</div>
 
-            <form class="contact-form" id="contactForm"
-                  action="mailto:stawa.3434@gmail.com"
-                  method="POST"
-                  enctype="text/plain">
+          <form class="contact-form" id="contactForm"
+      action="https://formspree.io/f/XXXXXXX"
+      method="POST">
               <label data-i18n="form_name_label">Firma / Alıcı Adı</label>
               <input id="fName" type="text" name="Firma / Company" data-i18n-placeholder="form_name_ph" placeholder="Firma veya kişi adı" autocomplete="name"/>
 
@@ -2195,7 +2193,7 @@ Message: ${msg.value || "-"}`;
 
     /* ---------- Slider + Lightbox ---------- */
     function initSlider() {
-      const images = ["a.jpg", "b.jpg", "c.JPG", "d.jpg"];
+     const images = ["a.webp", "b.webp", "c.webp", "d.webp"];
       let currentIndex = 0;
       let timer = null;
       let paused = false;
@@ -2429,46 +2427,39 @@ Message: ${msg.value || "-"}`;
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).trim());
       }
 
-      form.addEventListener("submit", (e) => {
-        // Build mailto with subject/body (more reliable)
-        e.preventDefault();
+      form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-        const lang = storage.get("stawa_lang", "tr");
-        const dict = i18n[lang] || i18n.tr;
+  const n = (name?.value || "").trim();
+  const em = (email?.value || "").trim();
+  const m = (msg?.value || "").trim();
 
-        const n = (name?.value || "").trim();
-        const em = (email?.value || "").trim();
-        const m = (msg?.value || "").trim();
+  let ok = true;
+  if (!n) { ok = false; name?.classList.add("field-error"); }
+  if (!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { ok = false; email?.classList.add("field-error"); }
+  if (!m || m.length < 10) { ok = false; msg?.classList.add("field-error"); }
 
-        let ok = true;
-        if (!n) { ok = false; name?.classList.add("field-error"); }
-        if (!em || !validateEmail(em)) { ok = false; email?.classList.add("field-error"); }
-        if (!m || m.length < 10) { ok = false; msg?.classList.add("field-error"); }
+  if (!ok) return;
 
-        if (!ok) {
-          showToast({ title: dict.toast_invalid, message: "Lütfen formu eksiksiz doldurun.", icon: "fa-solid fa-triangle-exclamation" });
-          return;
-        }
+  const fd = new FormData();
+  fd.append("Company/Name", n);
+  fd.append("Email", em);
+  fd.append("Message", m);
 
-        const subject = encodeURIComponent("STAWA Wholesale Inquiry");
-        const body =
-`Company/Name: ${n}
-Email: ${em}
+  const res = await fetch(form.action, {
+    method: "POST",
+    body: fd,
+    headers: { "Accept": "application/json" }
+  });
 
-Message:
-${m}
-
----
-Sent from STAWA website`;
-        const mailto = `mailto:stawa.3434@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
-
-        showToast({ title: dict.toast_ready, message: "Mail uygulaması açılıyor…", icon: "fa-solid fa-envelope-open-text" });
-
-        // clear draft
-        storage.set(draftKey, "");
-
-        window.location.href = mailto;
-      });
+  if (res.ok) {
+    storage.set("stawa_form_draft", "");
+    form.reset();
+    alert("Teşekkürler! Mesajınız gönderildi.");
+  } else {
+    alert("Gönderim başarısız. Lütfen tekrar deneyin.");
+  }
+});
 
       // ripple on submit button
       $$(".contact-form .cta", form).forEach(btn => attachRipple(btn));
@@ -2551,7 +2542,11 @@ Sent from STAWA website`;
 // Auto security fix for all target="_blank" links
 document.querySelectorAll('a[target="_blank"]').forEach(link => {
   link.setAttribute("rel", "noopener noreferrer");
+  document.querySelectorAll('a[target="_blank"]').forEach(a => {
+  a.setAttribute("rel", "noopener noreferrer");
+  a.setAttribute("referrerpolicy", "no-referrer");
 });
+
       // small friendly toast once per session
       if (!sessionStorage.getItem("stawa_toast_once")) {
         sessionStorage.setItem("stawa_toast_once", "1");
@@ -2563,6 +2558,7 @@ document.querySelectorAll('a[target="_blank"]').forEach(link => {
   </script>
 </body>
 </html>
+
 
 
 
