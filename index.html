@@ -3,35 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <meta name="description" content="STAWA — Istanbul Laleli based womenswear manufacturer. Primary expertise: women’s trousers. Wholesale & export production with fast and flexible manufacturing." />
-<meta name="keywords" content="STAWA, womens trousers manufacturer, wholesale womenswear, Laleli, Istanbul, export clothing manufacturer, women pants, private label" />
-<meta name="author" content="STAWA" />
-<meta name="robots" content="index,follow" />
-
-<meta name="theme-color" content="#050507" />
-<meta name="color-scheme" content="dark light" />
-
-<!-- Canonical (siteyi yayınlayınca domaini güncelle) -->
-<link rel="canonical" href="https://YOURDOMAIN.com/" />
-
-<!-- Preload hero first slide -->
-<link rel="preload" as="image" href="a.webp" fetchpriority="high">
-<!-- Open Graph -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="STAWA — Women’s Trousers & Womenswear Manufacturing" />
-<meta property="og:description" content="Wholesale & export womenswear production in Istanbul Laleli. Primary expertise: women’s trousers. Fast & flexible in-house manufacturing." />
-<meta property="og:url" content="https://YOURDOMAIN.com/" />
-<meta property="og:image" content="https://YOURDOMAIN.com/og-stawa.jpg" />
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="STAWA — Women’s Trousers & Womenswear Manufacturing" />
-<meta name="twitter:description" content="Wholesale & export womenswear production in Istanbul Laleli. Primary expertise: women’s trousers." />
-<meta name="twitter:image" content="https://YOURDOMAIN.com/og-stawa.jpg" />
   <title>STAWA — Women’s Trousers & Womenswear Manufacturing</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
@@ -605,7 +578,7 @@
     .lightbox-nav button:hover { background: #f5f5f5; color: #111317; }
 
     /* SECTIONS */
-    .section { padding: 52px 0 26px; margin-top: 30px; border-top: none; color: #111317; content-visibility: auto; }
+    .section { padding: 52px 0 26px; margin-top: 30px; border-top: none; color: #111317; }
     .section-inner {
       position: relative;
       border-radius: 28px;
@@ -1220,16 +1193,6 @@
       .to-top { right: 12px; }
     }
   </style>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "STAWA",
-  "url": "https://YOURDOMAIN.com",
-  "email": "stawa.3434@gmail.com",
-  "telephone": "+905368467073"
-}
-</script>
 </head>
 
 <body class="page">
@@ -1332,7 +1295,7 @@
     <div class="header-inner">
       <div class="brand">
         <div class="brand-logo">
-          <img src="stawa_logo_transparent.png" alt="STAWA Logo" loading="eager" decoding="async" fetchpriority="high">
+          <img src="stawa_logo_transparent.png" alt="STAWA Logo" loading="eager">
         </div>
         <div>
           <div class="brand-text-sub" data-i18n="brand_sub">
@@ -1417,7 +1380,8 @@
 
           <div class="hero-slider" id="heroSlider">
             <div class="hero-slider-main" id="heroSliderMain" aria-label="Collection slider">
-<img id="heroSliderImage" src="a.jpg" alt="STAWA Collection Look 1" loading="eager" decoding="async" fetchpriority="high">              <div class="hero-slider-overlay"></div>
+              <img id="heroSliderImage" src="a.jpg" alt="STAWA Collection Look 1" loading="eager">
+              <div class="hero-slider-overlay"></div>
               <div class="hero-slider-label">
                 <i class="fa-solid fa-images" aria-hidden="true"></i>
                 <span data-i18n="slider_label">Koleksiyondan Görseller</span>
@@ -1540,9 +1504,10 @@
           <div class="contact-card">
             <div class="contact-card-title" data-i18n="contact_form_title">Mail ile Teklif Talebi</div>
 
-          <form class="contact-form" id="contactForm"
-      action="https://formspree.io/f/XXXXXXX"
-      method="POST">
+            <form class="contact-form" id="contactForm"
+                  action="mailto:stawa.3434@gmail.com"
+                  method="POST"
+                  enctype="text/plain">
               <label data-i18n="form_name_label">Firma / Alıcı Adı</label>
               <input id="fName" type="text" name="Firma / Company" data-i18n-placeholder="form_name_ph" placeholder="Firma veya kişi adı" autocomplete="name"/>
 
@@ -2193,7 +2158,7 @@ Message: ${msg.value || "-"}`;
 
     /* ---------- Slider + Lightbox ---------- */
     function initSlider() {
-     const images = ["a.webp", "b.webp", "c.webp", "d.webp"];
+      const images = ["a.jpg", "b.jpg", "c.JPG", "d.jpg"];
       let currentIndex = 0;
       let timer = null;
       let paused = false;
@@ -2427,39 +2392,46 @@ Message: ${msg.value || "-"}`;
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).trim());
       }
 
-      form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+      form.addEventListener("submit", (e) => {
+        // Build mailto with subject/body (more reliable)
+        e.preventDefault();
 
-  const n = (name?.value || "").trim();
-  const em = (email?.value || "").trim();
-  const m = (msg?.value || "").trim();
+        const lang = storage.get("stawa_lang", "tr");
+        const dict = i18n[lang] || i18n.tr;
 
-  let ok = true;
-  if (!n) { ok = false; name?.classList.add("field-error"); }
-  if (!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { ok = false; email?.classList.add("field-error"); }
-  if (!m || m.length < 10) { ok = false; msg?.classList.add("field-error"); }
+        const n = (name?.value || "").trim();
+        const em = (email?.value || "").trim();
+        const m = (msg?.value || "").trim();
 
-  if (!ok) return;
+        let ok = true;
+        if (!n) { ok = false; name?.classList.add("field-error"); }
+        if (!em || !validateEmail(em)) { ok = false; email?.classList.add("field-error"); }
+        if (!m || m.length < 10) { ok = false; msg?.classList.add("field-error"); }
 
-  const fd = new FormData();
-  fd.append("Company/Name", n);
-  fd.append("Email", em);
-  fd.append("Message", m);
+        if (!ok) {
+          showToast({ title: dict.toast_invalid, message: "Lütfen formu eksiksiz doldurun.", icon: "fa-solid fa-triangle-exclamation" });
+          return;
+        }
 
-  const res = await fetch(form.action, {
-    method: "POST",
-    body: fd,
-    headers: { "Accept": "application/json" }
-  });
+        const subject = encodeURIComponent("STAWA Wholesale Inquiry");
+        const body =
+`Company/Name: ${n}
+Email: ${em}
 
-  if (res.ok) {
-    storage.set("stawa_form_draft", "");
-    form.reset();
-    alert("Teşekkürler! Mesajınız gönderildi.");
-  } else {
-    alert("Gönderim başarısız. Lütfen tekrar deneyin.");
-  }
-});
+Message:
+${m}
+
+---
+Sent from STAWA website`;
+        const mailto = `mailto:stawa.3434@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+
+        showToast({ title: dict.toast_ready, message: "Mail uygulaması açılıyor…", icon: "fa-solid fa-envelope-open-text" });
+
+        // clear draft
+        storage.set(draftKey, "");
+
+        window.location.href = mailto;
+      });
 
       // ripple on submit button
       $$(".contact-form .cta", form).forEach(btn => attachRipple(btn));
@@ -2467,31 +2439,32 @@ Message: ${msg.value || "-"}`;
 
     /* ---------- Mouse glow + hero tilt ---------- */
     function initMouseFX() {
-  const card = document.getElementById("heroCard");
-  if (!card || prefersReducedMotion()) return;
+      
 
-  let raf2 = null;
-  let rx = 0, ry = 0;
+      // subtle tilt
+      if (card && !prefersReducedMotion()) {
+        let raf2 = null;
+        let rx = 0, ry = 0;
 
-  function apply() {
-    card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
-    raf2 = null;
-  }
+        function apply() {
+          card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+          raf2 = null;
+        }
 
-  card.addEventListener("mousemove", (e) => {
-    const rect = card.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width - 0.5;
-    const py = (e.clientY - rect.top) / rect.height - 0.5;
-    ry = px * 6;
-    rx = -py * 6;
-    if (!raf2) raf2 = requestAnimationFrame(apply);
-  });
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const px = (e.clientX - rect.left) / rect.width - 0.5;
+          const py = (e.clientY - rect.top) / rect.height - 0.5;
+          ry = px * 6;
+          rx = -py * 6;
+          if (!raf2) raf2 = requestAnimationFrame(apply);
+        });
 
-  card.addEventListener("mouseleave", () => {
-    rx = 0; ry = 0;
-    if (!raf2) raf2 = requestAnimationFrame(apply);
-  });
-}
+        card.addEventListener("mouseleave", () => {
+          rx = 0; ry = 0;
+          if (!raf2) raf2 = requestAnimationFrame(apply);
+        });
+      }
     }
 
     /* ---------- Lazy load images (except hero already eager) ---------- */
@@ -2539,12 +2512,9 @@ Message: ${msg.value || "-"}`;
       initMouseFX();
       initLazyImages();
 // Auto security fix for all target="_blank" links
-document.querySelectorAll('a[target="_blank"]').forEach(a => {
-  a.setAttribute("rel", "noopener noreferrer");
-  a.setAttribute("referrerpolicy", "no-referrer");
+document.querySelectorAll('a[target="_blank"]').forEach(link => {
+  link.setAttribute("rel", "noopener noreferrer");
 });
-
-
       // small friendly toast once per session
       if (!sessionStorage.getItem("stawa_toast_once")) {
         sessionStorage.setItem("stawa_toast_once", "1");
@@ -2556,10 +2526,6 @@ document.querySelectorAll('a[target="_blank"]').forEach(a => {
   </script>
 </body>
 </html>
-
-
-
-
 
 
 
