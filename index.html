@@ -9,6 +9,27 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <style>
+
+    /* ===== FLAGS (LANG) ===== */
+.lang-flag{
+  width:16px;
+  height:12px;
+  border-radius:3px;
+  object-fit:cover;
+  box-shadow:0 0 0 1px rgba(255,255,255,0.25);
+}
+
+.lang-toggle{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+.lang-btn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
     :root {
       --bg-top: #050507;
       --bg-bottom: #f7f8fc;
@@ -1289,12 +1310,25 @@
         <a href="#contact" data-i18n="nav_contact">İletişim</a>
 
         <div class="lang-switch">
-          <button type="button" class="lang-toggle" id="langToggle">TR</button>
-          <div class="lang-menu" id="langMenu">
-            <button type="button" class="lang-btn active" data-lang="tr">TR</button>
-            <button type="button" class="lang-btn" data-lang="en">EN</button>
-            <button type="button" class="lang-btn" data-lang="ru">RU</button>
-            <button type="button" class="lang-btn" data-lang="ar">AR</button>
+<button type="button" class="lang-toggle" id="langToggle">
+  <img src="https://flagcdn.com/w20/tr.png" class="lang-flag" id="currentFlag" alt="">
+  <span id="currentLangText">TR</span>
+</button>          <div class="lang-menu" id="langMenu">
+            <button type="button" class="lang-btn active" data-lang="tr">
+  <img src="https://flagcdn.com/w20/tr.png" class="lang-flag" alt=""> TR
+</button>
+
+<button type="button" class="lang-btn" data-lang="en">
+  <img src="https://flagcdn.com/w20/gb.png" class="lang-flag" alt=""> EN
+</button>
+
+<button type="button" class="lang-btn" data-lang="ru">
+  <img src="https://flagcdn.com/w20/ru.png" class="lang-flag" alt=""> RU
+</button>
+
+<button type="button" class="lang-btn" data-lang="ar">
+  <img src="https://flagcdn.com/w20/sa.png" class="lang-flag" alt=""> AR
+</button>
           </div>
         </div>
       </nav>
@@ -1899,8 +1933,16 @@
         btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
       });
 
-      const toggle = $("#langToggle");
-      if (toggle) toggle.textContent = lang.toUpperCase();
+      // Toggle text + flag update
+const flagMap = { tr: "tr", en: "gb", ru: "ru", ar: "sa" };
+
+const currentFlag = document.getElementById("currentFlag");
+const currentLangText = document.getElementById("currentLangText");
+
+if (currentLangText) currentLangText.textContent = lang.toUpperCase();
+if (currentFlag && flagMap[lang]) {
+  currentFlag.src = `https://flagcdn.com/w20/${flagMap[lang]}.png`;
+}
 
       document.documentElement.lang = lang;
       document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
@@ -2506,6 +2548,7 @@ window.addEventListener("mouseleave", () => glow.style.opacity = "0.34");
   </script>
 </body>
 </html>
+
 
 
 
