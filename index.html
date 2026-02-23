@@ -6,7 +6,7 @@
 
   <title>STAWA — Women’s Trousers & Womenswear Manufacturing</title>
 
-  <!-- ✅ (4) SEO BASICS -->
+  <!-- ✅ SEO BASICS -->
   <meta name="description" content="STAWA — İstanbul Laleli’de 2012’den beri toptan kadın pantolonu ağırlıklı üretim. Talebe göre ceket, takım, etek ve diğer kadın giyim ürünleri. Hızlı termin, esnek adet, rekabetçi fiyat." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="./" />
@@ -24,7 +24,7 @@
   <meta name="twitter:description" content="Since 2012 · Laleli — In-house production, fast lead times, flexible quantities, competitive pricing." />
   <meta name="twitter:image" content="stawa_og.jpg" />
 
-  <!-- ✅ (4) SCHEMA (Organization + LocalBusiness) -->
+  <!-- ✅ SCHEMA (Organization + LocalBusiness) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -49,7 +49,7 @@
   }
   </script>
 
-  <!-- ✅ (2) PERFORMANCE: preconnect -->
+  <!-- ✅ PERFORMANCE: preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
@@ -157,7 +157,6 @@
       z-index: -2;
     }
 
-    /* ✅ (2) PERFORMANCE: reduce heavy blend on mobile */
     @media (max-width: 720px){
       body::before{ opacity:0.30; }
     }
@@ -406,7 +405,7 @@
     .cta-ghost:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.85); transform: translateY(-1px); box-shadow: 0 18px 40px rgba(0,0,0,0.9); }
     .hero-cta-note { font-size: 12px; color: var(--muted-dark); margin-top: 6px; }
 
-    /* ✅ (4) B2B QUICK FACTS */
+    /* ✅ QUICK FACTS */
     .b2b-facts {
       margin-top: 16px;
       display: grid;
@@ -802,7 +801,7 @@
       line-height: 1.8;
     }
 
-    /* ✅ (4) B2B SECTION */
+    /* ✅ TOPTAN SATIŞ (B2B SECTION) */
     .b2b-layout{
       display:grid;
       grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
@@ -857,13 +856,6 @@
       font-size: 14px;
       color:#34374a;
       line-height:1.6;
-    }
-    .b2b-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 12px;
-      align-items:center;
     }
     .b2b-note{
       margin-top: 10px;
@@ -974,7 +966,7 @@
       background: #ffffff;
     }
 
-    /* ✅ (1) backend form status (since toast is disabled) */
+    /* backend form status */
     #msg { margin-top: 10px; font-size: 12px; color: var(--muted-light); line-height: 1.6; }
     .form-status {
       margin-top: 10px;
@@ -1442,7 +1434,6 @@
       <nav id="mainNav">
         <a href="#home" data-i18n="nav_home">Ana Sayfa</a>
         <a href="#about" data-i18n="nav_about">Hakkımızda</a>
-        <a href="#b2b" data-i18n="nav_b2b">B2B</a>
         <a href="#contact" data-i18n="nav_contact">İletişim</a>
 
         <div class="lang-switch">
@@ -1492,7 +1483,7 @@
           <div class="pill-tag" data-i18n="tag_focus">Ağırlıklı Kadın Pantolon Üretimi</div>
         </div>
 
-        <!-- ✅ (4) Quick B2B facts above the fold -->
+        <!-- Quick facts -->
         <div class="b2b-facts">
           <div class="b2b-pill">
             <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>
@@ -1524,13 +1515,11 @@
           </div>
         </div>
 
+        <!-- ✅ HERO CTA (Less prominent + catalog removed) -->
         <div class="hero-cta-group" style="margin-top:18px;">
-          <a class="cta cta-primary" href="#contact" data-i18n="cta_primary">Teklif Talep Et</a>
-          <a class="cta cta-ghost" href="#b2b" data-i18n="cta_b2b">B2B Detayları</a>
-          <a class="cta cta-ghost" href="catalog.pdf" target="_blank" data-i18n="cta_catalog">
-            Katalog (PDF)
-          </a>
+          <a class="cta cta-ghost" href="#contact" data-i18n="cta_primary">Teklif Talep Et</a>
         </div>
+
         <div class="hero-cta-note" data-i18n="cta_note">
           WhatsApp veya e-posta ile model, adet ve teslim süresi hakkında hızlı dönüş.
         </div>
@@ -1643,11 +1632,11 @@
       </div>
     </section>
 
-    <!-- ✅ (4) B2B -->
+    <!-- ✅ TOPTAN SATIŞ (B2B id aynı kaldı) -->
     <section id="b2b" class="section">
       <div class="section-inner reveal">
         <div class="section-header">
-          <h2 data-i18n="b2b_title">B2B</h2>
+          <h2 data-i18n="b2b_title">Toptan Satış</h2>
           <span data-i18n="b2b_sub">Toptan alıcılar için hızlı teklif ve net süreç.</span>
         </div>
 
@@ -1674,14 +1663,7 @@
               </div>
             </div>
 
-            <div class="b2b-actions">
-              <a class="cta cta-primary" href="#contact" data-i18n="b2b_cta_quote">Hızlı Teklif</a>
-              <a class="cta cta-ghost" href="https://wa.me/905368467073?text=Hello%20STAWA%2C%20I%20want%20a%20wholesale%20quotation.%20Product%3A%20Trousers%20%7C%20Quantity%3A%20%7C%20Country%3A%20%7C%20Target%20date%3A%20" target="_blank" data-i18n="b2b_cta_whatsapp">
-                WhatsApp Quick Quote
-              </a>
-              <a class="cta cta-ghost" href="catalog.pdf" target="_blank" data-i18n="b2b_cta_catalog">Katalog (PDF)</a>
-            </div>
-
+            <!-- ✅ 3 buton kaldırıldı -->
             <div class="b2b-note" data-i18n="b2b_note">
               Not: En hızlı teklif için ürün türü (pantolon/ceket/takım/etek), adet, ülke ve hedef teslim tarihini yazınız.
             </div>
@@ -1738,7 +1720,7 @@
           <div class="contact-card">
             <div class="contact-card-title" data-i18n="contact_form_title">Mail ile Teklif Talebi</div>
 
-            <!-- ✅ (1) REAL BACKEND FORM (Formspree fetch) -->
+            <!-- REAL BACKEND FORM (Formspree fetch) -->
             <form class="contact-form" id="contactForm" novalidate>
               <label data-i18n="form_name_label">Firma / Alıcı Adı</label>
               <input id="fName" type="text" name="name" data-i18n-placeholder="form_name_ph" placeholder="Firma veya kişi adı" autocomplete="name"/>
@@ -1818,15 +1800,16 @@
   <script>
     /* =========================
       STAWA — JS PACK
-      ✅ Added: Real backend form (Formspree)
-      ✅ Added: SEO/schema in head + B2B section
-      ✅ Performance: mobile pattern opacity reduce + preconnect
+      ✅ Real backend form (Formspree)
+      ✅ Menu: B2B removed
+      ✅ Hero: catalog removed + CTA less prominent
+      ✅ Section title: B2B -> Toptan Satış
     ========================= */
 
     const i18n = {
       tr: {
         brand_sub: "Modern Kadın Pantolonlarında Minimal Zarafet",
-        nav_home: "Ana Sayfa", nav_about: "Hakkımızda", nav_b2b: "B2B", nav_contact: "İletişim",
+        nav_home: "Ana Sayfa", nav_about: "Hakkımızda", nav_contact: "İletişim",
         kicker_text: "2012'den beri · Laleli",
         hero_title: "Modern kadın pantolonlarında minimal, güçlü ve zamansız bir çizgi.",
         hero_lead: "STAWA, 2012'den beri İstanbul Laleli’de kendi imalathanesinde ağırlıklı olarak kadın pantolonu üreten, aynı zamanda talebe göre ceket, takım, etek gibi farklı kadın giyim ürünlerinde de üretim yapabilen bir toptan ihracat markasıdır. Üretimin bize ait olması; hızlı imalatı, uygun fiyatı ve esnek üretimi mümkün kılar.",
@@ -1834,8 +1817,6 @@
         tag_export: "İhracat Odaklı Üretim",
         tag_focus: "Ağırlıklı Kadın Pantolon Üretimi",
         cta_primary: "Teklif Talep Et",
-        cta_b2b: "B2B Detayları",
-        cta_catalog: "Katalog (PDF)",
         cta_note: "WhatsApp veya e-posta ile model, adet ve teslim süresi hakkında hızlı dönüş.",
         collection_title: "Koleksiyon · Öne Çıkan",
         collection_badge: "FW · ESSENTIAL",
@@ -1867,7 +1848,7 @@
         mission_title: "Misyonumuz",
         mission_text: "Kadın pantolonu üretimindeki uzmanlığımızı, kendi imalathanemizdeki hızlı ve talebe göre şekillenen süreçlerle birleştirerek; uluslararası alıcılar için kontrollü, güvenilir ve uygun fiyatlı bir tedarik ağı sunmak.",
 
-        b2b_title: "B2B",
+        b2b_title: "Toptan Satış",
         b2b_sub: "Toptan alıcılar için hızlı teklif ve net süreç.",
         b2b_block1: "Üretim & Süreç",
         b2b_block2: "Teslimat & İhracat",
@@ -1884,9 +1865,6 @@
         b2b_docs_value: "Talebe göre içerik/etiket/koli düzeni",
         b2b_terms_label: "Ödeme/Şartlar",
         b2b_terms_value: "Anlaşmaya göre · teklif sırasında netleşir",
-        b2b_cta_quote: "Hızlı Teklif",
-        b2b_cta_whatsapp: "WhatsApp Quick Quote",
-        b2b_cta_catalog: "Katalog (PDF)",
         b2b_note: "Not: En hızlı teklif için ürün türü (pantolon/ceket/takım/etek), adet, ülke ve hedef teslim tarihini yazınız.",
 
         contact_card_title: "STAWA — Toptan Kadın Pantolonu & Kadın Giyim Üretimi",
@@ -1914,14 +1892,13 @@
         metric_reply: "Hızlı Dönüş",
         metric_control: "Kontrol",
         metric_models: "Model",
-        toast_copied: "Kopyalandı",
         toast_invalid: "Eksik Bilgi",
         toast_ready: "Talep Alındı"
       },
 
       en: {
         brand_sub: "Minimal Elegance in Women’s Trousers",
-        nav_home: "Home", nav_about: "About", nav_b2b: "B2B", nav_contact: "Contact",
+        nav_home: "Home", nav_about: "About", nav_contact: "Contact",
         kicker_text: "Since 2012 · Laleli",
         hero_title: "A minimal, strong and timeless line in women’s trousers.",
         hero_lead: "Since 2012, STAWA has been a wholesale export brand based in Istanbul’s Laleli district, primarily specializing in women's trousers, while also producing jackets, suits, skirts and other womenswear items upon demand in its own facility. In-house manufacturing enables fast production, competitive pricing and flexible quantities.",
@@ -1929,8 +1906,6 @@
         tag_export: "Export-Oriented Production",
         tag_focus: "Primary Expertise: Women’s Trousers",
         cta_primary: "Request a Quotation",
-        cta_b2b: "B2B Details",
-        cta_catalog: "Catalog (PDF)",
         cta_note: "Fast replies via WhatsApp or e-mail about models, quantities and lead times.",
         collection_title: "Collection · Highlight",
         collection_badge: "FW · ESSENTIAL",
@@ -1962,7 +1937,7 @@
         mission_title: "Our Mission",
         mission_text: "Combining strong trouser expertise with fast in-house manufacturing to provide international buyers a reliable and competitively priced supply chain.",
 
-        b2b_title: "B2B",
+        b2b_title: "Wholesale",
         b2b_sub: "Fast quotation and clear process for wholesale buyers.",
         b2b_block1: "Production & Process",
         b2b_block2: "Delivery & Export",
@@ -1979,9 +1954,6 @@
         b2b_docs_value: "Labels / carton setup upon request",
         b2b_terms_label: "Terms",
         b2b_terms_value: "Agreed case-by-case · defined in quotation",
-        b2b_cta_quote: "Quick Quotation",
-        b2b_cta_whatsapp: "WhatsApp Quick Quote",
-        b2b_cta_catalog: "Catalog (PDF)",
         b2b_note: "Tip: For fastest quotation, share product type, quantity, country, and target delivery date.",
 
         contact_card_title: "STAWA — Wholesale Women’s Trousers & Womenswear",
@@ -2009,14 +1981,13 @@
         metric_reply: "Fast Reply",
         metric_control: "Control",
         metric_models: "Models",
-        toast_copied: "Copied",
         toast_invalid: "Missing Info",
         toast_ready: "Received"
       },
 
       ru: {
         brand_sub: "Минималистичная элегантность в женских брюках",
-        nav_home: "Главная", nav_about: "О нас", nav_b2b: "B2B", nav_contact: "Контакты",
+        nav_home: "Главная", nav_about: "О нас", nav_contact: "Контакты",
         kicker_text: "С 2012 года · Лалели",
         hero_title: "Минимальная, выразительная и вне времени линия женских брюк.",
         hero_lead: "С 2012 года STAWA — оптовый экспортный бренд в стамбульском районе Лалели, специализирующийся на женских брюках и производящий другие изделия по запросу на собственной фабрике.",
@@ -2024,8 +1995,6 @@
         tag_export: "Экспортное производство",
         tag_focus: "Специализация: Женские брюки",
         cta_primary: "Запросить предложение",
-        cta_b2b: "B2B детали",
-        cta_catalog: "Каталог (PDF)",
         cta_note: "Быстрый ответ через WhatsApp или e-mail.",
         collection_title: "Коллекция · Лучшее",
         collection_badge: "FW · ESSENTIAL",
@@ -2057,7 +2026,7 @@
         mission_title: "Наша миссия",
         mission_text: "Надёжная цепочка поставок для международных покупателей.",
 
-        b2b_title: "B2B",
+        b2b_title: "Оптовые продажи",
         b2b_sub: "Быстрый расчет и понятный процесс для оптовиков.",
         b2b_block1: "Производство",
         b2b_block2: "Доставка",
@@ -2074,9 +2043,6 @@
         b2b_docs_value: "Этикетки/коробки по запросу",
         b2b_terms_label: "Условия",
         b2b_terms_value: "Согласуется при расчете",
-        b2b_cta_quote: "Быстрый запрос",
-        b2b_cta_whatsapp: "WhatsApp",
-        b2b_cta_catalog: "Каталог (PDF)",
         b2b_note: "Для быстрого расчета укажите тип, количество, страну и дату.",
 
         contact_card_title: "STAWA — оптовое производство женских брюк и одежды",
@@ -2104,14 +2070,13 @@
         metric_reply: "ответ",
         metric_control: "контроль",
         metric_models: "модели",
-        toast_copied: "Скопировано",
         toast_invalid: "Недостаточно данных",
         toast_ready: "Отправлено"
       },
 
       ar: {
         brand_sub: "أناقة بسيطة في بنطلونات السيدات",
-        nav_home: "الرئيسية", nav_about: "من نحن", nav_b2b: "B2B", nav_contact: "اتصال",
+        nav_home: "الرئيسية", nav_about: "من نحن", nav_contact: "اتصال",
         kicker_text: "منذ 2012 · لاليلي",
         hero_title: "خط بسيط، قوي وخالد في بنطلونات السيدات.",
         hero_lead: "منذ 2012، STAWA علامة تصدير بالجملة في لاليلي - إسطنبول، متخصصة في بنطلونات السيدات مع إمكانية إنتاج قطع أخرى حسب الطلب.",
@@ -2119,8 +2084,6 @@
         tag_export: "إنتاج للتصدير",
         tag_focus: "التخصص: بنطلونات السيدات",
         cta_primary: "طلب عرض سعر",
-        cta_b2b: "تفاصيل B2B",
-        cta_catalog: "الكتالوج (PDF)",
         cta_note: "رد سريع عبر واتساب أو البريد.",
         collection_title: "المجموعة · مختارات",
         collection_badge: "FW · ESSENTIAL",
@@ -2152,7 +2115,7 @@
         mission_title: "مهمتنا",
         mission_text: "سلسلة توريد موثوقة للمشترين الدوليين.",
 
-        b2b_title: "B2B",
+        b2b_title: "البيع بالجملة",
         b2b_sub: "عرض سريع وخطوات واضحة لعملاء الجملة.",
         b2b_block1: "الإنتاج",
         b2b_block2: "الشحن",
@@ -2169,9 +2132,6 @@
         b2b_docs_value: "ملصقات/كرتون حسب الطلب",
         b2b_terms_label: "الشروط",
         b2b_terms_value: "تُحدد في عرض السعر",
-        b2b_cta_quote: "عرض سريع",
-        b2b_cta_whatsapp: "واتساب",
-        b2b_cta_catalog: "الكتالوج (PDF)",
         b2b_note: "لأسرع عرض: نوع المنتج، الكمية، الدولة، وتاريخ التسليم.",
 
         contact_card_title: "STAWA — إنتاج بنطلونات وملابس سيدات بالجملة",
@@ -2199,7 +2159,6 @@
         metric_reply: "رد",
         metric_control: "رقابة",
         metric_models: "موديلات",
-        toast_copied: "تم النسخ",
         toast_invalid: "بيانات ناقصة",
         toast_ready: "تم الإرسال"
       }
@@ -2404,9 +2363,7 @@
       const cards = $$(".bottom-contact-row[data-copy]");
       cards.forEach(card => {
         const handler = async (e) => {
-          // link tıklanınca kopyalama yapma
           if (e?.target?.closest?.("a")) return;
-
           const value = card.getAttribute("data-copy") || "";
           await copyText(value);
         };
@@ -2434,7 +2391,6 @@ Message: ${msg.value || "-"}`;
 
     /* ---------- Slider + Lightbox ---------- */
     function initSlider() {
-      // NOTE: file names are case-sensitive on many servers
       const images = ["a.jpg", "b.jpg", "c.jpg", "d.jpg"];
       let currentIndex = 0;
       let timer = null;
@@ -2588,10 +2544,7 @@ Message: ${msg.value || "-"}`;
       setLanguage(saved);
     }
 
-    /* ✅ (1) REAL BACKEND FORM (Formspree)
-       1) Formspree'de form aç → endpoint al
-       2) Aşağıdaki FORMSPREE_ENDPOINT içine yapıştır
-    */
+    /* REAL BACKEND FORM (Formspree) */
     const FORMSPREE_ENDPOINT = "https://formspree.io/f/xbdaprlr";
 
     function setFormStatus(type, title, text) {
@@ -2659,22 +2612,6 @@ Message: ${msg.value || "-"}`;
           return;
         }
 
-        // If endpoint is not set, fallback to mailto
-        if (!FORMSPREE_ENDPOINT || FORMSPREE_ENDPOINT.includes("YOUR_FORM_ID")) {
-          const subject = encodeURIComponent("STAWA Wholesale Inquiry");
-          const body =
-`Company/Name: ${n}
-Email: ${em}
-
-Message:
-${m}
-
----
-Sent from STAWA website`;
-          window.location.href = `mailto:stawa.3434@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
-          return;
-        }
-
         setFormStatus("good", dict.toast_ready, lang === "tr" ? "Talebiniz gönderiliyor…" : "Sending your request…");
 
         try {
@@ -2705,7 +2642,7 @@ Sent from STAWA website`;
       $$(".contact-form .cta", form).forEach(btn => attachRipple(btn));
     }
 
-    /* ---------- Mouse FX (fixed) ---------- */
+    /* ---------- Mouse FX ---------- */
     function initMouseFX() {
       const card = $("#heroCard");
       if (!card || prefersReducedMotion()) return;
