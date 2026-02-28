@@ -481,18 +481,18 @@
       text-transform: uppercase;
       color: #171923;
     }
-   .collection-badge {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(0,0,0,0.12);
-  background: rgba(255,255,255,0.75);
-  color: rgba(0,0,0,0.75);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-  opacity: 0.9;
-}
+    .collection-badge {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: rgba(255,255,255,0.75);
+      color: rgba(0,0,0,0.75);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      opacity: 0.9;
+    }
     .collection-sub {
       position: relative;
       font-size: 13px;
@@ -1174,7 +1174,7 @@
       gap: 10px;
       pointer-events: none;
     }
-    .toast { /* kept for compatibility */
+    .toast {
       pointer-events: auto;
       min-width: 240px;
       max-width: 360px;
@@ -1319,15 +1319,16 @@
       .toast-wrap { right: 12px; left: 12px; bottom: 12px; }
       .toast { min-width: 0; width: 100%; }
       .to-top { right: 12px; }
-        .collection-badge {
-    font-size: 9px;
-    padding: 3px 8px;
-    letter-spacing: 0.10em;
-    background: rgba(255,255,255,0.65);
-    border: 1px solid rgba(0,0,0,0.08);
-    box-shadow: none;
-    opacity: 0.75;
-  }
+
+      .collection-badge {
+        font-size: 9px;
+        padding: 3px 8px;
+        letter-spacing: 0.10em;
+        background: rgba(255,255,255,0.65);
+        border: 1px solid rgba(0,0,0,0.08);
+        box-shadow: none;
+        opacity: 0.75;
+      }
     }
   </style>
 </head>
@@ -1525,7 +1526,7 @@
           </div>
         </div>
 
-        <!-- ✅ HERO CTA (Less prominent + catalog removed) -->
+        <!-- ✅ HERO CTA -->
         <div class="hero-cta-group" style="margin-top:18px;">
           <a class="cta cta-ghost" href="#contact" data-i18n="cta_primary">Teklif Talep Et</a>
         </div>
@@ -1642,7 +1643,7 @@
       </div>
     </section>
 
-    <!-- ✅ TOPTAN SATIŞ (B2B id aynı kaldı) -->
+    <!-- TOPTAN SATIŞ -->
     <section id="b2b" class="section">
       <div class="section-inner reveal">
         <div class="section-header">
@@ -1673,7 +1674,6 @@
               </div>
             </div>
 
-            <!-- ✅ 3 buton kaldırıldı -->
             <div class="b2b-note" data-i18n="b2b_note">
               Not: En hızlı teklif için ürün türü (pantolon/ceket/takım/etek), adet, ülke ve hedef teslim tarihini yazınız.
             </div>
@@ -1700,7 +1700,7 @@
       </div>
     </section>
 
-    <!-- İLETİŞİM BLOĞU -->
+    <!-- İLETİŞİM -->
     <section id="contact" class="section">
       <div class="contact-layout reveal">
         <div>
@@ -1730,7 +1730,6 @@
           <div class="contact-card">
             <div class="contact-card-title" data-i18n="contact_form_title">Mail ile Teklif Talebi</div>
 
-            <!-- REAL BACKEND FORM (Formspree fetch) -->
             <form class="contact-form" id="contactForm" novalidate>
               <label data-i18n="form_name_label">Firma / Alıcı Adı</label>
               <input id="fName" type="text" name="name" data-i18n-placeholder="form_name_ph" placeholder="Firma veya kişi adı" autocomplete="name"/>
@@ -1809,11 +1808,10 @@
 
   <script>
     /* =========================
-      STAWA — JS PACK
+      STAWA — JS PACK (FIXED)
+      ✅ Fixed template string errors
       ✅ Real backend form (Formspree)
-      ✅ Menu: B2B removed
-      ✅ Hero: catalog removed + CTA less prominent
-      ✅ Section title: B2B -> Toptan Satış
+      ✅ Security rel noopener/noreferrer
     ========================= */
 
     const i18n = {
@@ -2187,14 +2185,14 @@
       return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     }
 
-    function showToast(){ return; } // disabled as you wanted
+    function showToast(){ return; } // disabled
 
     function lockBodyScroll(lock=true) {
       if (lock) {
         const scrollY = window.scrollY || document.documentElement.scrollTop;
         document.body.dataset.scrollY = String(scrollY);
         document.body.style.position = "fixed";
-        document.body.style.top = -${scrollY}px;
+        document.body.style.top = `-${scrollY}px`;
         document.body.style.left = "0";
         document.body.style.right = "0";
         document.body.style.width = "100%";
@@ -2232,7 +2230,7 @@
       const currentFlag = $("#currentFlag");
       const currentLangText = $("#currentLangText");
       if (currentLangText) currentLangText.textContent = lang.toUpperCase();
-      if (currentFlag && flagMap[lang]) currentFlag.src = https://flagcdn.com/w20/${flagMap[lang]}.png;
+      if (currentFlag && flagMap[lang]) currentFlag.src = `https://flagcdn.com/w20/${flagMap[lang]}.png`;
 
       document.documentElement.lang = lang;
       document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
@@ -2249,9 +2247,9 @@
 
         const span = document.createElement("span");
         span.className = "ripple";
-        span.style.width = span.style.height = ${size}px;
-        span.style.left = ${x}px;
-        span.style.top = ${y}px;
+        span.style.width = span.style.height = `${size}px`;
+        span.style.left = `${x}px`;
+        span.style.top = `${y}px`;
         el.appendChild(span);
 
         setTimeout(() => span.remove(), 560);
@@ -2270,7 +2268,8 @@
       const obs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === #${entry.target.id}));
+            const current = `#${entry.target.id}`;
+            links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === current));
           }
         });
       }, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
@@ -2289,7 +2288,7 @@
         const scrollTop = doc.scrollTop || document.body.scrollTop;
         const scrollHeight = (doc.scrollHeight || document.body.scrollHeight) - doc.clientHeight;
         const p = scrollHeight > 0 ? (scrollTop / scrollHeight) : 0;
-        if (bar) bar.style.width = ${Math.min(100, Math.max(0, p*100))}%;
+        if (bar) bar.style.width = `${Math.min(100, Math.max(0, p*100))}%`;
         if (header) header.classList.toggle("scrolled", scrollTop > 8);
         if (toTop) toTop.classList.toggle("show", scrollTop > 700);
       }
@@ -2302,14 +2301,14 @@
 
     /* ---------- Reveal + CountUp ---------- */
     function animateCount(el, to, duration=900, suffix="") {
-      if (prefersReducedMotion()) { el.textContent = ${to}${suffix}; return; }
+      if (prefersReducedMotion()) { el.textContent = `${to}${suffix}`; return; }
       const start = performance.now();
       const from = 0;
 
       function tick(now) {
         const t = Math.min(1, (now - start) / duration);
         const val = Math.floor(from + (to - from) * (1 - Math.pow(1 - t, 3)));
-        el.textContent = ${val}${suffix};
+        el.textContent = `${val}${suffix}`;
         if (t < 1) requestAnimationFrame(tick);
       }
       requestAnimationFrame(tick);
@@ -2390,10 +2389,9 @@
       if (btn && name && email && msg) {
         attachRipple(btn);
         btn.addEventListener("click", async () => {
-          const text =
-Company/Name: ${name.value || "-"}
+          const text = `Company/Name: ${name.value || "-"}
 Email: ${email.value || "-"}
-Message: ${msg.value || "-"};
+Message: ${msg.value || "-"}`;
           await copyText(text);
         });
       }
@@ -2661,7 +2659,7 @@ Message: ${msg.value || "-"};
       let rx = 0, ry = 0;
 
       function apply() {
-        card.style.transform = rotateX(${rx}deg) rotateY(${ry}deg);
+        card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
         raf2 = null;
       }
 
@@ -2711,4 +2709,3 @@ Message: ${msg.value || "-"};
   </script>
 </body>
 </html>
-
