@@ -6,25 +6,21 @@
 
   <title>STAWA — Women’s Trousers & Womenswear Manufacturing</title>
 
-  <!-- ✅ SEO BASICS -->
   <meta name="description" content="STAWA — İstanbul Laleli’de 2012’den beri toptan kadın pantolonu ağırlıklı üretim. Talebe göre ceket, takım, etek ve diğer kadın giyim ürünleri. Hızlı termin, esnek adet, rekabetçi fiyat." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="./" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="STAWA — Wholesale Women’s Trousers & Womenswear Manufacturing" />
   <meta property="og:description" content="Since 2012 · Laleli — In-house production, fast lead times, flexible quantities, competitive pricing." />
   <meta property="og:image" content="stawa_og.jpg" />
   <meta property="og:locale" content="tr_TR" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="STAWA — Wholesale Women’s Trousers & Womenswear Manufacturing" />
   <meta name="twitter:description" content="Since 2012 · Laleli — In-house production, fast lead times, flexible quantities, competitive pricing." />
   <meta name="twitter:image" content="stawa_og.jpg" />
 
-  <!-- ✅ SCHEMA (Organization + LocalBusiness) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -49,7 +45,6 @@
   }
   </script>
 
-  <!-- ✅ PERFORMANCE: preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
@@ -59,7 +54,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <style>
-    /* ===== FLAGS (LANG) ===== */
     .lang-flag{
       width:16px;
       height:12px;
@@ -81,29 +75,22 @@
     :root {
       --bg-top: #050507;
       --bg-bottom: #f7f8fc;
-
       --accent: #f5f5f5;
       --accent-soft: #e0e0e0;
       --muted-dark: #8e92a3;
       --muted-light: #6a6d7b;
-
       --line-soft-light: rgba(0,0,0,0.06);
       --card-shadow-light: 0 26px 70px rgba(15,16,35,0.20);
-
       --radius-lg: 24px;
       --radius-md: 16px;
       --radius-pill: 999px;
-
       --transition-fast: 0.18s ease-out;
       --transition-med: 0.28s ease-out;
-
       --gold: #f0b868;
       --ink: #111317;
-
       --toast-bg: rgba(5,5,10,0.92);
       --toast-border: rgba(255,255,255,0.22);
       --toast-shadow: 0 18px 50px rgba(0,0,0,0.85);
-
       --header-shadow: 0 20px 60px rgba(0,0,0,0.28);
     }
 
@@ -128,7 +115,6 @@
       overflow-x: hidden;
     }
 
-    /* DESEN KATMANI */
     body::before {
       content: "";
       position: fixed;
@@ -163,7 +149,6 @@
 
     .page { min-height: 100vh; display: flex; flex-direction: column; }
 
-    /* TOP SCROLL PROGRESS */
     .scroll-progress {
       position: fixed;
       top: 0;
@@ -176,7 +161,6 @@
       transform-origin: left center;
     }
 
-    /* HEADER */
     header {
       position: sticky;
       top: 0;
@@ -247,7 +231,6 @@
       background: rgba(240,184,104,0.14);
     }
 
-    /* Ripple */
     .ripple {
       position: absolute;
       border-radius: 50%;
@@ -258,7 +241,6 @@
     }
     @keyframes ripple { to { transform: scale(3.2); opacity: 0; } }
 
-    /* DİL SEÇİCİ */
     .lang-switch { position: relative; margin-left: 8px; }
     .lang-toggle {
       border-radius: 999px;
@@ -322,7 +304,6 @@
       flex: 1;
     }
 
-    /* HERO */
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.05fr);
@@ -405,7 +386,6 @@
     .cta-ghost:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.85); transform: translateY(-1px); box-shadow: 0 18px 40px rgba(0,0,0,0.9); }
     .hero-cta-note { font-size: 12px; color: var(--muted-dark); margin-top: 6px; }
 
-    /* ✅ QUICK FACTS */
     .b2b-facts {
       margin-top: 16px;
       display: grid;
@@ -502,7 +482,6 @@
       line-height: 1.7;
     }
 
-    /* HERO SLIDER */
     .hero-slider {
       position: relative;
       margin-top: 10px;
@@ -594,7 +573,6 @@
     }
     .hero-slider-dot.active { width: 18px; background: #f5f5f5; opacity: 1; }
 
-    /* LIGHTBOX */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -657,7 +635,6 @@
     }
     .lightbox-nav button:hover { background: #f5f5f5; color: #111317; }
 
-    /* SECTIONS */
     .section { padding: 52px 0 26px; margin-top: 30px; border-top: none; color: #111317; }
     .section-inner {
       position: relative;
@@ -764,7 +741,6 @@
     }
     .fact-metric strong { letter-spacing: 0.08em; }
 
-    /* VİZYON/MİSYON KARTI */
     .about-side-card {
       position: relative;
       border-radius: var(--radius-lg);
@@ -802,7 +778,6 @@
       line-height: 1.8;
     }
 
-    /* ✅ TOPTAN SATIŞ (B2B SECTION) */
     .b2b-layout{
       display:grid;
       grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
@@ -865,7 +840,6 @@
       line-height: 1.7;
     }
 
-    /* CONTACT LAYOUT */
     .contact-layout {
       position: relative;
       display: grid;
@@ -967,7 +941,6 @@
       background: #ffffff;
     }
 
-    /* backend form status */
     #msg { margin-top: 10px; font-size: 12px; color: var(--muted-light); line-height: 1.6; }
     .form-status {
       margin-top: 10px;
@@ -991,12 +964,11 @@
     }
     .form-status p{ margin:0; font-size: 13px; color:#34374a; }
 
-    /* ALT BÜYÜK İLETİŞİM BLOĞU */
     .bottom-contact { margin-top: 12px; padding: 26px 0 8px; background: transparent; }
     .bottom-contact-inner {
       max-width: 1180px;
       margin: 0 auto 20px;
-      padding: 24px 28px 24px;
+      padding: 24px 28px 28px;
       border-radius: 28px;
       border: 1px solid rgba(0,0,0,0.1);
       background: linear-gradient(135deg,#ffffff,#f5f6fb,#f3f1ff);
@@ -1064,7 +1036,6 @@
       background: transparent;
     }
 
-    /* SOL SABİT SOSYAL BAR */
     .social-bar {
       position: fixed;
       left: 18px;
@@ -1154,16 +1125,13 @@
     .social-bar.collapsed .social-link { display: none; }
     .social-bar.collapsed .social-close { margin: 0; width: 32px; height: 32px; transform: rotate(180deg); }
 
-    /* SCROLL REVEAL */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* RTL */
     html[dir="rtl"] body.page { text-align: right; }
     html[dir="rtl"] .hero, html[dir="rtl"] .about-layout, html[dir="rtl"] .contact-layout, html[dir="rtl"] .b2b-layout { direction: rtl; }
     html[dir="rtl"] nav { flex-direction: row-reverse; }
 
-    /* TOAST */
     .toast-wrap {
       position: fixed;
       right: 18px;
@@ -1195,7 +1163,6 @@
     }
     .toast.show { transform: translateY(0); opacity: 1; }
 
-    /* BACK TO TOP */
     .to-top {
       position: fixed;
       right: 18px;
@@ -1220,7 +1187,6 @@
     .to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
     .to-top:hover { background: #f5f5f5; color: #111317; }
 
-    /* PRELOADER */
     .preloader {
       position: fixed;
       inset: 0;
@@ -1249,10 +1215,279 @@
     @keyframes spin { to { transform: rotate(360deg);} }
     .loader small { letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; }
 
-    /* Reduced motion */
+    /* ===== PREMIUM MAP ===== */
+    .map-box{
+      margin-top: 28px;
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(15,16,35,0.10);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.98), rgba(245,246,251,0.95)),
+        radial-gradient(circle at top right, rgba(240,184,104,0.18), transparent 44%);
+      box-shadow:
+        0 28px 80px rgba(15,16,35,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.85);
+      isolation: isolate;
+    }
+
+    .map-box::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0) 22%),
+        radial-gradient(circle at bottom right, rgba(240,184,104,0.08), transparent 30%);
+      z-index: 1;
+    }
+
+    .map-head{
+      position: relative;
+      z-index: 3;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding: 20px 22px 16px;
+      border-bottom: 1px solid rgba(15,16,35,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.60));
+      backdrop-filter: blur(10px);
+    }
+
+    .map-head-left{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      min-width: 0;
+    }
+
+    .map-icon{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(135deg,#111317,#34374a);
+      color:#f5f5f5;
+      box-shadow: 0 12px 28px rgba(15,16,35,0.24);
+      font-size:18px;
+    }
+
+    .map-kicker{
+      font-size:11px;
+      letter-spacing:0.20em;
+      text-transform:uppercase;
+      color:#8c6b2b;
+      margin-bottom:4px;
+    }
+
+    .map-title{
+      font-size:16px;
+      font-weight:700;
+      color:#111317;
+      line-height:1.35;
+      margin:0 0 2px;
+    }
+
+    .map-sub{
+      margin:0;
+      font-size:13px;
+      color:#6a6d7b;
+      line-height:1.65;
+      max-width: 520px;
+    }
+
+    .map-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:flex-end;
+      flex-shrink: 0;
+    }
+
+    .map-action{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      text-decoration:none;
+      font-size:12px;
+      font-weight:600;
+      color:#111317;
+      background: rgba(255,255,255,0.88);
+      border:1px solid rgba(15,16,35,0.08);
+      box-shadow: 0 8px 20px rgba(15,16,35,0.10);
+      transition: 0.22s ease;
+      white-space: nowrap;
+    }
+
+    .map-action:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(15,16,35,0.16);
+      border-color: rgba(240,184,104,0.55);
+      background: #ffffff;
+    }
+
+    .map-frame{
+      position: relative;
+      height: 390px;
+      background:
+        linear-gradient(180deg, rgba(17,19,23,0.08), rgba(17,19,23,0.22)),
+        radial-gradient(circle at top, rgba(240,184,104,0.10), transparent 48%),
+        #e9edf5;
+    }
+
+    .map-frame iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+      filter: grayscale(1) contrast(1.08) brightness(0.72) saturate(0.75);
+      transform: scale(1.01);
+    }
+
+    .map-dark-overlay{
+      position:absolute;
+      inset:0;
+      z-index:2;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(9,10,16,0.16), rgba(9,10,16,0.48)),
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.04), transparent 20%),
+        radial-gradient(circle at 80% 76%, rgba(240,184,104,0.10), transparent 24%);
+      mix-blend-mode: multiply;
+    }
+
+    .map-bottom-panel{
+      position:absolute;
+      left:18px;
+      right:18px;
+      bottom:18px;
+      z-index:4;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      pointer-events:none;
+    }
+
+    .map-floating-card{
+      pointer-events:auto;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:12px 14px;
+      border-radius:20px;
+      background: rgba(8,8,12,0.78);
+      border:1px solid rgba(255,255,255,0.16);
+      color:#f5f5f5;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+      backdrop-filter: blur(14px);
+      max-width: 360px;
+    }
+
+    .map-floating-logo{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.06));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(255,255,255,0.14);
+      overflow:hidden;
+      flex-shrink:0;
+    }
+
+    .map-floating-logo img{
+      width: 70%;
+      height: auto;
+      object-fit: contain;
+      filter: brightness(1.25);
+    }
+
+    .map-floating-text strong{
+      display:block;
+      font-size:12px;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      margin-bottom:4px;
+      color:#f5f5f5;
+    }
+
+    .map-floating-text span{
+      display:block;
+      font-size:13px;
+      color:rgba(245,245,245,0.78);
+      line-height:1.55;
+    }
+
+    .map-pin{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%, -72%);
+      z-index:4;
+      pointer-events:none;
+    }
+
+    .map-pin-core{
+      width:20px;
+      height:20px;
+      border-radius:999px;
+      background: linear-gradient(135deg, #f0b868, #f7d49d);
+      box-shadow:
+        0 0 0 6px rgba(240,184,104,0.18),
+        0 12px 32px rgba(0,0,0,0.35);
+      border:2px solid rgba(255,255,255,0.65);
+      position: relative;
+    }
+
+    .map-pin-core::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:100%;
+      width:10px;
+      height:16px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(240,184,104,0.95), rgba(240,184,104,0));
+      clip-path: polygon(50% 100%, 0 0, 100% 0);
+      filter: drop-shadow(0 10px 14px rgba(0,0,0,0.25));
+    }
+
+    .map-pin-ring,
+    .map-pin-ring::before,
+    .map-pin-ring::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:22px;
+      height:22px;
+      transform: translate(-50%, -50%);
+      border-radius:999px;
+      border:1px solid rgba(240,184,104,0.55);
+      opacity:0;
+      animation: mapPulse 2.8s ease-out infinite;
+    }
+
+    .map-pin-ring::before{ animation-delay: .7s; }
+    .map-pin-ring::after{ animation-delay: 1.4s; }
+
+    @keyframes mapPulse{
+      0%{ transform: translate(-50%, -50%) scale(1); opacity:.85; }
+      100%{ transform: translate(-50%, -50%) scale(4.8); opacity:0; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .hero-card, .social-link { animation: none !important; }
+      .map-pin-ring, .map-pin-ring::before, .map-pin-ring::after { animation: none !important; opacity: .25; }
       * { transition: none !important; }
     }
 
@@ -1262,6 +1497,22 @@
       .about-layout, .contact-layout, .b2b-layout { grid-template-columns: minmax(0, 1fr); }
       .social-bar { left: 10px; }
       html[dir="rtl"] .social-bar { left: auto; right: 10px; }
+
+      .map-head{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .map-actions{
+        width:100%;
+        justify-content:flex-start;
+      }
+      .map-bottom-panel{
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .map-floating-card{
+        max-width:none;
+      }
     }
 
     @media (max-width: 720px) {
@@ -1298,7 +1549,7 @@
       html[dir="rtl"] .social-bar { left: auto; right: 12px; }
       .social-close { margin-right: 6px; }
 
-      .bottom-contact-inner { padding: 6px 12px; }
+      .bottom-contact-inner { padding: 6px 12px 16px; }
       .bottom-contact-grid { flex-direction: column; gap: 12px; }
       .bottom-contact-row {
         max-width: 100%;
@@ -1329,28 +1580,44 @@
         box-shadow: none;
         opacity: 0.75;
       }
+
+      .map-head{
+        padding:16px 16px 14px;
+      }
+      .map-frame{
+        height: 330px;
+      }
+      .map-actions{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap:8px;
+      }
+      .map-action{
+        justify-content:center;
+        padding:10px 12px;
+      }
+      .map-bottom-panel{
+        left:12px;
+        right:12px;
+        bottom:12px;
+      }
+      .map-floating-card{
+        padding:10px 12px;
+        border-radius:18px;
+      }
+      .map-title{
+        font-size:15px;
+      }
+      .map-sub{
+        font-size:12px;
+      }
     }
-
-    .map-box{
-margin-top:25px;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 20px 60px rgba(0,0,0,0.18);
-}
-
-.map-box iframe{
-width:100%;
-height:340px;
-border:0;
-display:block;
-}
   </style>
 </head>
 
 <body class="page">
   <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- PRELOADER -->
   <div class="preloader" id="preloader" aria-hidden="true">
     <div class="loader">
       <div class="ring"></div>
@@ -1359,7 +1626,6 @@ display:block;
     </div>
   </div>
 
-  <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Image lightbox">
     <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
     <img id="lightboxImage" src="" alt="STAWA Collection Image" />
@@ -1369,15 +1635,12 @@ display:block;
     </div>
   </div>
 
-  <!-- TOAST (disabled in JS) -->
   <div class="toast-wrap" id="toastWrap" aria-live="polite" aria-atomic="true"></div>
 
-  <!-- BACK TO TOP -->
   <button class="to-top" id="toTop" aria-label="Back to top">
     <i class="fa-solid fa-arrow-up"></i>
   </button>
 
-  <!-- SOL SABİT SOSYAL BAR -->
   <div class="social-bar" id="socialBar">
     <button class="social-close" id="socialClose" title="Küçült / Aç" aria-label="Sosyal bağlantı çubuğunu küçült / aç">×</button>
 
@@ -1486,7 +1749,6 @@ display:block;
   </header>
 
   <main class="container" id="home">
-    <!-- HERO -->
     <section class="hero">
       <div class="left">
         <div class="kicker">
@@ -1508,7 +1770,6 @@ display:block;
           <div class="pill-tag" data-i18n="tag_focus">Ağırlıklı Kadın Pantolon Üretimi</div>
         </div>
 
-        <!-- Quick facts -->
         <div class="b2b-facts">
           <div class="b2b-pill">
             <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>
@@ -1540,7 +1801,6 @@ display:block;
           </div>
         </div>
 
-        <!-- ✅ HERO CTA -->
         <div class="hero-cta-group" style="margin-top:18px;">
           <a class="cta cta-ghost" href="#contact" data-i18n="cta_primary">Teklif Talep Et</a>
         </div>
@@ -1589,7 +1849,6 @@ display:block;
       </div>
     </section>
 
-    <!-- HAKKIMIZDA -->
     <section id="about" class="section">
       <div class="section-inner reveal">
         <div class="section-header">
@@ -1657,7 +1916,6 @@ display:block;
       </div>
     </section>
 
-    <!-- TOPTAN SATIŞ -->
     <section id="b2b" class="section">
       <div class="section-inner reveal">
         <div class="section-header">
@@ -1714,7 +1972,6 @@ display:block;
       </div>
     </section>
 
-    <!-- İLETİŞİM -->
     <section id="contact" class="section">
       <div class="contact-layout reveal">
         <div>
@@ -1777,7 +2034,6 @@ display:block;
     </section>
   </main>
 
-  <!-- ALT BÜYÜK İLETİŞİM BLOĞU -->
   <section class="bottom-contact">
     <div class="bottom-contact-inner">
       <div class="bottom-contact-header">
@@ -1813,13 +2069,68 @@ display:block;
           </div>
         </div>
       </div>
+
       <div class="map-box">
-<iframe
-src="https://www.google.com/maps?q=Barcelona%20Is%20Merkezi%20No%209%20Laleli%20Fatih%20Istanbul&output=embed"
-loading="lazy"
-referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-</div>
+        <div class="map-head">
+          <div class="map-head-left">
+            <div class="map-icon">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            </div>
+
+            <div>
+              <div class="map-kicker">STAWA LOCATION</div>
+              <h3 class="map-title">STAWA Showroom · Laleli</h3>
+              <p class="map-sub">Barcelona İş Merkezi No: 9 · Laleli · Fatih · İstanbul · Toptan kadın pantolonu ve kadın giyim üretim noktası</p>
+            </div>
+          </div>
+
+          <div class="map-actions">
+            <a class="map-action"
+               href="https://maps.google.com/?q=Barcelona%20Is%20Merkezi%20No%209%20Laleli%20Fatih%20Istanbul"
+               target="_blank"
+               rel="noopener noreferrer">
+              <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+              Haritada Aç
+            </a>
+
+            <a class="map-action"
+               href="https://www.google.com/maps/dir/?api=1&destination=Barcelona%20Is%20Merkezi%20No%209%20Laleli%20Fatih%20Istanbul"
+               target="_blank"
+               rel="noopener noreferrer">
+              <i class="fa-solid fa-route" aria-hidden="true"></i>
+              Yol Tarifi
+            </a>
+          </div>
+        </div>
+
+        <div class="map-frame">
+          <iframe
+            src="https://www.google.com/maps?q=Barcelona%20Is%20Merkezi%20No%209%20Laleli%20Fatih%20Istanbul&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="STAWA Showroom Map">
+          </iframe>
+
+          <div class="map-dark-overlay"></div>
+
+          <div class="map-pin" aria-hidden="true">
+            <div class="map-pin-ring"></div>
+            <div class="map-pin-core"></div>
+          </div>
+
+          <div class="map-bottom-panel">
+            <div class="map-floating-card">
+              <div class="map-floating-logo">
+                <img src="stawa_logo_transparent.png" alt="STAWA">
+              </div>
+              <div class="map-floating-text">
+                <strong>STAWA</strong>
+                <span>Kendi üretim tesisi · Laleli merkezli operasyon · hızlı teklif ve doğrudan iletişim</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1828,13 +2139,6 @@ referrerpolicy="no-referrer-when-downgrade">
   </footer>
 
   <script>
-    /* =========================
-      STAWA — JS PACK (FIXED)
-      ✅ Fixed template string errors
-      ✅ Real backend form (Formspree)
-      ✅ Security rel noopener/noreferrer
-    ========================= */
-
     const i18n = {
       tr: {
         brand_sub: "Modern Kadın Pantolonlarında Minimal Zarafet",
@@ -2193,7 +2497,6 @@ referrerpolicy="no-referrer-when-downgrade">
       }
     };
 
-    /* ---------- Utils ---------- */
     const $ = (sel, root=document) => root.querySelector(sel);
     const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 
@@ -2206,7 +2509,7 @@ referrerpolicy="no-referrer-when-downgrade">
       return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     }
 
-    function showToast(){ return; } // disabled
+    function showToast(){ return; }
 
     function lockBodyScroll(lock=true) {
       if (lock) {
@@ -2229,7 +2532,6 @@ referrerpolicy="no-referrer-when-downgrade">
       }
     }
 
-    /* ---------- i18n ---------- */
     function setLanguage(lang) {
       const dict = i18n[lang] || i18n.tr;
 
@@ -2258,7 +2560,6 @@ referrerpolicy="no-referrer-when-downgrade">
       storage.set("stawa_lang", lang);
     }
 
-    /* ---------- Ripple ---------- */
     function attachRipple(el) {
       el.addEventListener("click", (e) => {
         const rect = el.getBoundingClientRect();
@@ -2277,7 +2578,6 @@ referrerpolicy="no-referrer-when-downgrade">
       });
     }
 
-    /* ---------- Nav active section ---------- */
     function initActiveNav() {
       const nav = $("#mainNav");
       if (!nav) return;
@@ -2298,7 +2598,6 @@ referrerpolicy="no-referrer-when-downgrade">
       sections.forEach(sec => obs.observe(sec));
     }
 
-    /* ---------- Scroll progress + header shadow + back to top ---------- */
     function initScrollUI() {
       const bar = $("#scrollProgress");
       const header = $("#siteHeader");
@@ -2320,7 +2619,6 @@ referrerpolicy="no-referrer-when-downgrade">
       if (toTop) toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" }));
     }
 
-    /* ---------- Reveal + CountUp ---------- */
     function animateCount(el, to, duration=900, suffix="") {
       if (prefersReducedMotion()) { el.textContent = `${to}${suffix}`; return; }
       const start = performance.now();
@@ -2357,7 +2655,6 @@ referrerpolicy="no-referrer-when-downgrade">
       revealEls.forEach(el => revealObs.observe(el));
     }
 
-    /* ---------- Social bar state ---------- */
     function initSocialBar() {
       const socialBar = $("#socialBar");
       const socialClose = $("#socialClose");
@@ -2372,7 +2669,6 @@ referrerpolicy="no-referrer-when-downgrade">
       });
     }
 
-    /* ---------- Copy ---------- */
     async function copyText(text) {
       try {
         await navigator.clipboard.writeText(text);
@@ -2418,7 +2714,6 @@ Message: ${msg.value || "-"}`;
       }
     }
 
-    /* ---------- Slider + Lightbox ---------- */
     function initSlider() {
       const images = ["a.jpg", "b.jpg", "c.jpg", "d.jpg"];
       let currentIndex = 0;
@@ -2550,7 +2845,6 @@ Message: ${msg.value || "-"}`;
       startAuto();
     }
 
-    /* ---------- Language menu ---------- */
     function initLanguageMenu() {
       const langMenu = $("#langMenu");
       const langToggle = $("#langToggle");
@@ -2573,7 +2867,6 @@ Message: ${msg.value || "-"}`;
       setLanguage(saved);
     }
 
-    /* REAL BACKEND FORM (Formspree) */
     const FORMSPREE_ENDPOINT = "https://formspree.io/f/xbdaprlr";
 
     function setFormStatus(type, title, text) {
@@ -2671,7 +2964,6 @@ Message: ${msg.value || "-"}`;
       $$(".contact-form .cta", form).forEach(btn => attachRipple(btn));
     }
 
-    /* ---------- Mouse FX ---------- */
     function initMouseFX() {
       const card = $("#heroCard");
       if (!card || prefersReducedMotion()) return;
@@ -2699,14 +2991,12 @@ Message: ${msg.value || "-"}`;
       });
     }
 
-    /* ---------- Preloader ---------- */
     function initPreloader() {
       const p = $("#preloader");
       if (!p) return;
       window.addEventListener("load", () => setTimeout(() => p.classList.add("hide"), 300));
     }
 
-    /* ---------- Boot ---------- */
     document.addEventListener("DOMContentLoaded", () => {
       initPreloader();
       initLanguageMenu();
@@ -2719,7 +3009,6 @@ Message: ${msg.value || "-"}`;
       initCopyCards();
       initMouseFX();
 
-      // Auto security fix for all target="_blank" links
       document.querySelectorAll('a[target="_blank"]').forEach(a => {
         const rel = (a.getAttribute("rel") || "").split(/\s+/).filter(Boolean);
         if (!rel.includes("noopener")) rel.push("noopener");
@@ -2730,4 +3019,3 @@ Message: ${msg.value || "-"}`;
   </script>
 </body>
 </html>
-
