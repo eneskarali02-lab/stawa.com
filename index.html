@@ -1330,6 +1330,20 @@
         opacity: 0.75;
       }
     }
+
+    .map-box{
+margin-top:25px;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 20px 60px rgba(0,0,0,0.18);
+}
+
+.map-box iframe{
+width:100%;
+height:340px;
+border:0;
+display:block;
+}
   </style>
 </head>
 
@@ -1799,6 +1813,13 @@
           </div>
         </div>
       </div>
+      <div class="map-box">
+<iframe
+src="https://www.google.com/maps?q=Barcelona%20Is%20Merkezi%20No%209%20Laleli%20Fatih%20Istanbul&output=embed"
+loading="lazy"
+referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+</div>
     </div>
   </section>
 
@@ -2709,3 +2730,4 @@ Message: ${msg.value || "-"}`;
   </script>
 </body>
 </html>
+
