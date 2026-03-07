@@ -2070,12 +2070,71 @@
         </div>
       </div>
 
-      <div class="map-box">
-        <div class="map-head">
-          <div class="map-head-left">
-            <div class="map-icon">
-              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-            </div>
+<div class="map-box">
+  <div class="map-head">
+    <div class="map-head-left">
+      <div class="map-icon">
+        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+      </div>
+
+      <div>
+        <div class="map-kicker" data-i18n="map_kicker">STAWA LOCATION</div>
+        <h3 class="map-title" data-i18n="map_title">STAWA Showroom · Laleli</h3>
+        <p class="map-sub" data-i18n="map_sub">
+          Barcelona İş Merkezi No: 9 · Laleli · Fatih · İstanbul · Toptan kadın pantolonu ve kadın giyim üretim noktası
+        </p>
+      </div>
+    </div>
+
+    <div class="map-actions">
+      <a class="map-action"
+         href="https://maps.google.com/?q=Barcelona%20Is%20Merkezi%20No%209%20Laleli%20Fatih%20Istanbul"
+         target="_blank"
+         rel="noopener noreferrer">
+        <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+        <span data-i18n="map_open">Haritada Aç</span>
+      </a>
+
+      <a class="map-action"
+         href="https://www.google.com/maps/dir/?api=1&destination=Barcelona%20Is%20Merkezi%20No%209%20Laleli%20Fatih%20Istanbul"
+         target="_blank"
+         rel="noopener noreferrer">
+        <i class="fa-solid fa-route" aria-hidden="true"></i>
+        <span data-i18n="map_route">Yol Tarifi</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="map-frame">
+    <iframe
+      src="https://www.google.com/maps?q=Barcelona%20Is%20Merkezi%20No%209%20Laleli%20Fatih%20Istanbul&output=embed"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="STAWA Showroom Map">
+    </iframe>
+
+    <div class="map-dark-overlay"></div>
+
+    <div class="map-pin" aria-hidden="true">
+      <div class="map-pin-ring"></div>
+      <div class="map-pin-core"></div>
+    </div>
+
+    <div class="map-bottom-panel">
+      <div class="map-floating-card">
+        <div class="map-floating-logo">
+          <img src="stawa_logo_transparent.png" alt="STAWA">
+        </div>
+        <div class="map-floating-text">
+          <strong data-i18n="map_float_title">STAWA</strong>
+          <span data-i18n="map_float_text">
+            Kendi üretim tesisi · Laleli merkezli operasyon · hızlı teklif ve doğrudan iletişim
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
             <div>
               <div class="map-kicker">STAWA LOCATION</div>
@@ -2226,7 +2285,15 @@
         metric_control: "Kontrol",
         metric_models: "Model",
         toast_invalid: "Eksik Bilgi",
-        toast_ready: "Talep Alındı"
+        toast_ready: "Talep Alındı"  
+
+        map_kicker: "STAWA KONUM",
+map_title: "STAWA Showroom · Laleli",
+map_sub: "Barcelona İş Merkezi No: 9 · Laleli · Fatih · İstanbul · Toptan kadın pantolonu ve kadın giyim üretim noktası",
+map_open: "Haritada Aç",
+map_route: "Yol Tarifi",
+map_float_title: "STAWA",
+map_float_text: "Kendi üretim tesisi · Laleli merkezli operasyon · hızlı teklif ve doğrudan iletişim",
       },
 
       en: {
@@ -2316,7 +2383,16 @@
         metric_models: "Models",
         toast_invalid: "Missing Info",
         toast_ready: "Received"
-      },
+     
+    
+    map_kicker: "STAWA LOCATION",
+map_title: "STAWA Showroom · Laleli",
+map_sub: "Barcelona Business Center No: 9 · Laleli · Fatih · Istanbul · Wholesale women’s trousers and womenswear production point",
+map_open: "Open Map",
+map_route: "Get Directions",
+map_float_title: "STAWA",
+map_float_text: "In-house production facility · Laleli-based operation · fast quotations and direct contact",
+    },
 
       ru: {
         brand_sub: "Минималистичная элегантность в женских брюках",
@@ -2405,6 +2481,15 @@
         metric_models: "модели",
         toast_invalid: "Недостаточно данных",
         toast_ready: "Отправлено"
+
+
+        map_kicker: "ЛОКАЦИЯ STAWA",
+map_title: "Шоурум STAWA · Лалели",
+map_sub: "Barcelona İş Merkezi No: 9 · Лалели · Фатих · Стамбул · Оптовое производство женских брюк и женской одежды",
+map_open: "Открыть карту",
+map_route: "Построить маршрут",
+map_float_title: "STAWA",
+map_float_text: "Собственное производство · работа из Лалели · быстрый расчет и прямой контакт",
       },
 
       ar: {
@@ -2494,6 +2579,15 @@
         metric_models: "موديلات",
         toast_invalid: "بيانات ناقصة",
         toast_ready: "تم الإرسال"
+
+
+        map_kicker: "موقع STAWA",
+map_title: "صالة عرض STAWA · لاليلي",
+map_sub: "مركز برشلونة التجاري رقم 9 · لاليلي · الفاتح · إسطنبول · نقطة إنتاج بنطلونات وملابس السيدات بالجملة",
+map_open: "فتح الخريطة",
+map_route: "الاتجاهات",
+map_float_title: "STAWA",
+map_float_text: "مصنع إنتاج خاص · تشغيل من لاليلي · عروض سريعة وتواصل مباشر",
       }
     };
 
@@ -3019,3 +3113,4 @@ Message: ${msg.value || "-"}`;
   </script>
 </body>
 </html>
+
