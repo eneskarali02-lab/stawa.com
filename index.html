@@ -1114,6 +1114,7 @@
     }
     .social-link:hover::after { opacity: 1; transform: translateY(-50%) translateX(0); }
 
+    .social-link.phone { color: #ffffff; }
     .social-link.whatsapp { color: #32d951; }
     .social-link.instagram { color: #f56040; }
     .social-link.facebook { color: #1877f2; }
@@ -1129,7 +1130,10 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     html[dir="rtl"] body.page { text-align: right; }
-    html[dir="rtl"] .hero, html[dir="rtl"] .about-layout, html[dir="rtl"] .contact-layout, html[dir="rtl"] .b2b-layout { direction: rtl; }
+    html[dir="rtl"] .hero,
+    html[dir="rtl"] .about-layout,
+    html[dir="rtl"] .contact-layout,
+    html[dir="rtl"] .b2b-layout { direction: rtl; }
     html[dir="rtl"] nav { flex-direction: row-reverse; }
 
     .toast-wrap {
@@ -1215,7 +1219,6 @@
     @keyframes spin { to { transform: rotate(360deg);} }
     .loader small { letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; }
 
-    /* ===== PREMIUM MAP ===== */
     .map-box{
       margin-top: 28px;
       position: relative;
@@ -1774,7 +1777,7 @@
           <div class="b2b-pill">
             <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>
             <div>
-              <strong data-i18n="b2b_moq_title">MOQ</strong>
+              <strong data-i18n="b2b_moq_title">Minimum Sipariş</strong>
               <span data-i18n="b2b_moq_text">Esnek adet · modele göre belirlenir</span>
             </div>
           </div>
@@ -1929,7 +1932,7 @@
 
             <div class="b2b-grid">
               <div class="b2b-item">
-                <strong data-i18n="b2b_moq_label">MOQ</strong>
+                <strong data-i18n="b2b_moq_label">Minimum Sipariş</strong>
                 <span data-i18n="b2b_moq_value">Model / kumaş / renge göre belirlenir · esnek</span>
               </div>
               <div class="b2b-item">
@@ -2070,76 +2073,19 @@
         </div>
       </div>
 
-<div class="map-box">
-  <div class="map-head">
-    <div class="map-head-left">
-      <div class="map-icon">
-        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-      </div>
-
-      <div>
-        <div class="map-kicker" data-i18n="map_kicker">STAWA LOCATION</div>
-        <h3 class="map-title" data-i18n="map_title">STAWA Showroom · Laleli</h3>
-        <p class="map-sub" data-i18n="map_sub">
-          Barcelona İş Merkezi No: 9 · Laleli · Fatih · İstanbul · Toptan kadın pantolonu ve kadın giyim üretim noktası
-        </p>
-      </div>
-    </div>
-
-    <div class="map-actions">
-      <a class="map-action"
-         href="https://maps.google.com/?q=Barcelona%20Is%20Merkezi%20No%209%20Laleli%20Fatih%20Istanbul"
-         target="_blank"
-         rel="noopener noreferrer">
-        <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
-        <span data-i18n="map_open">Haritada Aç</span>
-      </a>
-
-      <a class="map-action"
-         href="https://www.google.com/maps/dir/?api=1&destination=Barcelona%20Is%20Merkezi%20No%209%20Laleli%20Fatih%20Istanbul"
-         target="_blank"
-         rel="noopener noreferrer">
-        <i class="fa-solid fa-route" aria-hidden="true"></i>
-        <span data-i18n="map_route">Yol Tarifi</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="map-frame">
-    <iframe
-      src="https://www.google.com/maps?q=Barcelona%20Is%20Merkezi%20No%209%20Laleli%20Fatih%20Istanbul&output=embed"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      title="STAWA Showroom Map">
-    </iframe>
-
-    <div class="map-dark-overlay"></div>
-
-    <div class="map-pin" aria-hidden="true">
-      <div class="map-pin-ring"></div>
-      <div class="map-pin-core"></div>
-    </div>
-
-    <div class="map-bottom-panel">
-      <div class="map-floating-card">
-        <div class="map-floating-logo">
-          <img src="stawa_logo_transparent.png" alt="STAWA">
-        </div>
-        <div class="map-floating-text">
-          <strong data-i18n="map_float_title">STAWA</strong>
-          <span data-i18n="map_float_text">
-            Kendi üretim tesisi · Laleli merkezli operasyon · hızlı teklif ve doğrudan iletişim
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+      <div class="map-box">
+        <div class="map-head">
+          <div class="map-head-left">
+            <div class="map-icon">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            </div>
 
             <div>
-              <div class="map-kicker">STAWA LOCATION</div>
-              <h3 class="map-title">STAWA Showroom · Laleli</h3>
-              <p class="map-sub">Barcelona İş Merkezi No: 9 · Laleli · Fatih · İstanbul · Toptan kadın pantolonu ve kadın giyim üretim noktası</p>
+              <div class="map-kicker" data-i18n="map_kicker">STAWA KONUM</div>
+              <h3 class="map-title" data-i18n="map_title">STAWA Showroom · Laleli</h3>
+              <p class="map-sub" data-i18n="map_sub">
+                Barcelona İş Merkezi No: 9 · Laleli · Fatih · İstanbul · Toptan kadın pantolonu ve kadın giyim üretim noktası
+              </p>
             </div>
           </div>
 
@@ -2149,7 +2095,7 @@
                target="_blank"
                rel="noopener noreferrer">
               <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
-              Haritada Aç
+              <span data-i18n="map_open">Haritada Aç</span>
             </a>
 
             <a class="map-action"
@@ -2157,7 +2103,7 @@
                target="_blank"
                rel="noopener noreferrer">
               <i class="fa-solid fa-route" aria-hidden="true"></i>
-              Yol Tarifi
+              <span data-i18n="map_route">Yol Tarifi</span>
             </a>
           </div>
         </div>
@@ -2183,8 +2129,10 @@
                 <img src="stawa_logo_transparent.png" alt="STAWA">
               </div>
               <div class="map-floating-text">
-                <strong>STAWA</strong>
-                <span>Kendi üretim tesisi · Laleli merkezli operasyon · hızlı teklif ve doğrudan iletişim</span>
+                <strong data-i18n="map_float_title">STAWA</strong>
+                <span data-i18n="map_float_text">
+                  Kendi üretim tesisi · Laleli merkezli operasyon · hızlı teklif ve doğrudan iletişim
+                </span>
               </div>
             </div>
           </div>
@@ -2201,7 +2149,9 @@
     const i18n = {
       tr: {
         brand_sub: "Modern Kadın Pantolonlarında Minimal Zarafet",
-        nav_home: "Ana Sayfa", nav_about: "Hakkımızda", nav_contact: "İletişim",
+        nav_home: "Ana Sayfa",
+        nav_about: "Hakkımızda",
+        nav_contact: "İletişim",
         kicker_text: "2012'den beri · Laleli",
         hero_title: "Modern kadın pantolonlarında minimal, güçlü ve zamansız bir çizgi.",
         hero_lead: "STAWA, 2012'den beri İstanbul Laleli’de kendi imalathanesinde ağırlıklı olarak kadın pantolonu üreten, aynı zamanda talebe göre ceket, takım, etek gibi farklı kadın giyim ürünlerinde de üretim yapabilen bir toptan ihracat markasıdır. Üretimin bize ait olması; hızlı imalatı, uygun fiyatı ve esnek üretimi mümkün kılar.",
@@ -2215,7 +2165,7 @@
         collection_sub: "Ana uzmanlık: kadın pantolonu. Ek kapasite: ceket, takım, etek gibi farklı kadın giyim ürünleri.",
         slider_label: "Koleksiyondan Görseller",
 
-        b2b_moq_title: "MOQ",
+        b2b_moq_title: "Minimum Sipariş",
         b2b_moq_text: "Esnek adet · modele göre belirlenir",
         b2b_lead_title: "Termin",
         b2b_lead_text: "Hızlı üretim · hedef süre talebe göre",
@@ -2244,7 +2194,7 @@
         b2b_sub: "Toptan alıcılar için hızlı teklif ve net süreç.",
         b2b_block1: "Üretim & Süreç",
         b2b_block2: "Teslimat & İhracat",
-        b2b_moq_label: "MOQ",
+        b2b_moq_label: "Minimum Sipariş",
         b2b_moq_value: "Model / kumaş / renge göre belirlenir · esnek",
         b2b_lead_label: "Termin",
         b2b_lead_value: "Siparişe göre planlama · hızlı üretim",
@@ -2285,20 +2235,22 @@
         metric_control: "Kontrol",
         metric_models: "Model",
         toast_invalid: "Eksik Bilgi",
-        toast_ready: "Talep Alındı"  
+        toast_ready: "Talep Alındı",
 
         map_kicker: "STAWA KONUM",
-map_title: "STAWA Showroom · Laleli",
-map_sub: "Barcelona İş Merkezi No: 9 · Laleli · Fatih · İstanbul · Toptan kadın pantolonu ve kadın giyim üretim noktası",
-map_open: "Haritada Aç",
-map_route: "Yol Tarifi",
-map_float_title: "STAWA",
-map_float_text: "Kendi üretim tesisi · Laleli merkezli operasyon · hızlı teklif ve doğrudan iletişim",
+        map_title: "STAWA Showroom · Laleli",
+        map_sub: "Barcelona İş Merkezi No: 9 · Laleli · Fatih · İstanbul · Toptan kadın pantolonu ve kadın giyim üretim noktası",
+        map_open: "Haritada Aç",
+        map_route: "Yol Tarifi",
+        map_float_title: "STAWA",
+        map_float_text: "Kendi üretim tesisi · Laleli merkezli operasyon · hızlı teklif ve doğrudan iletişim"
       },
 
       en: {
         brand_sub: "Minimal Elegance in Women’s Trousers",
-        nav_home: "Home", nav_about: "About", nav_contact: "Contact",
+        nav_home: "Home",
+        nav_about: "About",
+        nav_contact: "Contact",
         kicker_text: "Since 2012 · Laleli",
         hero_title: "A minimal, strong and timeless line in women’s trousers.",
         hero_lead: "Since 2012, STAWA has been a wholesale export brand based in Istanbul’s Laleli district, primarily specializing in women's trousers, while also producing jackets, suits, skirts and other womenswear items upon demand in its own facility. In-house manufacturing enables fast production, competitive pricing and flexible quantities.",
@@ -2312,7 +2264,7 @@ map_float_text: "Kendi üretim tesisi · Laleli merkezli operasyon · hızlı te
         collection_sub: "Main focus: women’s trousers. Additional capacity: jackets, suits, skirts and other womenswear items.",
         slider_label: "Looks from the Collection",
 
-        b2b_moq_title: "MOQ",
+        b2b_moq_title: "Minimum Order",
         b2b_moq_text: "Flexible · depends on model",
         b2b_lead_title: "Lead Time",
         b2b_lead_text: "Fast in-house production",
@@ -2341,7 +2293,7 @@ map_float_text: "Kendi üretim tesisi · Laleli merkezli operasyon · hızlı te
         b2b_sub: "Fast quotation and clear process for wholesale buyers.",
         b2b_block1: "Production & Process",
         b2b_block2: "Delivery & Export",
-        b2b_moq_label: "MOQ",
+        b2b_moq_label: "Minimum Order",
         b2b_moq_value: "Depends on model / fabric / color · flexible",
         b2b_lead_label: "Lead Time",
         b2b_lead_value: "Planned per order · fast production",
@@ -2382,21 +2334,22 @@ map_float_text: "Kendi üretim tesisi · Laleli merkezli operasyon · hızlı te
         metric_control: "Control",
         metric_models: "Models",
         toast_invalid: "Missing Info",
-        toast_ready: "Received"
-     
-    
-    map_kicker: "STAWA LOCATION",
-map_title: "STAWA Showroom · Laleli",
-map_sub: "Barcelona Business Center No: 9 · Laleli · Fatih · Istanbul · Wholesale women’s trousers and womenswear production point",
-map_open: "Open Map",
-map_route: "Get Directions",
-map_float_title: "STAWA",
-map_float_text: "In-house production facility · Laleli-based operation · fast quotations and direct contact",
-    },
+        toast_ready: "Received",
+
+        map_kicker: "STAWA LOCATION",
+        map_title: "STAWA Showroom · Laleli",
+        map_sub: "Barcelona Business Center No: 9 · Laleli · Fatih · Istanbul · Wholesale women’s trousers and womenswear production point",
+        map_open: "Open Map",
+        map_route: "Get Directions",
+        map_float_title: "STAWA",
+        map_float_text: "In-house production facility · Laleli-based operation · fast quotations and direct contact"
+      },
 
       ru: {
         brand_sub: "Минималистичная элегантность в женских брюках",
-        nav_home: "Главная", nav_about: "О нас", nav_contact: "Контакты",
+        nav_home: "Главная",
+        nav_about: "О нас",
+        nav_contact: "Контакты",
         kicker_text: "С 2012 года · Лалели",
         hero_title: "Минимальная, выразительная и вне времени линия женских брюк.",
         hero_lead: "С 2012 года STAWA — оптовый экспортный бренд в стамбульском районе Лалели, специализирующийся на женских брюках и производящий другие изделия по запросу на собственной фабрике.",
@@ -2410,7 +2363,7 @@ map_float_text: "In-house production facility · Laleli-based operation · fast 
         collection_sub: "Основной продукт: женские брюки. Дополнительно: жакеты, костюмы, юбки и др.",
         slider_label: "Образы из коллекции",
 
-        b2b_moq_title: "MOQ",
+        b2b_moq_title: "Минимальный заказ",
         b2b_moq_text: "Гибко · зависит от модели",
         b2b_lead_title: "Срок",
         b2b_lead_text: "Быстрое производство",
@@ -2439,11 +2392,11 @@ map_float_text: "In-house production facility · Laleli-based operation · fast 
         b2b_sub: "Быстрый расчет и понятный процесс для оптовиков.",
         b2b_block1: "Производство",
         b2b_block2: "Доставка",
-        b2b_moq_label: "MOQ",
+        b2b_moq_label: "Минимальный заказ",
         b2b_moq_value: "Зависит от модели/ткани/цвета · гибко",
         b2b_lead_label: "Срок",
         b2b_lead_value: "План по заказу · быстро",
-        b2b_capacity_label: "Капаситет",
+        b2b_capacity_label: "Мощность",
         b2b_capacity_value: "Фокус: брюки · другое по запросу",
         b2b_qc_label: "QC",
         b2b_qc_value: "Контроль перед отправкой",
@@ -2480,21 +2433,22 @@ map_float_text: "In-house production facility · Laleli-based operation · fast 
         metric_control: "контроль",
         metric_models: "модели",
         toast_invalid: "Недостаточно данных",
-        toast_ready: "Отправлено"
-
+        toast_ready: "Отправлено",
 
         map_kicker: "ЛОКАЦИЯ STAWA",
-map_title: "Шоурум STAWA · Лалели",
-map_sub: "Barcelona İş Merkezi No: 9 · Лалели · Фатих · Стамбул · Оптовое производство женских брюк и женской одежды",
-map_open: "Открыть карту",
-map_route: "Построить маршрут",
-map_float_title: "STAWA",
-map_float_text: "Собственное производство · работа из Лалели · быстрый расчет и прямой контакт",
+        map_title: "Шоурум STAWA · Лалели",
+        map_sub: "Barcelona İş Merkezi No: 9 · Лалели · Фатих · Стамбул · Оптовое производство женских брюк и женской одежды",
+        map_open: "Открыть карту",
+        map_route: "Построить маршрут",
+        map_float_title: "STAWA",
+        map_float_text: "Собственное производство · работа из Лалели · быстрый расчет и прямой контакт"
       },
 
       ar: {
         brand_sub: "أناقة بسيطة في بنطلونات السيدات",
-        nav_home: "الرئيسية", nav_about: "من نحن", nav_contact: "اتصال",
+        nav_home: "الرئيسية",
+        nav_about: "من نحن",
+        nav_contact: "اتصال",
         kicker_text: "منذ 2012 · لاليلي",
         hero_title: "خط بسيط، قوي وخالد في بنطلونات السيدات.",
         hero_lead: "منذ 2012، STAWA علامة تصدير بالجملة في لاليلي - إسطنبول، متخصصة في بنطلونات السيدات مع إمكانية إنتاج قطع أخرى حسب الطلب.",
@@ -2508,7 +2462,7 @@ map_float_text: "Собственное производство · работа
         collection_sub: "التركيز: بنطلونات السيدات. إضافة: بليزرات، أطقم، تنانير وغيرها.",
         slider_label: "صور من المجموعة",
 
-        b2b_moq_title: "MOQ",
+        b2b_moq_title: "الحد الأدنى للطلب",
         b2b_moq_text: "مرن · حسب الموديل",
         b2b_lead_title: "المدة",
         b2b_lead_text: "إنتاج سريع",
@@ -2537,7 +2491,7 @@ map_float_text: "Собственное производство · работа
         b2b_sub: "عرض سريع وخطوات واضحة لعملاء الجملة.",
         b2b_block1: "الإنتاج",
         b2b_block2: "الشحن",
-        b2b_moq_label: "MOQ",
+        b2b_moq_label: "الحد الأدنى للطلب",
         b2b_moq_value: "حسب الموديل/القماش/اللون · مرن",
         b2b_lead_label: "المدة",
         b2b_lead_value: "حسب الطلب · إنتاج سريع",
@@ -2578,25 +2532,35 @@ map_float_text: "Собственное производство · работа
         metric_control: "رقابة",
         metric_models: "موديلات",
         toast_invalid: "بيانات ناقصة",
-        toast_ready: "تم الإرسال"
-
+        toast_ready: "تم الإرسال",
 
         map_kicker: "موقع STAWA",
-map_title: "صالة عرض STAWA · لاليلي",
-map_sub: "مركز برشلونة التجاري رقم 9 · لاليلي · الفاتح · إسطنبول · نقطة إنتاج بنطلونات وملابس السيدات بالجملة",
-map_open: "فتح الخريطة",
-map_route: "الاتجاهات",
-map_float_title: "STAWA",
-map_float_text: "مصنع إنتاج خاص · تشغيل من لاليلي · عروض سريعة وتواصل مباشر",
+        map_title: "صالة عرض STAWA · لاليلي",
+        map_sub: "مركز برشلونة التجاري رقم 9 · لاليلي · الفاتح · إسطنبول · نقطة إنتاج بنطلونات وملابس السيدات بالجملة",
+        map_open: "فتح الخريطة",
+        map_route: "الاتجاهات",
+        map_float_title: "STAWA",
+        map_float_text: "مصنع إنتاج خاص · تشغيل من لاليلي · عروض سريعة وتواصل مباشر"
       }
     };
 
-    const $ = (sel, root=document) => root.querySelector(sel);
-    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
     const storage = {
-      get(key, fallback=null) { try { const v = localStorage.getItem(key); return v === null ? fallback : v; } catch { return fallback; } },
-      set(key, val) { try { localStorage.setItem(key, String(val)); } catch {} }
+      get(key, fallback = null) {
+        try {
+          const v = localStorage.getItem(key);
+          return v === null ? fallback : v;
+        } catch {
+          return fallback;
+        }
+      },
+      set(key, val) {
+        try {
+          localStorage.setItem(key, String(val));
+        } catch {}
+      }
     };
 
     function prefersReducedMotion() {
@@ -2605,7 +2569,7 @@ map_float_text: "مصنع إنتاج خاص · تشغيل من لاليلي · �
 
     function showToast(){ return; }
 
-    function lockBodyScroll(lock=true) {
+    function lockBodyScroll(lock = true) {
       if (lock) {
         const scrollY = window.scrollY || document.documentElement.scrollTop;
         document.body.dataset.scrollY = String(scrollY);
@@ -2658,8 +2622,8 @@ map_float_text: "مصنع إنتاج خاص · تشغيل من لاليلي · �
       el.addEventListener("click", (e) => {
         const rect = el.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size/2;
-        const y = e.clientY - rect.top - size/2;
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
 
         const span = document.createElement("span");
         span.className = "ripple";
@@ -2702,7 +2666,7 @@ map_float_text: "مصنع إنتاج خاص · تشغيل من لاليلي · �
         const scrollTop = doc.scrollTop || document.body.scrollTop;
         const scrollHeight = (doc.scrollHeight || document.body.scrollHeight) - doc.clientHeight;
         const p = scrollHeight > 0 ? (scrollTop / scrollHeight) : 0;
-        if (bar) bar.style.width = `${Math.min(100, Math.max(0, p*100))}%`;
+        if (bar) bar.style.width = `${Math.min(100, Math.max(0, p * 100))}%`;
         if (header) header.classList.toggle("scrolled", scrollTop > 8);
         if (toTop) toTop.classList.toggle("show", scrollTop > 700);
       }
@@ -2710,11 +2674,19 @@ map_float_text: "مصنع إنتاج خاص · تشغيل من لاليلي · �
       window.addEventListener("scroll", onScroll, { passive: true });
       onScroll();
 
-      if (toTop) toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" }));
+      if (toTop) {
+        toTop.addEventListener("click", () => window.scrollTo({
+          top: 0,
+          behavior: prefersReducedMotion() ? "auto" : "smooth"
+        }));
+      }
     }
 
-    function animateCount(el, to, duration=900, suffix="") {
-      if (prefersReducedMotion()) { el.textContent = `${to}${suffix}`; return; }
+    function animateCount(el, to, duration = 900, suffix = "") {
+      if (prefersReducedMotion()) {
+        el.textContent = `${to}${suffix}`;
+        return;
+      }
       const start = performance.now();
       const from = 0;
 
@@ -2774,8 +2746,14 @@ map_float_text: "مصنع إنتاج خاص · تشغيل من لاليلي · �
         ta.style.opacity = "0";
         document.body.appendChild(ta);
         ta.select();
-        try { document.execCommand("copy"); ta.remove(); return true; }
-        catch { ta.remove(); return false; }
+        try {
+          document.execCommand("copy");
+          ta.remove();
+          return true;
+        } catch {
+          ta.remove();
+          return false;
+        }
       }
     }
 
@@ -2789,7 +2767,10 @@ map_float_text: "مصنع إنتاج خاص · تشغيل من لاليلي · �
         };
         card.addEventListener("click", handler);
         card.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handler(e); }
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handler(e);
+          }
         });
       });
 
@@ -2797,6 +2778,7 @@ map_float_text: "مصنع إنتاج خاص · تشغيل من لاليلي · �
       const name = $("#fName");
       const email = $("#fEmail");
       const msg = $("#fMsg");
+
       if (btn && name && email && msg) {
         attachRipple(btn);
         btn.addEventListener("click", async () => {
@@ -2828,14 +2810,20 @@ Message: ${msg.value || "-"}`;
       const lbNext = $("#lbNext");
 
       function preload() {
-        images.forEach(src => { const im = new Image(); im.src = src; });
+        images.forEach(src => {
+          const im = new Image();
+          im.src = src;
+        });
       }
 
       function setImg(src) {
         if (!imgEl) return;
         imgEl.style.opacity = "0.2";
         const tmp = new Image();
-        tmp.onload = () => { imgEl.src = src; imgEl.style.opacity = "1"; };
+        tmp.onload = () => {
+          imgEl.src = src;
+          imgEl.style.opacity = "1";
+        };
         tmp.src = src;
       }
 
@@ -2848,10 +2836,15 @@ Message: ${msg.value || "-"}`;
       function startAuto() {
         stopAuto();
         if (prefersReducedMotion()) return;
-        timer = setInterval(() => { if (!paused) showSlide(currentIndex + 1); }, 5200);
+        timer = setInterval(() => {
+          if (!paused) showSlide(currentIndex + 1);
+        }, 5200);
       }
 
-      function stopAuto() { if (timer) clearInterval(timer); timer = null; }
+      function stopAuto() {
+        if (timer) clearInterval(timer);
+        timer = null;
+      }
 
       function openLightbox() {
         if (!lightbox || !lightboxImage) return;
@@ -2866,8 +2859,15 @@ Message: ${msg.value || "-"}`;
         lockBodyScroll(false);
       }
 
-      if (prevBtn) prevBtn.addEventListener("click", (e) => { e.stopPropagation(); showSlide(currentIndex - 1); });
-      if (nextBtn) nextBtn.addEventListener("click", (e) => { e.stopPropagation(); showSlide(currentIndex + 1); });
+      if (prevBtn) prevBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        showSlide(currentIndex - 1);
+      });
+
+      if (nextBtn) nextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        showSlide(currentIndex + 1);
+      });
 
       dots.forEach(dot => {
         dot.addEventListener("click", (e) => {
@@ -2884,23 +2884,46 @@ Message: ${msg.value || "-"}`;
       }
 
       if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
-      if (lightbox) lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
+      if (lightbox) lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
 
-      if (lbPrev) lbPrev.addEventListener("click", () => { showSlide(currentIndex - 1); if (lightboxImage) lightboxImage.src = images[currentIndex]; });
-      if (lbNext) lbNext.addEventListener("click", () => { showSlide(currentIndex + 1); if (lightboxImage) lightboxImage.src = images[currentIndex]; });
+      if (lbPrev) lbPrev.addEventListener("click", () => {
+        showSlide(currentIndex - 1);
+        if (lightboxImage) lightboxImage.src = images[currentIndex];
+      });
+
+      if (lbNext) lbNext.addEventListener("click", () => {
+        showSlide(currentIndex + 1);
+        if (lightboxImage) lightboxImage.src = images[currentIndex];
+      });
 
       document.addEventListener("keydown", (e) => {
         const lbOpen = lightbox && lightbox.classList.contains("visible");
+
         if (e.key === "Escape" && lbOpen) closeLightbox();
+
         if (e.key === "ArrowLeft") {
-          if (lbOpen) { showSlide(currentIndex - 1); lightboxImage.src = images[currentIndex]; }
-          else showSlide(currentIndex - 1);
+          if (lbOpen) {
+            showSlide(currentIndex - 1);
+            lightboxImage.src = images[currentIndex];
+          } else {
+            showSlide(currentIndex - 1);
+          }
         }
+
         if (e.key === "ArrowRight") {
-          if (lbOpen) { showSlide(currentIndex + 1); lightboxImage.src = images[currentIndex]; }
-          else showSlide(currentIndex + 1);
+          if (lbOpen) {
+            showSlide(currentIndex + 1);
+            lightboxImage.src = images[currentIndex];
+          } else {
+            showSlide(currentIndex + 1);
+          }
         }
-        if (e.key === "Home") window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
+
+        if (e.key === "Home") {
+          window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
+        }
       });
 
       function bindSwipe(target, onLeft, onRight) {
@@ -2908,7 +2931,9 @@ Message: ${msg.value || "-"}`;
 
         target.addEventListener("touchstart", (e) => {
           const t = e.touches[0];
-          startX = t.clientX; startY = t.clientY; active = true;
+          startX = t.clientX;
+          startY = t.clientY;
+          active = true;
         }, { passive: true });
 
         target.addEventListener("touchmove", (e) => {
@@ -2924,15 +2949,27 @@ Message: ${msg.value || "-"}`;
           active = false;
           const t = e.changedTouches[0];
           const dx = t.clientX - startX;
-          if (Math.abs(dx) > 45) { if (dx < 0) onLeft(); else onRight(); }
+          if (Math.abs(dx) > 45) {
+            if (dx < 0) onLeft();
+            else onRight();
+          }
         }, { passive: true });
       }
 
       if (main) bindSwipe(main, () => showSlide(currentIndex + 1), () => showSlide(currentIndex - 1));
-      if (lightbox) bindSwipe(lightbox,
-        () => { showSlide(currentIndex + 1); if (lightboxImage) lightboxImage.src = images[currentIndex]; },
-        () => { showSlide(currentIndex - 1); if (lightboxImage) lightboxImage.src = images[currentIndex]; }
-      );
+      if (lightbox) {
+        bindSwipe(
+          lightbox,
+          () => {
+            showSlide(currentIndex + 1);
+            if (lightboxImage) lightboxImage.src = images[currentIndex];
+          },
+          () => {
+            showSlide(currentIndex - 1);
+            if (lightboxImage) lightboxImage.src = images[currentIndex];
+          }
+        );
+      }
 
       preload();
       showSlide(0);
@@ -2942,9 +2979,13 @@ Message: ${msg.value || "-"}`;
     function initLanguageMenu() {
       const langMenu = $("#langMenu");
       const langToggle = $("#langToggle");
+
       if (langToggle && langMenu) {
         attachRipple(langToggle);
-        langToggle.addEventListener("click", (e) => { e.stopPropagation(); langMenu.classList.toggle("open"); });
+        langToggle.addEventListener("click", (e) => {
+          e.stopPropagation();
+          langMenu.classList.toggle("open");
+        });
         document.addEventListener("click", () => langMenu.classList.remove("open"));
         langMenu.addEventListener("click", (e) => e.stopPropagation());
       }
@@ -2968,7 +3009,7 @@ Message: ${msg.value || "-"}`;
       const t = $("#formStatusTitle");
       const p = $("#formStatusText");
       if (!box || !t || !p) return;
-      box.classList.remove("good","bad","show");
+      box.classList.remove("good", "bad", "show");
       box.classList.add(type === "good" ? "good" : "bad");
       t.textContent = title;
       p.textContent = text;
@@ -2985,6 +3026,7 @@ Message: ${msg.value || "-"}`;
 
       const draftKey = "stawa_form_draft";
       const draft = storage.get(draftKey, "");
+
       if (draft) {
         try {
           const obj = JSON.parse(draft);
@@ -2995,7 +3037,11 @@ Message: ${msg.value || "-"}`;
       }
 
       function saveDraft() {
-        const obj = { name: name?.value || "", email: email?.value || "", msg: msg?.value || "" };
+        const obj = {
+          name: name?.value || "",
+          email: email?.value || "",
+          msg: msg?.value || ""
+        };
         storage.set(draftKey, JSON.stringify(obj));
       }
 
@@ -3024,33 +3070,56 @@ Message: ${msg.value || "-"}`;
         if (!m || m.length < 10) { ok = false; msg?.classList.add("field-error"); }
 
         if (!ok) {
-          setFormStatus("bad", dict.toast_invalid, lang === "tr" ? "Lütfen formu eksiksiz doldurun." : "Please fill in all fields correctly.");
+          setFormStatus(
+            "bad",
+            dict.toast_invalid,
+            lang === "tr" ? "Lütfen formu eksiksiz doldurun." : "Please fill in all fields correctly."
+          );
           return;
         }
 
-        setFormStatus("good", dict.toast_ready, lang === "tr" ? "Talebiniz gönderiliyor…" : "Sending your request…");
+        setFormStatus(
+          "good",
+          dict.toast_ready,
+          lang === "tr" ? "Talebiniz gönderiliyor…" : "Sending your request…"
+        );
 
         try {
-          const payload = { name: n, email: em, message: m, source: "STAWA website" };
+          const payload = {
+            name: n,
+            email: em,
+            message: m,
+            source: "STAWA website"
+          };
+
           const res = await fetch(FORMSPREE_ENDPOINT, {
             method: "POST",
-            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
             body: JSON.stringify(payload)
           });
 
           if (!res.ok) throw new Error("bad_response");
 
-          setFormStatus("good", dict.toast_ready, lang === "tr"
-            ? "Talebiniz alındı. En kısa sürede dönüş yapılacaktır."
-            : "We received your request. We will reply as soon as possible."
+          setFormStatus(
+            "good",
+            dict.toast_ready,
+            lang === "tr"
+              ? "Talebiniz alındı. En kısa sürede dönüş yapılacaktır."
+              : "We received your request. We will reply as soon as possible."
           );
 
           storage.set(draftKey, "");
           form.reset();
         } catch {
-          setFormStatus("bad", "Error", lang === "tr"
-            ? "Şu an gönderilemedi. Lütfen WhatsApp’tan yazın veya biraz sonra tekrar deneyin."
-            : "Could not send right now. Please use WhatsApp or try again later."
+          setFormStatus(
+            "bad",
+            "Error",
+            lang === "tr"
+              ? "Şu an gönderilemedi. Lütfen WhatsApp’tan yazın veya biraz sonra tekrar deneyin."
+              : "Could not send right now. Please use WhatsApp or try again later."
           );
         }
       });
@@ -3080,7 +3149,8 @@ Message: ${msg.value || "-"}`;
       });
 
       card.addEventListener("mouseleave", () => {
-        rx = 0; ry = 0;
+        rx = 0;
+        ry = 0;
         if (!raf2) raf2 = requestAnimationFrame(apply);
       });
     }
@@ -3113,4 +3183,3 @@ Message: ${msg.value || "-"}`;
   </script>
 </body>
 </html>
-
